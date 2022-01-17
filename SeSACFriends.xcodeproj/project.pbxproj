@@ -17,6 +17,8 @@
 		B5C0FA5D2795DB5B00BE997E /* SeSACFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA5C2795DB5B00BE997E /* SeSACFriendsTests.swift */; };
 		B5C0FA672795DB5B00BE997E /* SeSACFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */; };
 		B5C0FA692795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */; };
+		B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */; };
+		B5C0FA832795ED5000BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		B5C0FA622795DB5B00BE997E /* SeSACFriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeSACFriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITests.swift; sourceTree = "<group>"; };
 		B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,8 @@
 		B5C0FA392795DB5A00BE997E = {
 			isa = PBXGroup;
 			children = (
+				B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */,
+				B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */,
 				B5C0FA442795DB5A00BE997E /* SeSACFriends */,
 				B5C0FA5B2795DB5B00BE997E /* SeSACFriendsTests */,
 				B5C0FA652795DB5B00BE997E /* SeSACFriendsUITests */,
@@ -185,7 +191,6 @@
 				B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */,
 				861708C38600BEADE435267D /* Pods-SeSACFriendsTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -200,6 +205,8 @@
 				B5C0FA3E2795DB5A00BE997E /* Sources */,
 				B5C0FA3F2795DB5A00BE997E /* Frameworks */,
 				B5C0FA402795DB5A00BE997E /* Resources */,
+				F02D34686792A2F01E64D926 /* [CP] Embed Pods Frameworks */,
+				B5C0FA812795EBEA00BE997E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -237,6 +244,7 @@
 				B5C0FA5E2795DB5B00BE997E /* Sources */,
 				B5C0FA5F2795DB5B00BE997E /* Frameworks */,
 				B5C0FA602795DB5B00BE997E /* Resources */,
+				5B0498E91A3E19F1FE7C5549 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -296,6 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */,
+				B5C0FA832795ED5000BE997E /* GoogleService-Info.plist in Resources */,
 				B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */,
 				B5C0FA4F2795DB5B00BE997E /* Assets.xcassets in Resources */,
 			);
@@ -382,6 +392,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B0498E91A3E19F1FE7C5549 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends-SeSACFriendsUITests/Pods-SeSACFriends-SeSACFriendsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends-SeSACFriendsUITests/Pods-SeSACFriends-SeSACFriendsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends-SeSACFriendsUITests/Pods-SeSACFriends-SeSACFriendsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5C0FA812795EBEA00BE997E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		F02D34686792A2F01E64D926 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
