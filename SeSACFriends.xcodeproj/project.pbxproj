@@ -11,7 +11,7 @@
 		2D7B7F9726AF47AEEEADAD76 /* Pods_SeSACFriends_SeSACFriendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */; };
 		B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA452795DB5A00BE997E /* AppDelegate.swift */; };
 		B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */; };
-		B5C0FA4A2795DB5A00BE997E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA492795DB5A00BE997E /* ViewController.swift */; };
+		B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */; };
 		B5C0FA4F2795DB5B00BE997E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA4E2795DB5B00BE997E /* Assets.xcassets */; };
 		B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */; };
 		B5C0FA5D2795DB5B00BE997E /* SeSACFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA5C2795DB5B00BE997E /* SeSACFriendsTests.swift */; };
@@ -19,6 +19,8 @@
 		B5C0FA692795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */; };
 		B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */; };
 		B5C0FA832795ED5000BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */; };
+		B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */; };
+		B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainViewController.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +53,7 @@
 		B5C0FA422795DB5A00BE997E /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA452795DB5A00BE997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5C0FA492795DB5A00BE997E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberController.swift; sourceTree = "<group>"; };
 		B5C0FA4E2795DB5B00BE997E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5C0FA512795DB5B00BE997E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5C0FA532795DB5B00BE997E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +64,8 @@
 		B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		B5C0FA862795F89400BE997E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +172,9 @@
 			children = (
 				B5C0FA452795DB5A00BE997E /* AppDelegate.swift */,
 				B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */,
-				B5C0FA492795DB5A00BE997E /* ViewController.swift */,
+				B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */,
+				B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */,
+				B5C0FA862795F89400BE997E /* MainViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -452,9 +458,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C0FA4A2795DB5A00BE997E /* ViewController.swift in Sources */,
+				B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
+				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
+				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
