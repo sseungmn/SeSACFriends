@@ -1,0 +1,6 @@
+framework module Pods_SeSACFriendsTests {
+  umbrella header "Pods-SeSACFriendsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
