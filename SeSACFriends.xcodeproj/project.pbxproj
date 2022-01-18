@@ -18,9 +18,9 @@
 		B5C0FA672795DB5B00BE997E /* SeSACFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */; };
 		B5C0FA692795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */; };
 		B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */; };
-		B5C0FA832795ED5000BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */; };
 		B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */; };
 		B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainViewController.swift */; };
+		B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,9 +63,9 @@
 		B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITests.swift; sourceTree = "<group>"; };
 		B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		B5C0FA862795F89400BE997E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +110,7 @@
 		B5C0FA392795DB5A00BE997E = {
 			isa = PBXGroup;
 			children = (
-				B5C0FA822795ED5000BE997E /* GoogleService-Info.plist */,
+				B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */,
 				B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */,
 				B5C0FA442795DB5A00BE997E /* SeSACFriends */,
 				B5C0FA5B2795DB5B00BE997E /* SeSACFriendsTests */,
@@ -311,7 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */,
-				B5C0FA832795ED5000BE997E /* GoogleService-Info.plist in Resources */,
+				B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */,
 				B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */,
 				B5C0FA4F2795DB5B00BE997E /* Assets.xcassets in Resources */,
 			);
@@ -634,7 +634,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSACFriends/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -647,7 +647,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.miniOS.SeSACFriends;
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesac1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -663,7 +663,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = 2EZ5QWFYX2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSACFriends/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -676,7 +676,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.miniOS.SeSACFriends;
+				PRODUCT_BUNDLE_IDENTIFIER = com.memolease.sesac1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
