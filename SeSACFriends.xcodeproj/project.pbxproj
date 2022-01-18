@@ -26,6 +26,8 @@
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */; };
+		B5C0FAA02796D2A700BE997E /* Button+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* Button+Component.swift */; };
+		B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FAA327970E6A00BE997E /* Preview.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,8 @@
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		B5C0FA9F2796D2A700BE997E /* Button+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Component.swift"; sourceTree = "<group>"; };
+		B5C0FAA327970E6A00BE997E /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +188,7 @@
 		B5C0FA762795DB7D00BE997E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B5C0FA9E2796D1C500BE997E /* Components */,
 				B5C0FA452795DB5A00BE997E /* AppDelegate.swift */,
 				B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */,
 				B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */,
@@ -197,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
+				B5C0FAA327970E6A00BE997E /* Preview.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -208,6 +214,14 @@
 				B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B5C0FA9E2796D1C500BE997E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B5C0FA9F2796D2A700BE997E /* Button+Component.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C604B3C71B5079656FA4082D /* Pods */ = {
@@ -484,8 +498,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */,
+				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
 				B5C0FA8B27969E2E00BE997E /* Color+Extension.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
+				B5C0FAA02796D2A700BE997E /* Button+Component.swift in Sources */,
 				B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */,
 				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
