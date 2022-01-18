@@ -21,6 +21,10 @@
 		B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */; };
 		B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainViewController.swift */; };
 		B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */; };
+		B5C0FA8B27969E2E00BE997E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */; };
+		B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */; };
+		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
+		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +70,10 @@
 		B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		B5C0FA862795F89400BE997E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,8 +169,11 @@
 		B5C0FA752795DB6F00BE997E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B5C0FA972796A89800BE997E /* Fonts */,
 				B5C0FA4E2795DB5B00BE997E /* Assets.xcassets */,
 				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
+				B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */,
+				B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -185,6 +196,15 @@
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		B5C0FA972796A89800BE997E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */,
+				B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		C604B3C71B5079656FA4082D /* Pods */ = {
@@ -312,7 +332,9 @@
 			files = (
 				B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */,
 				B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */,
+				B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */,
 				B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */,
+				B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */,
 				B5C0FA4F2795DB5B00BE997E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,9 +481,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */,
+				B5C0FA8B27969E2E00BE997E /* Color+Extension.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
+				B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
