@@ -25,6 +25,7 @@
 		B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */; };
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
+		B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
 				B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */,
 				B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */,
+				B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */,
 				B5C0FA8B27969E2E00BE997E /* Color+Extension.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
+				B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */,
 				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
 				B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */,
