@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06C049F45EF1CDEEE6E24CC8 /* Pods_SeSACFriendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C95A841631C8898B6E69A73 /* Pods_SeSACFriendsTests.framework */; };
 		2D7B7F9726AF47AEEEADAD76 /* Pods_SeSACFriends_SeSACFriendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */; };
+		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA452795DB5A00BE997E /* AppDelegate.swift */; };
 		B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */; };
 		B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */; };
@@ -57,6 +58,7 @@
 		A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends_SeSACFriendsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B5C0FA422795DB5A00BE997E /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA452795DB5A00BE997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C0FA9F2796D2A700BE997E /* Button+Component.swift */,
+				B567A8652797EB6A005433F8 /* IconButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */,
 				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
+				B567A8662797EB6A005433F8 /* IconButton.swift in Sources */,
 				B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 			);

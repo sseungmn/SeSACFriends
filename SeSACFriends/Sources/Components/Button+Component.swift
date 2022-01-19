@@ -20,12 +20,24 @@ class StateButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 5
-        
+        bind()
+        configure()
+        setConstraint()
+    }
+    
+    func bind() {
         styleState
             .bind(to: self.rx.styleState)
             .disposed(by: disposeBag)
     }
+    
+    func configure() {
+        self.layer.cornerRadius = 5
+        titleLabel?.font = .Body3_R14
+        print(titleLabel?.font)
+    }
+    
+    func setConstraint() { }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
