@@ -46,7 +46,6 @@ final class IconStateButton: StateButton {
         super.configure()
 
         self.sizeToFit()
-        styleState.accept(.cancel)
     }
     
     override func setConstraint() {

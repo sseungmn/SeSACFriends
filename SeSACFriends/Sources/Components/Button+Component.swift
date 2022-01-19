@@ -15,9 +15,13 @@ enum ButtonStyleState: String {
 }
 
 class StateButton: UIButton {
-    var styleState = BehaviorRelay<ButtonStyleState>(value: .inactive)
+    private var styleState = PublishRelay<ButtonStyleState>()
     var disposeBag = DisposeBag()
     
+    convenience init(initialStyleState styleState: ButtonStyleState) {
+        self.init(frame: .zero)
+        setStyleState(styleState: styleState)
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         bind()
@@ -32,7 +36,7 @@ class StateButton: UIButton {
     }
     
     func configure() {
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 8
         titleLabel?.font = .Body3_R14
     }
     
@@ -41,7 +45,12 @@ class StateButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+extension StateButton {
+    func setStyleState(styleState: ButtonStyleState) {
+        self.styleState.accept(styleState)
+    }
 }
 
 extension StateButton {
