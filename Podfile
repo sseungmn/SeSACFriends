@@ -19,8 +19,6 @@ target 'SeSACFriends' do
   pod 'RxAlamofire'
   pod 'RxDataSources'
   pod 'RxSwift'
-  
-  pod 'SwiftLint'
 
   target 'SeSACFriendsTests' do
     inherit! :search_paths

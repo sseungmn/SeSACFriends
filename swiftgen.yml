@@ -4,11 +4,11 @@ xcassets:
         - SeSACFriends/Resources/Colors.xcassets
     outputs:
         - templateName: swift5
-          output: Assets+Generated.swift
+          output: SeSACFriends/Resources/Generated/Assets+Generated.swift
 
 fonts:
     inputs:
         - SeSACFriends/Resources/Fonts
     outputs:
         - templateName: swift5
-          output: Fonts+Generated.swift
+          output: SeSACFriends/Resources/Generated/Fonts+Generated.swift

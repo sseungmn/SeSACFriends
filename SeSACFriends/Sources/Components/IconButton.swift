@@ -14,7 +14,7 @@ final class IconStateButton: StateButton {
     private let buttonTitleLabel = UILabel().then { label in
         label.font = .Title4_R14
     }
-    private let closeIconView = UIImageView(image: Asset.Images.closeSmall.image)
+    private let closeIconView = UIImageView(image: Asset.Assets.closeSmall.image)
     
     private var isIconHidden = PublishRelay<Bool>()
     private var title = PublishRelay<String>()

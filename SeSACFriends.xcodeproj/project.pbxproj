@@ -270,6 +270,7 @@
 			buildConfigurationList = B5C0FA6C2795DB5B00BE997E /* Build configuration list for PBXNativeTarget "SeSACFriends" */;
 			buildPhases = (
 				1129A57BD2FF337533A89BD4 /* [CP] Check Pods Manifest.lock */,
+				B567A87E279864BE005433F8 /* SwiftGen */,
 				B5C0FA3E2795DB5A00BE997E /* Sources */,
 				B5C0FA3F2795DB5A00BE997E /* Frameworks */,
 				B5C0FA402795DB5A00BE997E /* Resources */,
@@ -483,6 +484,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends-SeSACFriendsUITests/Pods-SeSACFriends-SeSACFriendsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B567A87E279864BE005433F8 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftgen >/dev/null; then\n  swiftgen config run\nelse\n  echo \"warning: SwiftGen not installed\"\nfi\n";
+		};
 		B5C0FA812795EBEA00BE997E /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -499,7 +518,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		F02D34686792A2F01E64D926 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
