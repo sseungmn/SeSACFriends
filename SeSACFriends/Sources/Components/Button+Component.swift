@@ -34,7 +34,6 @@ class StateButton: UIButton {
     func configure() {
         self.layer.cornerRadius = 5
         titleLabel?.font = .Body3_R14
-        print(titleLabel?.font)
     }
     
     func setConstraint() { }
@@ -42,39 +41,40 @@ class StateButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 extension StateButton {
     // style
     func inactiveStyle() {
-        self.layer.borderColor = UIColor.gray4.cgColor
+        self.layer.borderColor = Asset.Colors.gray4.color.cgColor
         self.layer.borderWidth = 1
-        self.backgroundColor = .customWhite
-        self.setTitleColor(.customBlack, for: .normal)
+        self.backgroundColor = Asset.Colors.white.color
+        self.setTitleColor(Asset.Colors.black.color, for: .normal)
     }
     func fillStyle() {
         self.layer.borderColor = nil
         self.layer.borderWidth = 0
-        self.backgroundColor = .brandGreen
-        self.setTitleColor(.customWhite, for: .normal)
+        self.backgroundColor = Asset.Colors.brandGreen.color
+        self.setTitleColor( Asset.Colors.white.color, for: .normal)
     }
     func outlineStyle() {
-        self.layer.borderColor = UIColor.brandGreen.cgColor
+        self.layer.borderColor = Asset.Colors.brandGreen.color.cgColor
         self.layer.borderWidth = 1
-        self.backgroundColor = .customWhite
-        self.setTitleColor(.brandGreen, for: .normal)
+        self.backgroundColor = Asset.Colors.white.color
+        self.setTitleColor(Asset.Colors.brandGreen.color, for: .normal)
     }
     func cancelStyle() {
         self.layer.borderColor = nil
         self.layer.borderWidth = 0
-        self.backgroundColor = .gray2
-        self.setTitleColor(.customBlack, for: .normal)
+        self.backgroundColor = Asset.Colors.gray2.color
+        self.setTitleColor(Asset.Colors.black.color, for: .normal)
     }
     func disableStyle() {
         self.layer.borderColor = nil
         self.layer.borderWidth = 0
-        self.backgroundColor = .gray6
-        self.setTitleColor(.gray3, for: .normal)
+        self.backgroundColor = Asset.Colors.gray6.color
+        self.setTitleColor(Asset.Colors.gray3.color, for: .normal)
     }
 }
 

@@ -10,10 +10,15 @@
 		06C049F45EF1CDEEE6E24CC8 /* Pods_SeSACFriendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C95A841631C8898B6E69A73 /* Pods_SeSACFriendsTests.framework */; };
 		2D7B7F9726AF47AEEEADAD76 /* Pods_SeSACFriends_SeSACFriendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
+		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
+		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
+		B567A870279851A9005433F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86F279851A9005433F8 /* Assets.xcassets */; };
+		B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A87727985E22005433F8 /* Assets+Generated.swift */; };
+		B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A87827985E22005433F8 /* Fonts+Generated.swift */; };
+		B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A87B27985F28005433F8 /* Fonts+Sementic.swift */; };
 		B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA452795DB5A00BE997E /* AppDelegate.swift */; };
 		B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */; };
 		B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */; };
-		B5C0FA4F2795DB5B00BE997E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA4E2795DB5B00BE997E /* Assets.xcassets */; };
 		B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */; };
 		B5C0FA5D2795DB5B00BE997E /* SeSACFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA5C2795DB5B00BE997E /* SeSACFriendsTests.swift */; };
 		B5C0FA672795DB5B00BE997E /* SeSACFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */; };
@@ -22,11 +27,8 @@
 		B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */; };
 		B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainViewController.swift */; };
 		B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */; };
-		B5C0FA8B27969E2E00BE997E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */; };
-		B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */; };
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
-		B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */; };
 		B5C0FAA02796D2A700BE997E /* Button+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* Button+Component.swift */; };
 		B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FAA327970E6A00BE997E /* Preview.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
@@ -59,11 +61,16 @@
 		AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		B567A86D2798517B005433F8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B567A86F279851A9005433F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B567A87727985E22005433F8 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
+		B567A87827985E22005433F8 /* Fonts+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fonts+Generated.swift"; sourceTree = "<group>"; };
+		B567A87B27985F28005433F8 /* Fonts+Sementic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Sementic.swift"; sourceTree = "<group>"; };
 		B5C0FA422795DB5A00BE997E /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA452795DB5A00BE997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberController.swift; sourceTree = "<group>"; };
-		B5C0FA4E2795DB5B00BE997E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5C0FA512795DB5B00BE997E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5C0FA532795DB5B00BE997E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C0FA582795DB5B00BE997E /* SeSACFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeSACFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,11 +82,8 @@
 		B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		B5C0FA862795F89400BE997E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
-		B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* Button+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Component.swift"; sourceTree = "<group>"; };
 		B5C0FAA327970E6A00BE997E /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,10 +136,21 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		B567A87D279861A2005433F8 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				B567A87727985E22005433F8 /* Assets+Generated.swift */,
+				B567A87827985E22005433F8 /* Fonts+Generated.swift */,
+				B567A87B27985F28005433F8 /* Fonts+Sementic.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		B5C0FA392795DB5A00BE997E = {
 			isa = PBXGroup;
 			children = (
 				B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */,
+				B567A86A27984E7B005433F8 /* swiftgen.yml */,
 				B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */,
 				B5C0FA442795DB5A00BE997E /* SeSACFriends */,
 				B5C0FA5B2795DB5B00BE997E /* SeSACFriendsTests */,
@@ -186,12 +201,10 @@
 		B5C0FA752795DB6F00BE997E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B567A87D279861A2005433F8 /* Generated */,
+				B567A86F279851A9005433F8 /* Assets.xcassets */,
+				B567A86D2798517B005433F8 /* Colors.xcassets */,
 				B5C0FA972796A89800BE997E /* Fonts */,
-				B5C0FA4E2795DB5B00BE997E /* Assets.xcassets */,
-				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
-				B5C0FA8A27969E2E00BE997E /* Color+Extension.swift */,
-				B5C0FA8C27969E3B00BE997E /* Font+Extension.swift */,
-				B5C0FA9C2796B7C800BE997E /* Image+Extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -213,6 +226,7 @@
 			children = (
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
 				B5C0FAA327970E6A00BE997E /* Preview.swift */,
+				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -260,7 +274,7 @@
 				B5C0FA3F2795DB5A00BE997E /* Frameworks */,
 				B5C0FA402795DB5A00BE997E /* Resources */,
 				F02D34686792A2F01E64D926 /* [CP] Embed Pods Frameworks */,
-				B5C0FA812795EBEA00BE997E /* ShellScript */,
+				B5C0FA812795EBEA00BE997E /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -358,12 +372,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B567A870279851A9005433F8 /* Assets.xcassets in Resources */,
 				B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */,
+				B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */,
 				B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */,
 				B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */,
 				B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */,
+				B567A86E2798517B005433F8 /* Colors.xcassets in Resources */,
 				B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */,
-				B5C0FA4F2795DB5B00BE997E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +483,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeSACFriends-SeSACFriendsUITests/Pods-SeSACFriends-SeSACFriendsUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B5C0FA812795EBEA00BE997E /* ShellScript */ = {
+		B5C0FA812795EBEA00BE997E /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -476,6 +492,7 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -510,14 +527,14 @@
 			files = (
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */,
 				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
-				B5C0FA8B27969E2E00BE997E /* Color+Extension.swift in Sources */,
+				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* Button+Component.swift in Sources */,
-				B5C0FA9D2796B7C800BE997E /* Image+Extension.swift in Sources */,
 				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
+				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
+				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
 				B567A8662797EB6A005433F8 /* IconButton.swift in Sources */,
-				B5C0FA8D27969E3B00BE997E /* Font+Extension.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
