@@ -17,6 +17,8 @@
 		B50463772799BBEE00885DAD /* NickenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463762799BBEE00885DAD /* NickenameView.swift */; };
 		B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463782799BC7E00885DAD /* NicknameViewController.swift */; };
 		B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504637A2799C99300885DAD /* UIViewController+Extension.swift */; };
+		B504637F2799CB2D00885DAD /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504637E2799CB2D00885DAD /* BirthView.swift */; };
+		B50463812799D68800885DAD /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463802799D68800885DAD /* BirthViewController.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -34,7 +36,6 @@
 		B5C0FA672795DB5B00BE997E /* SeSACFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */; };
 		B5C0FA692795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */; };
 		B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */; };
-		B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */; };
 		B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainViewController.swift */; };
 		B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */; };
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
@@ -77,6 +78,8 @@
 		B50463762799BBEE00885DAD /* NickenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickenameView.swift; sourceTree = "<group>"; };
 		B50463782799BC7E00885DAD /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		B504637A2799C99300885DAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		B504637E2799CB2D00885DAD /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
+		B50463802799D68800885DAD /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -99,7 +102,6 @@
 		B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITests.swift; sourceTree = "<group>"; };
 		B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		B5C0FA862795F89400BE997E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
@@ -182,6 +184,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		B504637D2799CB1900885DAD /* Birth */ = {
+			isa = PBXGroup;
+			children = (
+				B504637E2799CB2D00885DAD /* BirthView.swift */,
+				B50463802799D68800885DAD /* BirthViewController.swift */,
+			);
+			path = Birth;
+			sourceTree = "<group>";
+		};
 		B567A8672798134D005433F8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +219,7 @@
 				B50463692799ACD900885DAD /* PhoneNumber */,
 				B504636A2799AD0100885DAD /* AuthorizationCode */,
 				B50463752799BB5300885DAD /* Nickname */,
+				B504637D2799CB1900885DAD /* Birth */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -282,7 +294,6 @@
 				B567A88627994BA4005433F8 /* Auth */,
 				B567A8672798134D005433F8 /* Application */,
 				B5C0FA9E2796D1C500BE997E /* Components */,
-				B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */,
 				B5C0FA862795F89400BE997E /* MainViewController.swift */,
 			);
 			path = Sources;
@@ -618,12 +629,13 @@
 				B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */,
 				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthBaseView.swift in Sources */,
+				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
-				B5C0FA852795F2CE00BE997E /* VerificationViewController.swift in Sources */,
+				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
 				B50463742799BA8B00885DAD /* AuthCodeView.swift in Sources */,
 				B50463772799BBEE00885DAD /* NickenameView.swift in Sources */,
