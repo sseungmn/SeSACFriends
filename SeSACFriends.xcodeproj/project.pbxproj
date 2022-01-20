@@ -10,6 +10,8 @@
 		06C049F45EF1CDEEE6E24CC8 /* Pods_SeSACFriendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C95A841631C8898B6E69A73 /* Pods_SeSACFriendsTests.framework */; };
 		2D7B7F9726AF47AEEEADAD76 /* Pods_SeSACFriends_SeSACFriendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */; };
 		B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463632799576400885DAD /* StyleStateChangeable.swift */; };
+		B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504636527999A1F00885DAD /* PhoneNumberView.swift */; };
+		B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504636727999CFE00885DAD /* ParagraphLabel.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -63,6 +65,8 @@
 		A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends_SeSACFriendsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50463632799576400885DAD /* StyleStateChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleStateChangeable.swift; sourceTree = "<group>"; };
+		B504636527999A1F00885DAD /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
+		B504636727999CFE00885DAD /* ParagraphLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphLabel.swift; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -133,6 +137,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B50463692799ACD900885DAD /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				B504636527999A1F00885DAD /* PhoneNumberView.swift */,
+				B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
 		B567A8672798134D005433F8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +168,8 @@
 		B567A88627994BA4005433F8 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				B567A88027987A36005433F8 /* AuthBaseView.swift */,
+				B50463692799ACD900885DAD /* PhoneNumber */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -228,7 +243,6 @@
 				B567A88627994BA4005433F8 /* Auth */,
 				B567A8672798134D005433F8 /* Application */,
 				B5C0FA9E2796D1C500BE997E /* Components */,
-				B5C0FA492795DB5A00BE997E /* PhoneNumberController.swift */,
 				B5C0FA842795F2CE00BE997E /* VerificationViewController.swift */,
 				B5C0FA862795F89400BE997E /* MainViewController.swift */,
 			);
@@ -260,8 +274,8 @@
 				B5C0FA9F2796D2A700BE997E /* StateButton.swift */,
 				B567A88427990536005433F8 /* StateTextField.swift */,
 				B567A8652797EB6A005433F8 /* IconButton.swift */,
-				B567A88027987A36005433F8 /* AuthBaseView.swift */,
 				B50463632799576400885DAD /* StyleStateChangeable.swift */,
+				B504636727999CFE00885DAD /* ParagraphLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -563,8 +577,10 @@
 			files = (
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberController.swift in Sources */,
 				B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */,
+				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthBaseView.swift in Sources */,
 				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
+				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,

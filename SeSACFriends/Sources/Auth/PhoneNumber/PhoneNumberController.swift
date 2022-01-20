@@ -16,53 +16,36 @@ import Then
 class PhoneNumberController: UIViewController {
     
     let disposeBag = DisposeBag()
-    
-    let phoneNumberTextField = UITextField().then { textField in
-        textField.placeholder = "휴대폰 번호 숫자만 입력"
-        textField.keyboardType = .numberPad
-    }
     let phoneNumber = PublishRelay<String>()
     
-    let confirmButton = UIButton().then { button in
-        var config = UIButton.Configuration.filled()
-        config.title = "인증 번호 받기"
-        config.baseBackgroundColor = .systemGreen
-        button.configuration = config
+    let mainView = PhoneNumberView()
+    
+    override func loadView() {
+        view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setConstraint()
         bind()
     }
     
-    func setConstraint() {
-        view.addSubview(phoneNumberTextField)
-        view.addSubview(confirmButton)
-        phoneNumberTextField.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-30)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
-        }
-        
-        confirmButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(30)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
-        }
-    }
-        
     func bind() {
-        phoneNumberTextField.rx.text
+        mainView.phoneNumberTextField.rx.text
             .orEmpty
             .distinctUntilChanged()
             .bind(to: phoneNumber)
             .disposed(by: disposeBag)
-        
-        confirmButton.rx.tap
+        // Validation Required
+        mainView.phoneNumberTextField.rx.text
+            .orEmpty
+            .distinctUntilChanged()
+            .map { text in
+                [10, 11].contains(text.count) ? ButtonStyleState.fill : ButtonStyleState.disable
+            }
+            .bind(to: mainView.button.rx.styleState)
+            .disposed(by: disposeBag)
+        mainView.button.rx.tap
             .withLatestFrom(phoneNumber.asObservable())
             .flatMap(verifyPhoneNumber)
             .observe(on: MainScheduler.instance)

@@ -9,16 +9,6 @@ import UIKit
 
 import Then
 
-class ParagraphLabel: UILabel {
-    let paragraphStyle = NSMutableParagraphStyle()
-    override var text: String? {
-        didSet {
-            guard let text = text else { return }
-            attributedText = NSMutableAttributedString(string: text, attributes: [.paragraphStyle: paragraphStyle])
-        }
-    }
-}
-
 class AuthBaseView: UIView {
     let titleLabel = ParagraphLabel().then { label in
         label.font = .Display1_R20
