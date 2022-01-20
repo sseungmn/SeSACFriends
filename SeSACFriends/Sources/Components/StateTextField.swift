@@ -14,7 +14,7 @@ enum TextFieldStyleState: Int {
     case normal, focus, disable, error, success
 }
 
-class StateTextFeild: UITextField, StyleStateChangebale {
+class StateTextField: UITextField, StyleStateChangebale {
     
     // StaeChangeable Conformance
     typealias StyleState = TextFieldStyleState
@@ -80,7 +80,7 @@ class StateTextFeild: UITextField, StyleStateChangebale {
 }
 
 // MARK: Setter
-extension StateTextFeild {
+extension StateTextField {
     func setStyleState(styleState: TextFieldStyleState) {
         self.styleState.accept(styleState)
     }
@@ -102,7 +102,7 @@ extension StateTextFeild {
 }
 
 // MARK: Style
-extension StateTextFeild {
+extension StateTextField {
     fileprivate func normalStyle() {
         // underline color
         setUnderlineColor(color: Asset.Colors.gray3.color.cgColor)
@@ -129,7 +129,7 @@ extension StateTextFeild {
     }
 }
 
-extension Reactive where Base: StateTextFeild {
+extension Reactive where Base: StateTextField {
     var styleState: Binder<TextFieldStyleState> {
         return Binder(self.base) { textField, styleState in
             switch styleState {

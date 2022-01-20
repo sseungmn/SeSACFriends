@@ -8,7 +8,7 @@
 import UIKit
 
 class PhoneNumberView: AuthBaseView {
-    let phoneNumberTextField = StateTextFeild()
+    let phoneNumberTextField = StateTextField()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

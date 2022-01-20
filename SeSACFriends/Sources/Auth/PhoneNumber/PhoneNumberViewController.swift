@@ -13,7 +13,7 @@ import RxSwift
 import SnapKit
 import Then
 
-class PhoneNumberController: UIViewController {
+class PhoneNumberViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     let phoneNumber = PublishRelay<String>()
@@ -53,7 +53,7 @@ class PhoneNumberController: UIViewController {
                 onNext: { [weak self] verificationID in
                     print("DEBUG || verificationID :", verificationID)
                     UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                    self?.navigationController?.pushViewController(VerificationViewController(), animated: true)
+                    self?.navigationController?.pushViewController(AuthCodeViewController(), animated: true)
                 },
                 onError: { error in
                     print("ERROR", error)
