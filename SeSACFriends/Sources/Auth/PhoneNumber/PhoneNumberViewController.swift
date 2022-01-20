@@ -26,7 +26,6 @@ class PhoneNumberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         bind()
     }
     
