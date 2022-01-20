@@ -44,6 +44,14 @@ class StateTextFeild: UITextField, StyleStateChangebale {
         styleState
             .bind(to: self.rx.styleState)
             .disposed(by: disposeBag)
+        self.rx.controlEvent(.editingDidBegin)
+            .map { TextFieldStyleState.focus }
+            .bind(to: styleState)
+            .disposed(by: disposeBag)
+        self.rx.controlEvent(.editingDidEnd)
+            .map { TextFieldStyleState.normal }
+            .bind(to: styleState)
+            .disposed(by: disposeBag)
     }
     
     func configure() {
