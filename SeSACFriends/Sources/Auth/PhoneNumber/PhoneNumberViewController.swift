@@ -52,7 +52,7 @@ class PhoneNumberViewController: UIViewController {
                 onNext: { [weak self] verificationID in
                     print("DEBUG || verificationID :", verificationID)
                     UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                    self?.navigationController?.pushViewController(AuthCodeViewController(), animated: true)
+                    self?.push(viewController: AuthCodeViewController())
                 },
                 onError: { error in
                     print("ERROR", error)

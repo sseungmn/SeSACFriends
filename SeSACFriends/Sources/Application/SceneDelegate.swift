@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let mainViewController = PhoneNumberController()
+        let mainViewController = PhoneNumberViewController()
         let nav = UINavigationController(rootViewController: mainViewController)
         
         window?.rootViewController = nav

@@ -43,9 +43,7 @@ class AuthCodeViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: {
-                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: MainViewController())
-                    windowScene.windows.first?.makeKeyAndVisible()
+                    self.push(viewController: NicknameViewController())
                 },
                 onError: { error in
                     print("ERROR", error)
