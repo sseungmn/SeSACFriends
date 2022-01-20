@@ -14,8 +14,11 @@ enum ButtonStyleState: String {
     case inactive, fill, outline, cancel, disable
 }
 
-class StateButton: UIButton {
-    private var styleState = PublishRelay<ButtonStyleState>()
+class StateButton: UIButton, StyleStateChangebale {
+    
+    // StaeChangeable Conformance
+    typealias StyleState = ButtonStyleState
+    var styleState = PublishRelay<ButtonStyleState>()
     var disposeBag = DisposeBag()
     
     convenience init(initialStyleState styleState: ButtonStyleState) {
