@@ -19,7 +19,6 @@ class AuthCodeView: AuthBaseView {
         label.font = .Title3_M14
     }
     let authCodeTextField = StateTextField().then { textField in
-        textField.setStyleState(styleState: .normal)
         textField.keyboardType = .numberPad
     }
     let resendButton = StateButton(initialStyleState: .fill).then { button in

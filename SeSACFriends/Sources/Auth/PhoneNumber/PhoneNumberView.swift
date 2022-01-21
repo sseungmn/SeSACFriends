@@ -15,7 +15,6 @@ class PhoneNumberView: AuthBaseView {
         
         setDescriptionTitle(title: "새싹 서비스 이용을 위해\n휴대폰 번호를 입력해 주세요")
         addUserInputComponent(component: phoneNumberTextField)
-        phoneNumberTextField.setStyleState(styleState: .normal)
         phoneNumberTextField.setPlaceholder(placeholder: "휴대폰 번호(-없이 숫자만 입력)")
         phoneNumberTextField.keyboardType = .numberPad
         setButtonTitle(title: "인증 문자 받기")

@@ -16,7 +16,6 @@ class NicknameView: AuthBaseView {
         setDescriptionTitle(title: "닉네임을 입력해 주세요")
         addUserInputComponent(component: nicknameTextField)
         nicknameTextField.setPlaceholder(placeholder: "10자 이내로 입력")
-        nicknameTextField.setStyleState(styleState: .normal)
         setButtonTitle(title: "다음")
     }
 }

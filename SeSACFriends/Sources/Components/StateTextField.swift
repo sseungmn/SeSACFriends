@@ -57,6 +57,7 @@ class StateTextField: UITextField, StyleStateChangebale {
     func configure() {
         font = .Title4_R14
         underline.borderWidth = lineHeight
+        setStyleState(styleState: .normal)
     }
     
     func setConstraint() {
@@ -76,6 +77,13 @@ class StateTextField: UITextField, StyleStateChangebale {
     }
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         bounds.insetBy(dx: 13, dy: 12)
+    }
+    override func endEditing(_ force: Bool) -> Bool {
+        super.endEditing(force)
+        if let superview = superview {
+            superview.endEditing(true)
+        }
+        return force
     }
 }
 
