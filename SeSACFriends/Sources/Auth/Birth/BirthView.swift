@@ -9,6 +9,34 @@ import UIKit
 
 import Then
 
+class BirthComponentView: UIStackView {
+    let textField = StateTextField().then { textField in
+        textField.setStyleState(styleState: .normal)
+        textField.isUserInteractionEnabled = false
+    }
+    let suffixLabel = UILabel().then { label in
+        label.font = .Title2_R16
+        label.textColor = Asset.Colors.black.color
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        axis = .horizontal
+        distribution = .fill
+        addArrangedSubview(textField)
+        addArrangedSubview(suffixLabel)
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setSuffixText(text: String) {
+        suffixLabel.text = text
+        suffixLabel.sizeToFit()
+    }
+}
 final class BirthTextField: StateTextField {
     let suffixLabel = UILabel().then { label in
         label.font = .Title2_R16
@@ -33,15 +61,24 @@ final class BirthTextField: StateTextField {
 }
 
 class BirthView: AuthBaseView {
-    let yearTextField = BirthTextField().then { textField in
-        textField.suffixLabel.text = "년"
+    let yearComponentView = BirthComponentView().then { view in
+        view.suffixLabel.text = "년"
     }
-    let monthTextField = BirthTextField().then { textField in
-        textField.suffixLabel.text = "월"
+    let monthComponentView = BirthComponentView().then { view in
+        view.suffixLabel.text = "월"
     }
-    let dayTextField = BirthTextField().then { textField in
-        textField.suffixLabel.text = "일"
+    let dayComponentView = BirthComponentView().then { view in
+        view.suffixLabel.text = "일"
     }
+//    let yearTextField = BirthTextField().then { textField in
+//        textField.suffixLabel.text = "년"
+//    }
+//    let monthTextField = BirthTextField().then { textField in
+//        textField.suffixLabel.text = "월"
+//    }
+//    let dayTextField = BirthTextField().then { textField in
+//        textField.suffixLabel.text = "일"
+//    }
     
     let dateStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
@@ -61,20 +98,18 @@ class BirthView: AuthBaseView {
         setDescriptionTitle(title: "생년월일을 알려주세요")
         addUserInputComponent(component: dateStackView)
         setButtonTitle(title: "다음")
-        
-        yearTextField.inputView = datePicker
-        monthTextField.inputView = datePicker
-        dayTextField.inputView = datePicker
     }
     
     override func setConstraint() {
         super.setConstraint()
         
-        dateStackView.addArrangedSubview(yearTextField)
-        dateStackView.addArrangedSubview(monthTextField)
-        dateStackView.addArrangedSubview(dayTextField)
+        dateStackView.addArrangedSubview(yearComponentView)
+        dateStackView.addArrangedSubview(monthComponentView)
+        dateStackView.addArrangedSubview(dayComponentView)
         
+        addSubview(datePicker)
         datePicker.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
             make.width.equalTo(UIScreen.main.bounds.width)
             make.height.equalTo(216)
         }

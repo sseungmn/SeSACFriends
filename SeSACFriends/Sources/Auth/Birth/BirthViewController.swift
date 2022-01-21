@@ -16,7 +16,10 @@ import Then
 class BirthViewController: UIViewController {
     
     let disposeBag = DisposeBag()
-    let dateComponent = PublishRelay<DateComponents>()
+    
+    let year = PublishRelay<Int?>()
+    let month = PublishRelay<Int?>()
+    let day = PublishRelay<Int?>()
     
     let mainView = BirthView()
     
@@ -26,60 +29,64 @@ class BirthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
         bind()
-    }
-    
-    func configure() {
-        mainView.yearTextField.becomeFirstResponder()
     }
     
     func bind() {
         let calendar = Calendar.current
+        
         mainView.datePicker.rx.date
-            .subscribe { date in
-                guard let date = date.element else { return }
-                let dateComponenets = calendar.dateComponents([.year, .month, .day], from: date)
-                guard let year = dateComponenets.year,
-                      let month = dateComponenets.month,
-                      let day = dateComponenets.day else { return }
-                 
-                    self.mainView.yearTextField.text = String(year)
-                    self.mainView.monthTextField.text = String(month)
-                    self.mainView.dayTextField.text = String(day)
-            }
+            .map { calendar.dateComponents([.year], from: $0).year }
+            .bind(to: year)
             .disposed(by: disposeBag)
-
-        mainView.yearTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .subscribe(onNext: { yearString in
-                var dateComponents = calendar.dateComponents([.year, .month, .day], from: self.mainView.datePicker.date)
-                dateComponents.year = Int(yearString)
-                guard let date = calendar.date(from: dateComponents) else { return }
-                self.mainView.datePicker.date = date
-            })
+        mainView.datePicker.rx.date
+            .map { calendar.dateComponents([.month], from: $0).month }
+            .bind(to: month)
+            .disposed(by: disposeBag)
+        mainView.datePicker.rx.date
+            .map { calendar.dateComponents([.day], from: $0).day }
+            .bind(to: day)
             .disposed(by: disposeBag)
         
-        mainView.monthTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .subscribe(onNext: { monthString in
-                var dateComponents = calendar.dateComponents([.year, .month, .day], from: self.mainView.datePicker.date)
-                dateComponents.month = Int(monthString)
-                guard let date = calendar.date(from: dateComponents) else { return }
-                self.mainView.datePicker.date = date
-            })
+        let yearObservable = year.asObservable()
+            .compactMap { $0 }
+        yearObservable
+            .map { String($0) }
+            .bind(to: self.mainView.yearComponentView.textField.rx.text)
             .disposed(by: disposeBag)
-        mainView.dayTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .subscribe(onNext: { dayString in
-                var dateComponents = calendar.dateComponents([.year, .month, .day], from: self.mainView.datePicker.date)
-                dateComponents.day = Int(dayString)
-                guard let date = calendar.date(from: dateComponents) else { return }
-                self.mainView.datePicker.date = date
-            })
+        yearObservable
+            .map { _ in Void() }
+            .bind(to: self.mainView.yearComponentView.textField.rx.becomeFirstResponder)
             .disposed(by: disposeBag)
+        
+        let monthObservable = month.asObservable()
+            .compactMap { $0 }
+        monthObservable
+            .map { String($0) }
+            .bind(to: self.mainView.monthComponentView.textField.rx.text)
+            .disposed(by: disposeBag)
+        monthObservable
+            .map { _ in Void() }
+            .bind(to: self.mainView.monthComponentView.textField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
+        
+        let dayObservable = day.asObservable()
+            .compactMap { $0 }
+        dayObservable
+            .map { String($0) }
+            .bind(to: self.mainView.dayComponentView.textField.rx.text)
+            .disposed(by: disposeBag)
+        dayObservable
+            .map { _ in Void() }
+            .bind(to: self.mainView.dayComponentView.textField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
+    }
+}
+
+extension Reactive where Base: UITextField {
+    var becomeFirstResponder: Binder<Void> {
+        return Binder(self.base) { textFeild, _ in
+            textFeild.becomeFirstResponder()
+        }
     }
 }
