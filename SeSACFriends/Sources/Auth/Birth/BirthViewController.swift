@@ -29,7 +29,12 @@ class BirthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
         bind()
+    }
+    
+    func configure() {
+        mainView.yearComponentView.textField.becomeFirstResponder()
     }
     
     func bind() {
@@ -79,6 +84,12 @@ class BirthViewController: UIViewController {
         dayObservable
             .map { _ in Void() }
             .bind(to: self.mainView.dayComponentView.textField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
+        
+        mainView.button.rx.tap
+            .subscribe { [weak self] _ in
+                self?.push(viewController: EmailViewController())
+            }
             .disposed(by: disposeBag)
     }
 }
