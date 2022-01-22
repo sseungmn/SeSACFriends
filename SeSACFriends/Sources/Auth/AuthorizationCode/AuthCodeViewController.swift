@@ -7,66 +7,75 @@
 
 import UIKit
 
-import FirebaseAuth
 import RxCocoa
 import RxSwift
-import SnapKit
-import Then
+import Toast_Swift
 
-class AuthCodeViewController: UIViewController {
-
-    let disposeBag = DisposeBag()
-    let authCode = PublishRelay<String>()
-
+class AuthCodeViewController: BaseViewController {
+    
     let mainView = AuthCodeView()
+    let viewModel = AuthCodeViewModel()
 
     override func loadView() {
         view = mainView
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        bind()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.view.makeToast("인증번호를 보냈습니다.", duration: 3)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    override func configure() {
+        mainView.authCodeTextField.textContentType = .oneTimeCode
     }
 
-    func bind() {
-        mainView.authCodeTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: authCode)
-            .disposed(by: disposeBag)
-
-        mainView.button.rx.tap
-            .withLatestFrom(authCode.asObservable())
-            .flatMap(credential)
-            .observe(on: MainScheduler.instance)
-            .subscribe(
-                onNext: {
-                    self.push(viewController: NicknameViewController())
-                },
-                onError: { error in
-                    print("ERROR", error)
-                })
-            .disposed(by: disposeBag)
-    }
-
-    func credential(verificationCode: String) -> Observable<Void> {
-        return Observable.create { observer in
-            let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")!
-            let credential = PhoneAuthProvider.provider().credential(
-                withVerificationID: verificationID,
-                verificationCode: verificationCode
-            )
-
-            Auth.auth().signIn(with: credential) { authResult, error in
-                if let error = error {
-                    observer.onError(error)
-                    return
+    override func bind() {
+        let input = AuthCodeViewModel.Input(
+            inputText: mainView.authCodeTextField.rx.text.orEmpty,
+            resendButtonTap: mainView.resendButton.rx.tap,
+            submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug()
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        viewModel.error.asObservable()
+            .subscribe { authError in
+                self.mainView.authCodeTextField.endEditing(true)
+                guard let authError = authError.element else { return }
+                print(authError)
+                switch authError {
+                case .authCodeExpired:
+                    self.view.makeToast("전화 번호 인증 실패")
+                case .invalidCode:
+                    self.view.makeToast("전화 번호 인증 실패")
+                case .idtokenError:
+                    self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요")
                 }
-                observer.onNext(())
             }
-            return Disposables.create()
-        }
+            .disposed(by: disposeBag)
+        
+        output.remainTime
+            .map { time in
+                String(format: "%02d:%02d", time / 60, time % 60)
+            }
+            .bind(to: mainView.timerLabel.rx.text)
+            .disposed(by: disposeBag)
+
+        output.isUser
+            .subscribe(onNext: { isUser in
+                switch isUser {
+                case true:
+                    self.makeRoot(viewController: MainViewController())
+                case false:
+                    self.push(viewController: NicknameViewController())
+                }
+            })
+            .disposed(by: disposeBag)
     }
+
 }
