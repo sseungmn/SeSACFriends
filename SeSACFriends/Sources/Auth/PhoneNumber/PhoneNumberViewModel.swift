@@ -11,15 +11,6 @@ import FirebaseAuth
 import RxSwift
 import RxCocoa
 
-protocol ViewModel {
-    associatedtype Input
-    associatedtype Output
-    
-    var disposeBag: DisposeBag { get set }
-    
-    func transform(input: Input) -> Output
-}
-
 enum VerificationError: Error {
     case fail
 }
@@ -32,7 +23,7 @@ class PhoneNumberViewModel: ViewModel {
     
     struct Input {
         let inputText: Observable<String>
-        let buttonTap: ControlEvent<Void>
+        let submitButtonTap: ControlEvent<Void>
     }
     
     struct Output {
@@ -63,7 +54,7 @@ class PhoneNumberViewModel: ViewModel {
             .map(validateNumber)
             .map { $0 ? .fill : .disable }
         
-        let result = input.buttonTap
+        let result = input.submitButtonTap
             .withLatestFrom(phoneNumber.asObservable())
             .flatMap(verifyPhoneNumber)
             .observe(on: MainScheduler.instance)

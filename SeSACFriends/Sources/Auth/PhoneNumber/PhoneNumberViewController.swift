@@ -9,13 +9,8 @@ import UIKit
 
 import RxSwift
 import RxCocoa
-import SnapKit
-import Then
 
-class PhoneNumberViewController: UIViewController {
-    
-    let disposeBag = DisposeBag()
-    let phoneNumber = PublishRelay<String>()
+class PhoneNumberViewController: BaseViewController {
     
     let mainView = PhoneNumberView()
     let viewModel = PhoneNumberViewModel()
@@ -24,21 +19,16 @@ class PhoneNumberViewController: UIViewController {
         view = mainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bind()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         mainView.phoneNumberTextField.becomeFirstResponder()
     }
     
-    func bind() {
+    override func bind() {
         let input = PhoneNumberViewModel.Input(
             inputText: mainView.phoneNumberTextField.rx.text.orEmpty.share(replay: 1),
-            buttonTap: mainView.button.rx.tap
+            submitButtonTap: mainView.button.rx.tap
         )
         
         let output = viewModel.transform(input: input)
