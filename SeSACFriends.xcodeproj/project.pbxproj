@@ -23,6 +23,8 @@
 		B5046386279B153900885DAD /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046385279B153900885DAD /* EmailViewController.swift */; };
 		B504638A279BDB7D00885DAD /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046389279BDB7D00885DAD /* GenderView.swift */; };
 		B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638B279BDB8600885DAD /* GenderViewController.swift */; };
+		B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */; };
+		B5046390279C05B700885DAD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638F279C05B700885DAD /* String+Extension.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -88,6 +90,8 @@
 		B5046385279B153900885DAD /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		B5046389279BDB7D00885DAD /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
 		B504638B279BDB8600885DAD /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
+		B504638F279C05B700885DAD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				B504636527999A1F00885DAD /* PhoneNumberView.swift */,
+				B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */,
 				B5C0FA492795DB5A00BE997E /* PhoneNumberViewController.swift */,
 			);
 			path = PhoneNumber;
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				B504637A2799C99300885DAD /* UIViewController+Extension.swift */,
+				B504638F279C05B700885DAD /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -661,8 +667,10 @@
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
+				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
+				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,

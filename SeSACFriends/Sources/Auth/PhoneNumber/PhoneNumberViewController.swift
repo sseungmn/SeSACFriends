@@ -7,9 +7,8 @@
 
 import UIKit
 
-import FirebaseAuth
-import RxCocoa
 import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -19,6 +18,7 @@ class PhoneNumberViewController: UIViewController {
     let phoneNumber = PublishRelay<String>()
     
     let mainView = PhoneNumberView()
+    let viewModel = PhoneNumberViewModel()
     
     override func loadView() {
         view = mainView
@@ -29,25 +29,29 @@ class PhoneNumberViewController: UIViewController {
         bind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        mainView.phoneNumberTextField.becomeFirstResponder()
+    }
+    
     func bind() {
-        mainView.phoneNumberTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: phoneNumber)
+        let input = PhoneNumberViewModel.Input(
+            inputText: mainView.phoneNumberTextField.rx.text.orEmpty.share(replay: 1),
+            buttonTap: mainView.button.rx.tap
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.outputText
+            .bind(to: mainView.phoneNumberTextField.rx.text)
             .disposed(by: disposeBag)
-        // Validation Required
-        mainView.phoneNumberTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .map { text in
-                [10, 11].contains(text.count) ? ButtonStyleState.fill : ButtonStyleState.disable
-            }
+        
+        output.buttonState
             .bind(to: mainView.button.rx.styleState)
             .disposed(by: disposeBag)
-        mainView.button.rx.tap
-            .withLatestFrom(phoneNumber.asObservable())
-            .flatMap(verifyPhoneNumber)
-            .observe(on: MainScheduler.instance)
+        
+        output.verifyResult
             .subscribe(
                 onNext: { [weak self] verificationID in
                     print("DEBUG || verificationID :", verificationID)
@@ -59,27 +63,4 @@ class PhoneNumberViewController: UIViewController {
                 })
             .disposed(by: disposeBag)
     }
-    
-    func verifyPhoneNumber(phoneNumber: String) -> Observable<String> {
-        print("DEBUG || phoneNumber :", phoneNumber)
-        return Observable<String>.create { observer in
-            PhoneAuthProvider.provider()
-                .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                    if let error = error {
-                        observer.onError(error)
-                        return
-                    }
-                    guard let verificationID = verificationID else {
-                        observer.onError(AnError.fail)
-                        return
-                    }
-                    observer.onNext(verificationID)
-                }
-            return Disposables.create()
-        }
-    }
-}
-
-enum AnError: Error {
-    case fail
 }
