@@ -52,8 +52,6 @@ class AuthBaseView: UIView {
             make.centerX.equalToSuperview()
             make.height.equalTo(64)
         }
-        descriptionView.addArrangedSubview(titleLabel)
-        descriptionView.addArrangedSubview(subtitleLabel)
         addSubview(userInputView)
         userInputView.snp.makeConstraints { make in
             make.top.equalTo(descriptionView.snp.bottom)
@@ -71,11 +69,13 @@ class AuthBaseView: UIView {
 
 extension AuthBaseView {
     func setDescriptionTitle(title: String) {
+        descriptionView.addArrangedSubview(titleLabel)
         titleLabel.text = title
     }
     func setDescriptionSubtitle(subtitle: String) {
-        subtitleLabel.text = subtitle
+        descriptionView.addArrangedSubview(subtitleLabel)
         descriptionView.spacing = 8
+        subtitleLabel.text = subtitle
     }
     func addUserInputComponent<View: UIView>(component: View) {
         userInputView.addSubview(component)
