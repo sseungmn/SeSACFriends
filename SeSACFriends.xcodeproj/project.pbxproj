@@ -21,6 +21,8 @@
 		B50463812799D68800885DAD /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463802799D68800885DAD /* BirthViewController.swift */; };
 		B5046384279B152C00885DAD /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046383279B152C00885DAD /* EmailView.swift */; };
 		B5046386279B153900885DAD /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046385279B153900885DAD /* EmailViewController.swift */; };
+		B504638A279BDB7D00885DAD /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046389279BDB7D00885DAD /* GenderView.swift */; };
+		B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638B279BDB8600885DAD /* GenderViewController.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -84,6 +86,8 @@
 		B50463802799D68800885DAD /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
 		B5046383279B152C00885DAD /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		B5046385279B153900885DAD /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		B5046389279BDB7D00885DAD /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		B504638B279BDB8600885DAD /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 		B5046387279B2FFE00885DAD /* Gender */ = {
 			isa = PBXGroup;
 			children = (
+				B5046389279BDB7D00885DAD /* GenderView.swift */,
+				B504638B279BDB8600885DAD /* GenderViewController.swift */,
 			);
 			path = Gender;
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberViewController.swift in Sources */,
 				B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */,
 				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
+				B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthBaseView.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
@@ -668,6 +675,7 @@
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
 				B5046386279B153900885DAD /* EmailViewController.swift in Sources */,
 				B567A8662797EB6A005433F8 /* IconButton.swift in Sources */,
+				B504638A279BDB7D00885DAD /* GenderView.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
