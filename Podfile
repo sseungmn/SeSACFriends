@@ -13,6 +13,7 @@ target 'SeSACFriends' do
   pod 'Socket.IO-Client-Swift'
   
   pod 'IQKeyboardManagerSwift'
+  pod 'Toast-Swift'
   pod 'SnapKit'
   pod 'Then'
   
