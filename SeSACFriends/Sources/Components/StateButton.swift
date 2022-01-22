@@ -34,7 +34,8 @@ class StateButton: UIButton, StyleStateChangebale {
     
     func bind() {
         styleState
-            .bind(to: self.rx.styleState)
+            .asDriver(onErrorJustReturn: .disable)
+            .drive(self.rx.styleState)
             .disposed(by: disposeBag)
     }
     
