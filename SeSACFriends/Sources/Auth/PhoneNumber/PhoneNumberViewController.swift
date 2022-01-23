@@ -44,12 +44,12 @@ class PhoneNumberViewController: BaseViewController {
         output.verifyResult
             .subscribe(
                 onNext: { [weak self] verificationID in
-                    print("DEBUG || verificationID :", verificationID)
+                    debug(title: "verificationID", verificationID)
                     UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                     self?.push(viewController: AuthCodeViewController())
                 },
                 onError: { error in
-                    print("ERROR", error)
+                    debug(title: "PhoneNumberViewController/verifyResult/ERROR", error)
                 })
             .disposed(by: disposeBag)
     }

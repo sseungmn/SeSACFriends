@@ -15,20 +15,20 @@ import RxAlamofire
 class Firebase {
     static let shared = Firebase()
     
-    func verifyPhoneNumber(phoneNumber: String) -> Observable<String> {
-        print("DEBUG || phoneNumber :", phoneNumber)
-        return Observable<String>.create { observer in
+    func verifyPhoneNumber(phoneNumber: String) -> Single<String> {
+        debug(title: "phoneNumber", phoneNumber)
+        return Single<String>.create { single in
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                     if let error = error {
-                        observer.onError(error)
+                        single(.failure(error))
                         return
                     }
                     guard let verificationID = verificationID else {
-                        observer.onError(VerificationError.fail)
+                        single(.failure(VerificationError.fail))
                         return
                     }
-                    observer.onNext(verificationID)
+                    single(.success(verificationID))
                 }
             return Disposables.create()
         }

@@ -48,7 +48,7 @@ class AuthCodeViewController: BaseViewController {
             .subscribe { authError in
                 self.mainView.authCodeTextField.resignFirstResponder()
                 guard let authError = authError.element else { return }
-                print(authError)
+                debug(title: "authError", authError)
                 switch authError {
                 case .authCodeExpired:
                     self.view.makeToast("전화 번호 인증 실패")

@@ -32,6 +32,7 @@
 		B504639B279D82DE00885DAD /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639A279D82DE00885DAD /* UIButton+Rx.swift */; };
 		B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639C279D853500885DAD /* UserDefault+Wrapper.swift */; };
 		B504639F279D873900885DAD /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639E279D873900885DAD /* Firebase.swift */; };
+		B50463A3279DC52200885DAD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A2279DC52200885DAD /* Utils.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -106,6 +107,7 @@
 		B504639A279D82DE00885DAD /* UIButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rx.swift"; sourceTree = "<group>"; };
 		B504639C279D853500885DAD /* UserDefault+Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Wrapper.swift"; sourceTree = "<group>"; };
 		B504639E279D873900885DAD /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B50463A2279DC52200885DAD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
 				B5C0FAA327970E6A00BE997E /* Preview.swift */,
 				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
+				B50463A2279DC52200885DAD /* Utils.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
+				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
