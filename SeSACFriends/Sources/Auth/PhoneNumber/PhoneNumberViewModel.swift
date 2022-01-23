@@ -7,7 +7,6 @@
 
 import Foundation
 
-import FirebaseAuth
 import RxSwift
 import RxCocoa
 
@@ -56,7 +55,7 @@ class PhoneNumberViewModel: ViewModel {
         
         let result = input.submitButtonTap
             .withLatestFrom(phoneNumber.asObservable())
-            .flatMap(verifyPhoneNumber)
+            .flatMap(Firebase.shared.verifyPhoneNumber)
             .observe(on: MainScheduler.instance)
         
         return Output(
@@ -69,24 +68,5 @@ class PhoneNumberViewModel: ViewModel {
     func validateNumber(number: String) -> Bool {
         return [12, 13].contains(number.count)
                 && String(Array(number.decimalFilteredString)[...1]) == "01"
-    }
-    
-    func verifyPhoneNumber(phoneNumber: String) -> Observable<String> {
-        print("DEBUG || phoneNumber :", phoneNumber)
-        return Observable<String>.create { observer in
-            PhoneAuthProvider.provider()
-                .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                    if let error = error {
-                        observer.onError(error)
-                        return
-                    }
-                    guard let verificationID = verificationID else {
-                        observer.onError(VerificationError.fail)
-                        return
-                    }
-                    observer.onNext(verificationID)
-                }
-            return Disposables.create()
-        }
     }
 }
