@@ -46,7 +46,9 @@ class PhoneNumberViewModel: ViewModel {
         
         outputText
             .map { "+82 \($0)"}
-            .bind(to: phoneNumber)
+            .subscribe(onNext: { phoneNumber in
+                AuthUserDefaults.phoneNumber = phoneNumber
+            })
             .disposed(by: disposeBag)
         
         let buttonState: Observable<ButtonStyleState> = input.inputText
@@ -54,7 +56,6 @@ class PhoneNumberViewModel: ViewModel {
             .map { $0 ? .fill : .disable }
         
         let result = input.submitButtonTap
-            .withLatestFrom(phoneNumber.asObservable())
             .flatMap(Firebase.shared.verifyPhoneNumber)
             .observe(on: MainScheduler.instance)
         

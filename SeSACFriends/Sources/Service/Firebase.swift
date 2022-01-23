@@ -15,7 +15,8 @@ import RxAlamofire
 class Firebase {
     static let shared = Firebase()
     
-    func verifyPhoneNumber(phoneNumber: String) -> Single<String> {
+    func verifyPhoneNumber() -> Single<String> {
+        let phoneNumber = AuthUserDefaults.phoneNumber
         debug(title: "phoneNumber", phoneNumber)
         return Single<String>.create { single in
             PhoneAuthProvider.provider()
