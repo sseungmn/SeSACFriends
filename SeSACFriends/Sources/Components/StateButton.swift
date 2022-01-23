@@ -52,6 +52,7 @@ class StateButton: UIButton, StyleStateChangebale {
 }
 
 extension StateButton {
+    // setter
     func setStyleState(styleState: ButtonStyleState) {
         self.styleState.accept(styleState)
     }
@@ -88,24 +89,5 @@ extension StateButton {
         self.layer.borderWidth = 0
         self.backgroundColor = Asset.Colors.gray6.color
         self.setTitleColor(Asset.Colors.gray3.color, for: .normal)
-    }
-}
-
-extension Reactive where Base: StateButton {
-    var styleState: Binder<ButtonStyleState> {
-        return Binder(self.base) { button, styleState in
-            switch styleState {
-            case .inactive:
-                button.inactiveStyle()
-            case .fill:
-                button.fillStyle()
-            case .outline:
-                button.outlineStyle()
-            case .cancel:
-                button.cancelStyle()
-            case .disable:
-                button.disableStyle()
-            }
-        }
     }
 }

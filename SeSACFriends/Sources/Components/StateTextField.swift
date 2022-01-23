@@ -111,47 +111,29 @@ extension StateTextField {
 
 // MARK: Style
 extension StateTextField {
-    fileprivate func normalStyle() {
+    func normalStyle() {
         // underline color
         setUnderlineColor(color: Asset.Colors.gray3.color.cgColor)
         // background color
         setBackgroundColor(color: Asset.Colors.white.color)
     }
-    fileprivate func focusStyle() {
+    func focusStyle() {
         setUnderlineColor(color: Asset.Colors.focus.color.cgColor)
         setBackgroundColor(color: Asset.Colors.white.color)
     }
-    fileprivate func disableStyle() {
+    func disableStyle() {
         setUnderlineColor(color: nil)
         setBackgroundColor(color: Asset.Colors.gray3.color)
     }
-    fileprivate func errorStyle() {
+    func errorStyle() {
         setUnderlineColor(color: Asset.Colors.error.color.cgColor)
         setBackgroundColor(color: Asset.Colors.white.color)
         // infoLabel text color
     }
-    fileprivate func successStyle() {
+    func successStyle() {
         setUnderlineColor(color: Asset.Colors.success.color.cgColor)
         setBackgroundColor(color: Asset.Colors.white.color)
         // infoLabel text color
     }
 }
 
-extension Reactive where Base: StateTextField {
-    var styleState: Binder<TextFieldStyleState> {
-        return Binder(self.base) { textField, styleState in
-            switch styleState {
-            case .normal:
-                textField.normalStyle()
-            case .focus:
-                textField.focusStyle()
-            case .disable:
-                textField.disableStyle()
-            case .error:
-                textField.errorStyle()
-            case .success:
-                textField.successStyle()
-            }
-        }
-    }
-}

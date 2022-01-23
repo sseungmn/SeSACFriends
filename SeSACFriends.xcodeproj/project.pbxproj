@@ -27,6 +27,10 @@
 		B5046390279C05B700885DAD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638F279C05B700885DAD /* String+Extension.swift */; };
 		B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */; };
 		B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046394279C8DB500885DAD /* MVVM+Base.swift */; };
+		B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046396279D829E00885DAD /* UIViewController+Rx.swift */; };
+		B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046398279D82D800885DAD /* UITextField+Rx.swift */; };
+		B504639B279D82DE00885DAD /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639A279D82DE00885DAD /* UIButton+Rx.swift */; };
+		B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639C279D853500885DAD /* UserDefault+Wrapper.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -96,6 +100,10 @@
 		B504638F279C05B700885DAD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCodeViewModel.swift; sourceTree = "<group>"; };
 		B5046394279C8DB500885DAD /* MVVM+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MVVM+Base.swift"; sourceTree = "<group>"; };
+		B5046396279D829E00885DAD /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		B5046398279D82D800885DAD /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
+		B504639A279D82DE00885DAD /* UIButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rx.swift"; sourceTree = "<group>"; };
+		B504639C279D853500885DAD /* UserDefault+Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Wrapper.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -198,7 +206,10 @@
 			isa = PBXGroup;
 			children = (
 				B504637A2799C99300885DAD /* UIViewController+Extension.swift */,
+				B5046396279D829E00885DAD /* UIViewController+Rx.swift */,
 				B504638F279C05B700885DAD /* String+Extension.swift */,
+				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
+				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -368,12 +379,13 @@
 		B5C0FA9E2796D1C500BE997E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B567A8652797EB6A005433F8 /* IconButton.swift */,
 				B5C0FA9F2796D2A700BE997E /* StateButton.swift */,
 				B567A88427990536005433F8 /* StateTextField.swift */,
-				B567A8652797EB6A005433F8 /* IconButton.swift */,
 				B50463632799576400885DAD /* StyleStateChangeable.swift */,
 				B504636727999CFE00885DAD /* ParagraphLabel.swift */,
 				B5046394279C8DB500885DAD /* MVVM+Base.swift */,
+				B504639C279D853500885DAD /* UserDefault+Wrapper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -684,20 +696,24 @@
 				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
+				B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
+				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
 				B50463742799BA8B00885DAD /* AuthCodeView.swift in Sources */,
 				B50463772799BBEE00885DAD /* NickenameView.swift in Sources */,
 				B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */,
+				B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
 				B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */,
 				B567A88527990536005433F8 /* StateTextField.swift in Sources */,
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
 				B5046386279B153900885DAD /* EmailViewController.swift in Sources */,
+				B504639B279D82DE00885DAD /* UIButton+Rx.swift in Sources */,
 				B567A8662797EB6A005433F8 /* IconButton.swift in Sources */,
 				B504638A279BDB7D00885DAD /* GenderView.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
