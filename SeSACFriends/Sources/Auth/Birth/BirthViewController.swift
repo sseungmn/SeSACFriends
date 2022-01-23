@@ -13,9 +13,7 @@ import RxSwift
 import SnapKit
 import Then
 
-class BirthViewController: UIViewController {
-    
-    let disposeBag = DisposeBag()
+class BirthViewController: BaseViewController {
     
     let year = PublishRelay<Int?>()
     let month = PublishRelay<Int?>()
@@ -27,17 +25,11 @@ class BirthViewController: UIViewController {
         view = mainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-        bind()
-    }
-    
-    func configure() {
+    override func configure() {
         mainView.yearComponentView.textField.becomeFirstResponder()
     }
     
-    func bind() {
+    override func bind() {
         let calendar = Calendar.current
         
         mainView.datePicker.rx.date
@@ -91,13 +83,5 @@ class BirthViewController: UIViewController {
                 self?.push(viewController: EmailViewController())
             }
             .disposed(by: disposeBag)
-    }
-}
-
-extension Reactive where Base: UITextField {
-    var becomeFirstResponder: Binder<Void> {
-        return Binder(self.base) { textFeild, _ in
-            textFeild.becomeFirstResponder()
-        }
     }
 }
