@@ -27,6 +27,7 @@ class AuthCodeViewModel: ViewModel {
         let inputText: Observable<String>
         let resendButtonTap: Observable<Void>
         let submitButtonTap: Observable<Void>
+        let viewDidLoad: Observable<Bool>
         let viewWillDisappear: Observable<Bool>
     }
     
@@ -35,6 +36,7 @@ class AuthCodeViewModel: ViewModel {
         let buttonState: Observable<ButtonStyleState>
         let isUser: Observable<Bool>
         let error: Observable<AuthCodeError>
+        let sentAuthCode: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -46,9 +48,17 @@ class AuthCodeViewModel: ViewModel {
             .take(until: input.viewWillDisappear)
             .share(replay: 1, scope: .whileConnected)
         
+        // resend Authcode
         input.resendButtonTap
             .bind(to: setTimer)
             .disposed(by: disposeBag)
+        
+        let sendAuthCode = input.resendButtonTap
+            .withLatestFrom(input.viewDidLoad.filter { $0 }.map { _ in () }.asObservable())
+            .flatMap(Firebase.shared.verifyPhoneNumber)
+            .map { _ in () }
+            .asObservable()
+            .debug()
         
         input.inputText
             .bind(to: authCode)
@@ -84,41 +94,18 @@ class AuthCodeViewModel: ViewModel {
                 return Driver.just(nil)
             })
             .asObservable()
-            .debug("idToken")
         
         let isUser = idToken
             .compactMap { $0 }
-            .flatMap(isUser)
-            .debug("isUser")
+            .flatMap(AuthAPI.shared.isUser)
         
         return Output(
             remainTime: remainTime,
             buttonState: buttonState,
             isUser: isUser,
-            error: error.asObservable()
+            error: error.asObservable(),
+            sentAuthCode: sendAuthCode
         )
-    }
-    
-    func isUser(idToken: String) -> Observable<Bool> {
-        return request(.get, "http://test.monocoding.com:353484/user",
-                       headers: ["idtoken": idToken])
-            .response()
-            .map { response in
-                switch response.statusCode {
-                case 200:
-                    return true
-                case 201:
-                    return false
-                case 401:
-                    throw APIError.firebaseTokenExpired
-                case 500:
-                    throw APIError.severError
-                case 501:
-                    throw APIError.clientError
-                default:
-                    throw APIError.undefinedError
-                }
-            }
     }
 }
 

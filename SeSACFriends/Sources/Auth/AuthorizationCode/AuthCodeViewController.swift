@@ -20,16 +20,6 @@ class AuthCodeViewController: BaseViewController {
         view = mainView
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.view.makeToast("인증번호를 보냈습니다.", duration: 3)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
     override func configure() {
         mainView.authCodeTextField.textContentType = .oneTimeCode
     }
@@ -39,6 +29,7 @@ class AuthCodeViewController: BaseViewController {
             inputText: mainView.authCodeTextField.rx.text.orEmpty.debug("inputText"),
             resendButtonTap: mainView.resendButton.rx.tap.debug("resendButtonTap"),
             submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug("submitButtonTap"),
+            viewDidLoad: self.rx.viewDidLoad.debug("viewDidLoad"),
             viewWillDisappear: self.rx.viewWillDisappear.debug("viewWillDisappear")
         )
         
@@ -79,6 +70,12 @@ class AuthCodeViewController: BaseViewController {
                 case false:
                     self.push(viewController: NicknameViewController())
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        output.sentAuthCode
+            .subscribe(onNext: { _ in
+                self.view.makeToast("인증번호를 보냈습니다.")
             })
             .disposed(by: disposeBag)
     }
