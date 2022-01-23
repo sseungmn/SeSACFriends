@@ -7,41 +7,45 @@
 
 import UIKit
 
-import FirebaseAuth
 import RxCocoa
 import RxSwift
-import SnapKit
-import Then
+import Toast_Swift
 
-class NicknameViewController: UIViewController {
-    
-    let disposeBag = DisposeBag()
-    let nickname = PublishRelay<String>()
+class NicknameViewController: BaseViewController {
     
     let mainView = NicknameView()
+    let viewModel = NicknameViewModel()
     
     override func loadView() {
         view = mainView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bind()
+    override func viewWillAppear(_ animated: Bool) {
+        mainView.nicknameTextField.becomeFirstResponder()
     }
     
-    func bind() {
-        mainView.nicknameTextField.rx.text
-            .orEmpty
-            .distinctUntilChanged()
-            .bind(to: nickname)
-            .disposed(by: disposeBag)
-        nickname
-            .map { $0.count <= 10 ? ButtonStyleState.fill : ButtonStyleState.disable }
+    override func bind() {
+        let input = NicknameViewModel.Input(
+            inputText: mainView.nicknameTextField.rx.text.orEmpty.debug("inputText"),
+            submitButtonTap: mainView.button.rx.tap.debug("submitButtonTap")
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output.buttonState
             .bind(to: mainView.button.rx.styleState)
             .disposed(by: disposeBag)
-        mainView.button.rx.tap
-            .subscribe { [weak self] _ in
-//                self?.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
+        
+        output.isValidNickname
+            .subscribe { isValid in
+                guard let isValid = isValid.element else { return }
+                switch isValid {
+                case true:
+                    self.push(viewController: BirthViewController())
+                case false:
+                    self.mainView.nicknameTextField.resignFirstResponder()
+                    self.view.makeToast("닉네임은 1자 이상 10자 이내로 부탁드려요.")
+                }
             }
             .disposed(by: disposeBag)
     }
