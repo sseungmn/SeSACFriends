@@ -36,16 +36,17 @@ class AuthCodeViewController: BaseViewController {
 
     override func bind() {
         let input = AuthCodeViewModel.Input(
-            inputText: mainView.authCodeTextField.rx.text.orEmpty,
-            resendButtonTap: mainView.resendButton.rx.tap,
-            submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug()
+            inputText: mainView.authCodeTextField.rx.text.orEmpty.debug("inputText"),
+            resendButtonTap: mainView.resendButton.rx.tap.debug("resendButtonTap"),
+            submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug("submitButtonTap"),
+            viewWillDisappear: self.rx.viewWillDisappear.debug("viewWillDisappear")
         )
         
         let output = viewModel.transform(input: input)
         
-        viewModel.error.asObservable()
+        output.error
             .subscribe { authError in
-                self.mainView.authCodeTextField.endEditing(true)
+                self.mainView.authCodeTextField.resignFirstResponder()
                 guard let authError = authError.element else { return }
                 print(authError)
                 switch authError {
@@ -64,6 +65,10 @@ class AuthCodeViewController: BaseViewController {
                 String(format: "%02d:%02d", time / 60, time % 60)
             }
             .bind(to: mainView.timerLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.buttonState
+            .bind(to: mainView.button.rx.styleState)
             .disposed(by: disposeBag)
 
         output.isUser

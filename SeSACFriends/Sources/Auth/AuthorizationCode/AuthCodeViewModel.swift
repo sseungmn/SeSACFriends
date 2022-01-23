@@ -18,21 +18,23 @@ class AuthCodeViewModel: ViewModel {
     
     let authCode = PublishRelay<String>()
     
-    let timeLimit = 5
+    let timeLimit = 60
     let setTimer = BehaviorRelay<Void>(value: ())
     
     let error = PublishRelay<AuthCodeError>()
     
     struct Input {
-        let inputText: ControlProperty<String>
-        let resendButtonTap: ControlEvent<Void>
+        let inputText: Observable<String>
+        let resendButtonTap: Observable<Void>
         let submitButtonTap: Observable<Void>
+        let viewWillDisappear: Observable<Bool>
     }
     
     struct Output {
         let remainTime: Observable<Int>
         let buttonState: Observable<ButtonStyleState>
         let isUser: Observable<Bool>
+        let error: Observable<AuthCodeError>
     }
     
     func transform(input: Input) -> Output {
@@ -41,9 +43,10 @@ class AuthCodeViewModel: ViewModel {
             .flatMapLatest { Driver<Int>.timer(.seconds(0), period: .seconds(1)) }
             .map { self.timeLimit - $0 }
             .filter { $0 >= 0 }
-            .share()
+            .take(until: input.viewWillDisappear)
+            .share(replay: 1, scope: .whileConnected)
         
-        input.resendButtonTap.debug()
+        input.resendButtonTap
             .bind(to: setTimer)
             .disposed(by: disposeBag)
         
@@ -69,45 +72,31 @@ class AuthCodeViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         // check isUser
-        let isUser = input.submitButtonTap
+        let idToken = input.submitButtonTap
             .withLatestFrom(remainTime)
             .filter { $0 > 0 }
             .withLatestFrom(authCode.asObservable())
-            .flatMap(credential)
+            .flatMap(Firebase.shared.credential)
+            .asDriver(onErrorRecover: { error in
+                if let error = error as? AuthCodeError {
+                    self.error.accept(error)
+                }
+                return Driver.just(nil)
+            })
+            .asObservable()
+            .debug("idToken")
+        
+        let isUser = idToken
+            .compactMap { $0 }
             .flatMap(isUser)
+            .debug("isUser")
         
         return Output(
             remainTime: remainTime,
             buttonState: buttonState,
-            isUser: isUser
+            isUser: isUser,
+            error: error.asObservable()
         )
-    }
-    
-    func credential(verificationCode: String) -> Observable<String> {
-        return Observable<String>.create { observer in
-            let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")!
-            let credential = PhoneAuthProvider.provider().credential(
-                withVerificationID: verificationID,
-                verificationCode: verificationCode
-            )
-
-            Auth.auth().signIn(with: credential) { _, error in
-                if error != nil {
-                    self.error.accept(AuthCodeError.invalidCode)
-                    return
-                }
-                Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                    if error != nil {
-                        self.error.accept(AuthCodeError.idtokenError)
-                        return
-                    }
-                    if let idToken = idToken {
-                        observer.onNext(idToken)
-                    }
-                }
-            }
-            return Disposables.create()
-        }
     }
     
     func isUser(idToken: String) -> Observable<Bool> {
