@@ -10,7 +10,6 @@ import Foundation
 import FirebaseAuth
 import RxSwift
 import RxCocoa
-import RxAlamofire
 
 class AuthCodeViewModel: ViewModel {
      
@@ -28,7 +27,6 @@ class AuthCodeViewModel: ViewModel {
         let resendButtonTap: Observable<Void>
         let submitButtonTap: Observable<Void>
         let viewDidLoad: Observable<Bool>
-        let viewWillDisappear: Observable<Bool>
     }
     
     struct Output {
@@ -45,7 +43,6 @@ class AuthCodeViewModel: ViewModel {
             .flatMapLatest { Driver<Int>.timer(.seconds(0), period: .seconds(1)) }
             .map { self.timeLimit - $0 }
             .filter { $0 >= 0 }
-            .take(until: input.viewWillDisappear)
             .share(replay: 1, scope: .whileConnected)
         
         // resend Authcode
@@ -53,11 +50,14 @@ class AuthCodeViewModel: ViewModel {
             .bind(to: setTimer)
             .disposed(by: disposeBag)
         
-        let sendAuthCode = input.resendButtonTap
-            .withLatestFrom(input.viewDidLoad.filter { $0 }.map { _ in () }.asObservable())
+//        let sendAuthCode = input.resendButtonTap
+        let sendAuthCode = Observable
+            .merge(
+                input.resendButtonTap,
+                input.viewDidLoad.filter { $0 }.map { _ in () }
+            )
             .flatMap(Firebase.shared.verifyPhoneNumber)
             .map { _ in () }
-            .asObservable()
             .debug()
         
         input.inputText
@@ -66,7 +66,7 @@ class AuthCodeViewModel: ViewModel {
         
         // Validation
         let buttonState: Observable<ButtonStyleState> = authCode
-            .map { $0.count == 6 }
+            .map(validate)
             .map { $0 ? .fill : .disable }
             
         // check deadline
@@ -106,6 +106,10 @@ class AuthCodeViewModel: ViewModel {
             error: error.asObservable(),
             sentAuthCode: sendAuthCode
         )
+    }
+    
+    func validate(authCode: String) -> Bool {
+        authCode.count == 6
     }
 }
 

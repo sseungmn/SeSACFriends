@@ -29,8 +29,7 @@ class AuthCodeViewController: BaseViewController {
             inputText: mainView.authCodeTextField.rx.text.orEmpty.debug("inputText"),
             resendButtonTap: mainView.resendButton.rx.tap.debug("resendButtonTap"),
             submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug("submitButtonTap"),
-            viewDidLoad: self.rx.viewDidLoad.debug("viewDidLoad"),
-            viewWillDisappear: self.rx.viewWillDisappear.debug("viewWillDisappear")
+            viewDidLoad: self.rx.viewDidLoad.debug("viewDidLoad")
         )
         
         let output = viewModel.transform(input: input)
