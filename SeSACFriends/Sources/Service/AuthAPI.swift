@@ -7,31 +7,45 @@
 
 import Foundation
 
+import Moya
 import RxSwift
-import RxAlamofire
 
 class AuthAPI {
     static var shared = AuthAPI()
     
-    func isUser(idToken: String) -> Observable<Bool> {
-        return request(.get, "http://test.monocoding.com:353484/user",
-                       headers: ["idtoken": idToken])
-            .response()
-            .map { response in
-                switch response.statusCode {
-                case 200:
-                    return true
-                case 201:
-                    return false
-                case 401:
-                    throw APIError.firebaseTokenExpired
-                case 500:
-                    throw APIError.severError
-                case 501:
-                    throw APIError.clientError
-                default:
-                    throw APIError.undefinedError
+    let provider = MoyaProvider<AuthTarget>()
+    
+    func isUser() -> Single<Bool> {
+        return Single<Bool>.create { single in
+            self.provider.rx.request(.isUser)
+                .retry(2)
+                .asObservable()
+                .map { response in
+                    switch response.statusCode {
+                    case 200:
+                        single(.success(true))
+                    case 201:
+                        single(.success(false))
+                    case 401:
+                        single(.failure(APIError.firebaseTokenExpired))
+                    case 500:
+                        single(.failure(APIError.severError))
+                    case 501:
+                        single(.failure(APIError.clientError))
+                    default:
+                        single(.failure(APIError.undefinedError))
+                    }
                 }
-            }
+            return Disposables.create()
+        }
+        
+//        func singup() -> Single<Void> {
+//            let phoneNumber = AuthUserDefaults.phoneNumber
+//            let FCMToken = AuthUserDefaults.FCMToken
+//            let nick = AuthUserDefaults.nick
+//            let birth = AuthUserDefaults.birth
+//            let email = AuthUserDefaults.email
+//            let gender = AuthUserDefaults.gender
+//        }
     }
 }
