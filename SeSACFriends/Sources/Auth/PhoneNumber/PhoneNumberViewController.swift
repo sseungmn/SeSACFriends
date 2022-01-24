@@ -45,7 +45,7 @@ class PhoneNumberViewController: BaseViewController {
             .subscribe(
                 onNext: { [weak self] verificationID in
                     debug(title: "verificationID", verificationID)
-                    UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                    AuthUserDefaults.verificaitonID = verificationID
                     self?.push(viewController: AuthCodeViewController())
                 },
                 onError: { error in

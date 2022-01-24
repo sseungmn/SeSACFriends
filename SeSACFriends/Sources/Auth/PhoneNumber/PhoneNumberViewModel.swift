@@ -72,6 +72,6 @@ class PhoneNumberViewModel: ViewModel {
     }
     
     func storingFormat(number: String) -> String {
-        String(number.decimalFilteredString.dropFirst())
+        "+82\(number.decimalFilteredString.dropFirst())"
     }
 }

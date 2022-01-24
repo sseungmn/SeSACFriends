@@ -21,6 +21,7 @@ class NicknameViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         mainView.nicknameTextField.becomeFirstResponder()
     }
     
