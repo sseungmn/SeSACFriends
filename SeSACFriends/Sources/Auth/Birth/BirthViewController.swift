@@ -7,19 +7,13 @@
 
 import UIKit
 
-import FirebaseAuth
 import RxCocoa
 import RxSwift
-import SnapKit
-import Then
 
 class BirthViewController: BaseViewController {
     
-    let year = PublishRelay<Int?>()
-    let month = PublishRelay<Int?>()
-    let day = PublishRelay<Int?>()
-    
     let mainView = BirthView()
+    let viewModel = BirthViewModel()
     
     override func loadView() {
         view = mainView
@@ -27,61 +21,48 @@ class BirthViewController: BaseViewController {
     
     override func configure() {
         mainView.yearComponentView.textField.becomeFirstResponder()
+        mainView.datePicker.date = Date.now
     }
     
     override func bind() {
-        let calendar = Calendar.current
+        let input = BirthViewModel.Input(
+            inputDate: self.mainView.datePicker.rx.date.share(replay: 1).debug("inputDate"),
+            submitButtonTap: self.mainView.button.rx.tap.debug("submitButotnTap")
+        )
+        let output = viewModel.transform(input: input)
         
-        mainView.datePicker.rx.date
-            .map { calendar.dateComponents([.year], from: $0).year }
-            .bind(to: year)
-            .disposed(by: disposeBag)
-        mainView.datePicker.rx.date
-            .map { calendar.dateComponents([.month], from: $0).month }
-            .bind(to: month)
-            .disposed(by: disposeBag)
-        mainView.datePicker.rx.date
-            .map { calendar.dateComponents([.day], from: $0).day }
-            .bind(to: day)
+        output.yearString
+            .drive(self.mainView.yearComponentView.textField.rx.text)
             .disposed(by: disposeBag)
         
-        let yearObservable = year.asObservable()
-            .compactMap { $0 }
-        yearObservable
-            .map { String($0) }
-            .bind(to: self.mainView.yearComponentView.textField.rx.text)
-            .disposed(by: disposeBag)
-        yearObservable
-            .map { _ in Void() }
-            .bind(to: self.mainView.yearComponentView.textField.rx.becomeFirstResponder)
+        output.yearFocus
+            .drive(self.mainView.yearComponentView.textField.rx.becomeFirstResponder)
             .disposed(by: disposeBag)
         
-        let monthObservable = month.asObservable()
-            .compactMap { $0 }
-        monthObservable
-            .map { String($0) }
-            .bind(to: self.mainView.monthComponentView.textField.rx.text)
-            .disposed(by: disposeBag)
-        monthObservable
-            .map { _ in Void() }
-            .bind(to: self.mainView.monthComponentView.textField.rx.becomeFirstResponder)
+        output.monthString
+            .drive(self.mainView.monthComponentView.textField.rx.text)
             .disposed(by: disposeBag)
         
-        let dayObservable = day.asObservable()
-            .compactMap { $0 }
-        dayObservable
-            .map { String($0) }
-            .bind(to: self.mainView.dayComponentView.textField.rx.text)
-            .disposed(by: disposeBag)
-        dayObservable
-            .map { _ in Void() }
-            .bind(to: self.mainView.dayComponentView.textField.rx.becomeFirstResponder)
+        output.monthFocus
+            .drive(self.mainView.monthComponentView.textField.rx.becomeFirstResponder)
             .disposed(by: disposeBag)
         
-        mainView.button.rx.tap
-            .subscribe { [weak self] _ in
+        output.dayString
+            .drive(self.mainView.dayComponentView.textField.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.dayFocus
+            .drive(self.mainView.dayComponentView.textField.rx.becomeFirstResponder)
+            .disposed(by: disposeBag)
+        
+        output.submitButtonTap
+            .emit { [weak self] _ in
                 self?.push(viewController: EmailViewController())
             }
+            .disposed(by: disposeBag)
+        
+        output.buttonState
+            .drive(self.mainView.button.rx.styleState)
             .disposed(by: disposeBag)
     }
 }

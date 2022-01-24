@@ -36,6 +36,8 @@
 		B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A4279DC6C900885DAD /* NicknameViewModel.swift */; };
 		B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A6279DC72B00885DAD /* AuthAPI.swift */; };
 		B50463A9279DC88600885DAD /* AuthUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A8279DC88600885DAD /* AuthUserDefaults.swift */; };
+		B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AA279E724300885DAD /* BirthViewModel.swift */; };
+		B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AC279E7A7D00885DAD /* Date+Extension.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -114,6 +116,8 @@
 		B50463A4279DC6C900885DAD /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		B50463A6279DC72B00885DAD /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		B50463A8279DC88600885DAD /* AuthUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDefaults.swift; sourceTree = "<group>"; };
+		B50463AA279E724300885DAD /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
+		B50463AC279E7A7D00885DAD /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				B504638F279C05B700885DAD /* String+Extension.swift */,
 				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
 				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
+				B50463AC279E7A7D00885DAD /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				B504637E2799CB2D00885DAD /* BirthView.swift */,
+				B50463AA279E724300885DAD /* BirthViewModel.swift */,
 				B50463802799D68800885DAD /* BirthViewController.swift */,
 			);
 			path = Birth;
@@ -712,6 +718,7 @@
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
+				B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
@@ -720,6 +727,7 @@
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
+				B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
