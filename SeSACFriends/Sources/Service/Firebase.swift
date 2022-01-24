@@ -10,14 +10,12 @@ import Foundation
 import FirebaseAuth
 import RxSwift
 import RxCocoa
-import RxAlamofire
 
 class Firebase {
     static let shared = Firebase()
     
     func verifyPhoneNumber() -> Single<String> {
         let phoneNumber = AuthUserDefaults.phoneNumber
-        debug(title: "phoneNumber", phoneNumber)
         return Single<String>.create { single in
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
@@ -35,27 +33,29 @@ class Firebase {
         }
     }
     
-    func credential(verificationCode: String) -> Single<String?> {
-        return Single<String?>.create { single in
-            let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")!
+    func credential(verificationCode: String) -> Observable<Result<Bool, AuthCodeError>> {
+        return Observable<Result<Bool, AuthCodeError>>.create { observer in
             let credential = PhoneAuthProvider.provider().credential(
-                withVerificationID: verificationID,
+                withVerificationID: AuthUserDefaults.verificaitonID,
                 verificationCode: verificationCode
             )
             
             Auth.auth().signIn(with: credential) { _, error in
                 guard error == nil else {
-                    single(.failure(AuthCodeError.invalidCode))
+                    print("invalidCode")
+                    observer.onNext(.failure(.invalidCode))
                     return
                 }
-            }
-            Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                guard error == nil else {
-                    single(.failure(AuthCodeError.idtokenError))
-                    return
-                }
-                if let idToken = idToken {
-                    single(.success(idToken))
+                Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                    guard error == nil else {
+                        print("idtokenError")
+                        observer.onNext(.failure(.idtokenError))
+                        return
+                    }
+                    if let idToken = idToken {
+                        AuthUserDefaults.idtoken = idToken
+                        observer.onNext(.success(true))
+                    }
                 }
             }
             return Disposables.create()

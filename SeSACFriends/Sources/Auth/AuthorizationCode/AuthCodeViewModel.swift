@@ -43,14 +43,13 @@ class AuthCodeViewModel: ViewModel {
             .flatMapLatest { Driver<Int>.timer(.seconds(0), period: .seconds(1)) }
             .map { self.timeLimit - $0 }
             .filter { $0 >= 0 }
-            .share(replay: 1, scope: .whileConnected)
+            .share(replay: 1)
         
         // resend Authcode
         input.resendButtonTap
             .bind(to: setTimer)
             .disposed(by: disposeBag)
         
-//        let sendAuthCode = input.resendButtonTap
         let sendAuthCode = Observable
             .merge(
                 input.resendButtonTap,
@@ -82,22 +81,26 @@ class AuthCodeViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         // check isUser
-        let idToken = input.submitButtonTap
+        let idtoken: Observable<Bool> = input.submitButtonTap
             .withLatestFrom(remainTime)
             .filter { $0 > 0 }
             .withLatestFrom(authCode.asObservable())
-            .flatMap(Firebase.shared.credential)
-            .asDriver(onErrorRecover: { error in
-                if let error = error as? AuthCodeError {
+            .flatMapLatest(Firebase.shared.credential)
+            .map {
+                switch $0 {
+                case .failure(let error):
                     self.error.accept(error)
+                    return false
+                case .success:
+                    return true
                 }
-                return Driver.just(nil)
-            })
-            .asObservable()
+            }
         
-        let isUser = idToken
-            .compactMap { $0 }
+        let isUser = idtoken
+            .filter { $0 }
+            .map { _ in () }
             .flatMap(AuthAPI.shared.isUser)
+            .debug()
         
         return Output(
             remainTime: remainTime,
