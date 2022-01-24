@@ -45,7 +45,7 @@ class PhoneNumberViewModel: ViewModel {
             }
         
         outputText
-            .map { "+82 \($0)"}
+            .map(storingFormat)
             .subscribe(onNext: { phoneNumber in
                 AuthUserDefaults.phoneNumber = phoneNumber
             })
@@ -67,7 +67,11 @@ class PhoneNumberViewModel: ViewModel {
     }
     
     func validateNumber(number: String) -> Bool {
-        return [12, 13].contains(number.count)
-                && String(Array(number.decimalFilteredString)[...1]) == "01"
+        [12, 13].contains(number.count)
+        && String(Array(number.decimalFilteredString)[...1]) == "01"
+    }
+    
+    func storingFormat(number: String) -> String {
+        String(number.decimalFilteredString.dropFirst())
     }
 }
