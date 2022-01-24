@@ -10,6 +10,7 @@ import UIKit
 class EmailView: AuthBaseView {
     let emailTextField = StateTextField().then { textField in
         textField.setPlaceholder(placeholder: "SeSAC@email.com")
+        textField.keyboardType = .emailAddress
     }
     
     override func configure() {
@@ -19,7 +20,5 @@ class EmailView: AuthBaseView {
         setDescriptionSubtitle(subtitle: "휴대폰 번호 변경 시 인증을 위해 사용해요")
         addUserInputComponent(component: emailTextField)
         setButtonTitle(title: "다음")
-        
-//        emailTextField.becomeFirstResponder()
     }
 }
