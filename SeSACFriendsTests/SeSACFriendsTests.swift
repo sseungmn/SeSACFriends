@@ -24,7 +24,8 @@ class SeSACFriendsTests: XCTestCase {
         disposeBag = DisposeBag()
         auth = AuthAPI.shared
         common = CommonAPI.shared
-        AuthUserDefaults.idtoken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNhYTE0OGNkMDcyOGUzMDNkMzI2ZGU1NjBhMzVmYjFiYTMyYTUxNDkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc2VzYWMtMSIsImF1ZCI6InNlc2FjLTEiLCJhdXRoX3RpbWUiOjE2NDMxMjU1MjksInVzZXJfaWQiOiJSc3JQbGEwRXZNUGhKWkFLT2F3WWNRZ1BIaDgyIiwic3ViIjoiUnNyUGxhMEV2TVBoSlpBS09hd1ljUWdQSGg4MiIsImlhdCI6MTY0MzEyNTUzMCwiZXhwIjoxNjQzMTI5MTMwLCJwaG9uZV9udW1iZXIiOiIrODIxMDc2MDcxMzM5IiwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJwaG9uZSI6WyIrODIxMDc2MDcxMzM5Il19LCJzaWduX2luX3Byb3ZpZGVyIjoicGhvbmUifX0.lYcRTqDG755tRPv40XYcrZv2U6rKQm_refFjKu4lLtEYVQq-ikqPPF9kY1dkt37Po3nQkzd9Z9qFvvBHQ-LShS9JKD-21YJEo35Nc-46FpIQR858YCTG1Ns5EH7pLqDiscqBEkPdt1q55M9TVSvj4OiBUBEizPhcAKX3W5v4ntxl69NCfVSrZFjWuGUO07TCVOL-t0DZNJSbOWYuyRT5JJDxI0s98NMKnPk0ucBH1OeLZPmo_8V3LmUpkUU_ZpyefdYBrDzUOJYPRAjmStsk60af3DlGmSU6d0PjknzAXu-3L6DIC45XtiYwwPph5Nxieiyuzx0H3Y2FfTJnyzI5iA"
+        AuthUserDefaults.idtoken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNhYTE0OGNkMDcyOGUzMDNkMzI2ZGU1NjBhMzVmYjFiYTMyYTUxNDkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc2VzYWMtMSIsImF1ZCI6InNlc2FjLTEiLCJhdXRoX3RpbWUiOjE2NDMxMzY2MTUsInVzZXJfaWQiOiJ3Rk11WWNYUllkZW9PU1B3MHdvQjJJVkw4M3YxIiwic3ViIjoid0ZNdVljWFJZZGVvT1NQdzB3b0IySVZMODN2MSIsImlhdCI6MTY0MzEzNjYxNiwiZXhwIjoxNjQzMTQwMjE2LCJwaG9uZV9udW1iZXIiOiIrODIxMDQyMjI1ODYxIiwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJwaG9uZSI6WyIrODIxMDQyMjI1ODYxIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGhvbmUifX0.NTPkiq3PyGomcpOdBmxCufaRp1Xk2OXuSnrvNyGg7fAFi2XzmvHzynELAIBSChYyh3oRR5sI8mAWSUp38JJNpxIhzkVvQJkG5xDuDCWVgfTV9wiqrV2yaCOp5Jv0ei93dZD0at0Z1vQsfztYu-WtvrPKewHjk-z_u10SHn7ges0lEkvrekmGOUPzsHtV75NA9lK6FhqXfhMqkNW_b8pJZF2uN24B3M3nGeGA98J_iRvDBXALe16XMYic2zOBu7Apl-xh4Vg6O5EpZig8_QPsLN3aKwRy4iEuU7U88b0JxVo7PDkJMGHw-St3IMpzLuI3GDYgiT0wuKiEyzDg0N4Vlw"
+        
         Messaging.messaging().token { token, error in
           if let error = error {
             print("Error fetching FCM registration token: \(error)")
@@ -32,13 +33,19 @@ class SeSACFriendsTests: XCTestCase {
               AuthUserDefaults.FCMtoken = token
           }
         }
+        
+        AuthUserDefaults.phoneNumber = "+821042225861"
+        AuthUserDefaults.nick = "minios"
+        AuthUserDefaults.birth = "1998-09-15T00:00:00.000Z"
+        AuthUserDefaults.email = "minios@gmail.com"
+        AuthUserDefaults.gender = -1
+        
     }
 
     override func tearDownWithError() throws {
         disposeBag = nil
         auth = nil
         common = nil
-        AuthUserDefaults.idtoken = ""
     }
 
     func testIsUser() throws {
@@ -52,5 +59,16 @@ class SeSACFriendsTests: XCTestCase {
         
         XCTAssertEqual(try refreshFCMtoken.toBlocking().first(), true)
     }
+    
+    func testSignUp() throws {
+        let signUp: Single<Bool> = auth.signUp()
+        
+        XCTAssertEqual(try signUp.toBlocking().first(), true)
+    }
 
+    func testWithdraw() throws {
+        let withdraw: Single<Bool> = auth.withDraw()
+        
+        XCTAssertEqual(try withdraw.toBlocking().first(), true)
+    }
 }

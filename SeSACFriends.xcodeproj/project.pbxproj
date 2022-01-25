@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		06C049F45EF1CDEEE6E24CC8 /* Pods_SeSACFriendsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C95A841631C8898B6E69A73 /* Pods_SeSACFriendsTests.framework */; };
 		2D7B7F9726AF47AEEEADAD76 /* Pods_SeSACFriends_SeSACFriendsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */; };
+		B5010C7827A054C400AD689A /* CommonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7727A054C400AD689A /* CommonAPI.swift */; };
+		B5010C7B27A05E0100AD689A /* CommonTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7A27A05E0100AD689A /* CommonTarget.swift */; };
+		B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7D27A05FEF00AD689A /* MoyaSupports.swift */; };
+		B5010C8027A064C600AD689A /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */; };
 		B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463632799576400885DAD /* StyleStateChangeable.swift */; };
 		B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504636527999A1F00885DAD /* PhoneNumberView.swift */; };
 		B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504636727999CFE00885DAD /* ParagraphLabel.swift */; };
@@ -40,7 +44,7 @@
 		B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AC279E7A7D00885DAD /* Date+Extension.swift */; };
 		B50463AF279E901D00885DAD /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AE279E901D00885DAD /* EmailViewModel.swift */; };
 		B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463B0279EEACE00885DAD /* GenderViewModel.swift */; };
-		B5100B7C279F0E27009BBF8D /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5100B7B279F0E27009BBF8D /* Target.swift */; };
+		B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5100B7B279F0E27009BBF8D /* AuthTarget.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -92,6 +96,10 @@
 		861708C38600BEADE435267D /* Pods-SeSACFriendsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8063A38DB2F299881D70CA6 /* Pods_SeSACFriends_SeSACFriendsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends_SeSACFriendsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeSACFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5010C7727A054C400AD689A /* CommonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAPI.swift; sourceTree = "<group>"; };
+		B5010C7A27A05E0100AD689A /* CommonTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTarget.swift; sourceTree = "<group>"; };
+		B5010C7D27A05FEF00AD689A /* MoyaSupports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaSupports.swift; sourceTree = "<group>"; };
+		B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		B50463632799576400885DAD /* StyleStateChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleStateChangeable.swift; sourceTree = "<group>"; };
 		B504636527999A1F00885DAD /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
 		B504636727999CFE00885DAD /* ParagraphLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphLabel.swift; sourceTree = "<group>"; };
@@ -123,7 +131,7 @@
 		B50463AC279E7A7D00885DAD /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B50463AE279E901D00885DAD /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		B50463B0279EEACE00885DAD /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
-		B5100B7B279F0E27009BBF8D /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		B5100B7B279F0E27009BBF8D /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
@@ -193,6 +201,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B5010C7927A05DF500AD689A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B5010C7A27A05E0100AD689A /* CommonTarget.swift */,
+				B5010C7727A054C400AD689A /* CommonAPI.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B5010C7C27A05E1500AD689A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B5100B7B279F0E27009BBF8D /* AuthTarget.swift */,
+				B50463A6279DC72B00885DAD /* AuthAPI.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		B50463692799ACD900885DAD /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +258,7 @@
 				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
 				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
 				B50463AC279E7A7D00885DAD /* Date+Extension.swift */,
+				B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -269,9 +296,10 @@
 		B5046393279C810000885DAD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B5010C7D27A05FEF00AD689A /* MoyaSupports.swift */,
+				B5010C7C27A05E1500AD689A /* Auth */,
+				B5010C7927A05DF500AD689A /* Common */,
 				B504639E279D873900885DAD /* Firebase.swift */,
-				B50463A6279DC72B00885DAD /* AuthAPI.swift */,
-				B5100B7B279F0E27009BBF8D /* Target.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -465,6 +493,7 @@
 				B5C0FA542795DB5B00BE997E /* Sources */,
 				B5C0FA552795DB5B00BE997E /* Frameworks */,
 				B5C0FA562795DB5B00BE997E /* Resources */,
+				21388447568F1F4C82DB371D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -638,6 +667,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		21388447568F1F4C82DB371D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5B0498E91A3E19F1FE7C5549 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -728,12 +774,13 @@
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
 				B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */,
+				B5010C7827A054C400AD689A /* CommonAPI.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */,
 				B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */,
-				B5100B7C279F0E27009BBF8D /* Target.swift in Sources */,
+				B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
@@ -747,7 +794,9 @@
 				B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
+				B5010C7B27A05E0100AD689A /* CommonTarget.swift in Sources */,
 				B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */,
+				B5010C8027A064C600AD689A /* Dictionary+Extension.swift in Sources */,
 				B567A88527990536005433F8 /* StateTextField.swift in Sources */,
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
 				B5046386279B153900885DAD /* EmailViewController.swift in Sources */,
@@ -756,6 +805,7 @@
 				B50463AF279E901D00885DAD /* EmailViewModel.swift in Sources */,
 				B504638A279BDB7D00885DAD /* GenderView.swift in Sources */,
 				B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */,
+				B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,

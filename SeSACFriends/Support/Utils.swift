@@ -8,7 +8,8 @@
 import Foundation
 
 public func debug(title: String, _ items: Any..., separator: String = " ", terminator: String = "\n") {
-  var output = "DEBUG(\(title) : "
+  var output = "DEBUG(\(title)) : "
   output += items.map { "\($0)" }.joined(separator: separator)
+  output += "\n=================================="
   Swift.print(output, terminator: terminator)
 }
