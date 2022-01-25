@@ -6,31 +6,51 @@
 //
 
 import XCTest
+import FirebaseMessaging
+import Moya
+import RxSwift
+import RxTest
+import RxBlocking
+
 @testable import SeSACFriends
 
 class SeSACFriendsTests: XCTestCase {
+    
+    var disposeBag: DisposeBag!
+    var auth: AuthAPI!
+    var common: CommonAPI!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        disposeBag = DisposeBag()
+        auth = AuthAPI.shared
+        common = CommonAPI.shared
+        AuthUserDefaults.idtoken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjNhYTE0OGNkMDcyOGUzMDNkMzI2ZGU1NjBhMzVmYjFiYTMyYTUxNDkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc2VzYWMtMSIsImF1ZCI6InNlc2FjLTEiLCJhdXRoX3RpbWUiOjE2NDMxMjU1MjksInVzZXJfaWQiOiJSc3JQbGEwRXZNUGhKWkFLT2F3WWNRZ1BIaDgyIiwic3ViIjoiUnNyUGxhMEV2TVBoSlpBS09hd1ljUWdQSGg4MiIsImlhdCI6MTY0MzEyNTUzMCwiZXhwIjoxNjQzMTI5MTMwLCJwaG9uZV9udW1iZXIiOiIrODIxMDc2MDcxMzM5IiwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJwaG9uZSI6WyIrODIxMDc2MDcxMzM5Il19LCJzaWduX2luX3Byb3ZpZGVyIjoicGhvbmUifX0.lYcRTqDG755tRPv40XYcrZv2U6rKQm_refFjKu4lLtEYVQq-ikqPPF9kY1dkt37Po3nQkzd9Z9qFvvBHQ-LShS9JKD-21YJEo35Nc-46FpIQR858YCTG1Ns5EH7pLqDiscqBEkPdt1q55M9TVSvj4OiBUBEizPhcAKX3W5v4ntxl69NCfVSrZFjWuGUO07TCVOL-t0DZNJSbOWYuyRT5JJDxI0s98NMKnPk0ucBH1OeLZPmo_8V3LmUpkUU_ZpyefdYBrDzUOJYPRAjmStsk60af3DlGmSU6d0PjknzAXu-3L6DIC45XtiYwwPph5Nxieiyuzx0H3Y2FfTJnyzI5iA"
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+              AuthUserDefaults.FCMtoken = token
+          }
+        }
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        disposeBag = nil
+        auth = nil
+        common = nil
+        AuthUserDefaults.idtoken = ""
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testIsUser() throws {
+        let isUser: Single<Bool> = auth.isUser()
+       
+        XCTAssertEqual(try isUser.toBlocking().first(), false)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testFCMToken() throws {
+        let refreshFCMtoken: Single<Bool> = common.refreshFCMtoken()
+        
+        XCTAssertEqual(try refreshFCMtoken.toBlocking().first(), true)
     }
 
 }

@@ -10,6 +10,7 @@ target 'SeSACFriends' do
 
   # Pods for SeSACFriends
   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
   pod 'Socket.IO-Client-Swift'
   
   pod 'IQKeyboardManagerSwift'
@@ -24,6 +25,10 @@ target 'SeSACFriends' do
   target 'SeSACFriendsTests' do
     inherit! :search_paths
     # Pods for testing
+    
+    pod 'RxTest'
+    pod 'RxBlocking'
+    pod 'Moya/RxSwift'
   end
 
   target 'SeSACFriendsUITests' do
