@@ -26,7 +26,7 @@ class AuthCodeViewController: BaseViewController {
 
     override func bind() {
         let input = AuthCodeViewModel.Input(
-            inputText: mainView.authCodeTextField.rx.text.orEmpty.debug("inputText"),
+            inputText: mainView.authCodeTextField.rx.text.orEmpty.asObservable(),
             resendButtonTap: mainView.resendButton.rx.tap.debug("resendButtonTap"),
             submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug("submitButtonTap"),
             viewDidLoad: self.rx.viewDidLoad.debug("viewDidLoad")

@@ -95,12 +95,13 @@ class AuthCodeViewModel: ViewModel {
                     return true
                 }
             }
+            .debug("istoken")
         
         let isUser = idtoken
             .filter { $0 }
             .map { _ in () }
             .flatMap(AuthAPI.shared.isUser)
-            .debug()
+            .debug("isUser")
         
         return Output(
             remainTime: remainTime,
@@ -114,14 +115,4 @@ class AuthCodeViewModel: ViewModel {
     func validate(authCode: String) -> Bool {
         authCode.count == 6
     }
-}
-
-enum AuthCodeError: Error {
-    case authCodeExpired
-    case idtokenError
-    case invalidCode
-}
-enum APIError: Error {
-    case firebaseTokenExpired, severError, clientError
-    case undefinedError
 }
