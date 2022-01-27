@@ -6,46 +6,46 @@
 //
 
 import Foundation
-
 import RxSwift
 import RxCocoa
 
-class NicknameViewModel: ViewModel {
+class NicknameViewModel: ViewModel, ViewModelType {
     
-    var disposeBag: DisposeBag = DisposeBag()
-    
-    let nickname = PublishRelay<String>()
-    
-    let error = PublishRelay<NicknameError>()
+    let nick = BehaviorRelay<String>(value: AuthUserDefaults.nick)
     
     struct Input {
-        let inputText: Observable<String>
         let submitButtonTap: Observable<Void>
     }
     
     struct Output {
         let buttonState: Observable<ButtonStyleState>
-        let isValidNickname: Observable<Bool>
+        let validNickname: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
         
-        input.inputText
-            .bind(to: nickname)
-            .disposed(by: disposeBag)
-        
-        let isValid = nickname
+        let validation = nick
             .map(validation)
-        
-        let buttonState: Observable<ButtonStyleState> = isValid
+            .share()
+                
+        let buttonState: Observable<ButtonStyleState> = validation
             .map { $0 ? .fill : .disable }
         
-        let isValidNickname = input.submitButtonTap
-            .withLatestFrom(isValid)
+        let validNickname = input.submitButtonTap
+            .withLatestFrom(validation)
+            .share()
+        
+        validNickname
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                AuthUserDefaults.nick = self.nick.value
+            })
+            .disposed(by: disposeBag)
         
         return Output(
             buttonState: buttonState,
-            isValidNickname: isValidNickname
+            validNickname: validNickname
         )
     }
     

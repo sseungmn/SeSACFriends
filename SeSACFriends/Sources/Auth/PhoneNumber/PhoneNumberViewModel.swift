@@ -43,12 +43,6 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
                 }
             }
         
-        outputText
-            .subscribe(onNext: { phoneNumber in
-                AuthUserDefaults.phoneNumber = phoneNumber
-            })
-            .disposed(by: disposeBag)
-        
         let buttonState: Observable<ButtonStyleState> = phoneNumber
             .map(validateNumber)
             .map { $0 ? .fill : .disable }
@@ -60,6 +54,14 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
                     .asObservable()
                     .materialize()
             }
+            .share()
+        
+        result
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                AuthUserDefaults.phoneNumber = self.phoneNumber.value
+            })
+            .disposed(by: disposeBag)
         
         result.errors()
             .bind(to: errorCollector)
