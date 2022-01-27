@@ -26,7 +26,6 @@ class AuthCodeViewController: BaseViewController {
 
     override func bind() {
         let input = AuthCodeViewModel.Input(
-            inputText: mainView.authCodeTextField.rx.text.orEmpty.asObservable(),
             resendButtonTap: mainView.resendButton.rx.tap.debug("resendButtonTap"),
             submitButtonTap: mainView.button.rx.tap.share(replay: 1).debug("submitButtonTap"),
             viewDidLoad: self.rx.viewDidLoad.debug("viewDidLoad")
@@ -34,11 +33,13 @@ class AuthCodeViewController: BaseViewController {
         
         let output = viewModel.transform(input: input)
         
-        output.error
-            .subscribe { authError in
+        mainView.authCodeTextField.rx.textInput <-> viewModel.authCode
+        
+        viewModel.error
+            .subscribe(onNext: { error in
                 self.mainView.authCodeTextField.resignFirstResponder()
-                guard let authError = authError.element else { return }
-                debug(title: "authError", authError)
+                debug(title: "error", error)
+                guard let authError = error as? AuthCodeError else { return }
                 switch authError {
                 case .authCodeExpired:
                     self.view.makeToast("전화 번호 인증 실패")
@@ -47,7 +48,7 @@ class AuthCodeViewController: BaseViewController {
                 case .idtokenError:
                     self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요")
                 }
-            }
+            })
             .disposed(by: disposeBag)
         
         output.remainTime
@@ -61,14 +62,15 @@ class AuthCodeViewController: BaseViewController {
             .bind(to: mainView.button.rx.styleState)
             .disposed(by: disposeBag)
 
-        output.isUser
-            .subscribe(onNext: { isUser in
-                switch isUser {
-                case true:
+        output.makeRootMainViewController
+            .subscribe(onNext: {
                     self.makeRoot(viewController: MainViewController())
-                case false:
+            })
+            .disposed(by: disposeBag)
+        
+        output.pushNicknameViewControoler
+            .subscribe(onNext: {
                     self.push(viewController: NicknameViewController())
-                }
             })
             .disposed(by: disposeBag)
         

@@ -15,15 +15,17 @@ class AuthCodeViewModel: ViewModel {
      
     var disposeBag: DisposeBag = DisposeBag()
     
-    let authCode = PublishRelay<String>()
+    let authCode = BehaviorRelay<String>(value: "")
     
     let timeLimit = 60
     let setTimer = BehaviorRelay<Void>(value: ())
     
-    let error = PublishRelay<AuthCodeError>()
+    let error = PublishRelay<Error>()
+    
+    let firebaseAPI: Firebase = Firebase()
+    let authAPI: AuthAPI = AuthAPI()
     
     struct Input {
-        let inputText: Observable<String>
         let resendButtonTap: Observable<Void>
         let submitButtonTap: Observable<Void>
         let viewDidLoad: Observable<Bool>
@@ -32,9 +34,9 @@ class AuthCodeViewModel: ViewModel {
     struct Output {
         let remainTime: Observable<Int>
         let buttonState: Observable<ButtonStyleState>
-        let isUser: Observable<Bool>
-        let error: Observable<AuthCodeError>
         let sentAuthCode: Observable<Void>
+        let makeRootMainViewController: Observable<Void>
+        let pushNicknameViewControoler: Observable<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -53,15 +55,11 @@ class AuthCodeViewModel: ViewModel {
         let sendAuthCode = Observable
             .merge(
                 input.resendButtonTap,
-                input.viewDidLoad.filter { $0 }.map { _ in () }
+                input.viewDidLoad.filter { $0 }.mapToVoid()
             )
-            .flatMap(Firebase.shared.verifyPhoneNumber)
-            .map { _ in () }
+            .flatMap(firebaseAPI.verifyPhoneNumber)
+            .mapToVoid()
             .debug()
-        
-        input.inputText
-            .bind(to: authCode)
-            .disposed(by: disposeBag)
         
         // Validation
         let buttonState: Observable<ButtonStyleState> = authCode
@@ -71,44 +69,55 @@ class AuthCodeViewModel: ViewModel {
         // check deadline
         input.submitButtonTap
             .withLatestFrom(remainTime)
-            .subscribe { [weak self] time in
-                guard let time = time.element else { return }
-                guard time > 0 else {
-                    self?.error.accept(AuthCodeError.authCodeExpired)
-                    return
-                }
-            }
+            .filter { $0 <= 0 }
+            .subscribe(onNext: { [unowned self] _ in
+                self.error.accept(AuthCodeError.authCodeExpired)
+            })
             .disposed(by: disposeBag)
         
         // check isUser
-        let idtoken: Observable<Bool> = input.submitButtonTap
+        let idtoken = input.submitButtonTap
             .withLatestFrom(remainTime)
             .filter { $0 > 0 }
             .withLatestFrom(authCode.asObservable())
-            .flatMapLatest(Firebase.shared.credential)
-            .map {
-                switch $0 {
-                case .failure(let error):
-                    self.error.accept(error)
-                    return false
-                case .success:
-                    return true
-                }
+            .flatMapLatest{ [unowned self] in
+                self.firebaseAPI.credential(verificationCode: $0)
+                    .asObservable()
+                    .materialize()
             }
-            .debug("istoken")
+            .share()
+        idtoken.errors()
+            .bind(to: self.error)
+            .disposed(by: disposeBag)
         
-        let isUser = idtoken
-            .filter { $0 }
-            .map { _ in () }
-            .flatMap(AuthAPI.shared.isUser)
-            .debug("isUser")
+        let isUser = idtoken.elements()
+            .flatMapLatest { [unowned self] _ in
+                self.authAPI.isUser()
+                    .asObservable()
+                    .materialize()
+            }
+            .share()
+        
+        isUser.errors()
+            .bind(to: self.error)
+            .disposed(by: disposeBag)
+        
+        let makeRootMainViewController = isUser.elements()
+            .filter { $0 == true }
+            .mapToVoid()
+            .observe(on: MainScheduler.instance)
+        
+        let pushNicknameViewControoler = isUser.elements()
+            .filter { $0 == false }
+            .mapToVoid()
+            .observe(on: MainScheduler.instance)
         
         return Output(
             remainTime: remainTime,
             buttonState: buttonState,
-            isUser: isUser,
-            error: error.asObservable(),
-            sentAuthCode: sendAuthCode
+            sentAuthCode: sendAuthCode,
+            makeRootMainViewController: makeRootMainViewController,
+            pushNicknameViewControoler: pushNicknameViewControoler
         )
     }
     
