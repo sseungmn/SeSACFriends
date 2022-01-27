@@ -11,7 +11,6 @@ import Moya
 import RxSwift
 
 class CommonAPI {
-    static var shared = CommonAPI()
     
     let provider = MoyaProvider<CommonTarget>()
     

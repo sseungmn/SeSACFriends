@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class Firebase {
-    static let shared = Firebase()
     
     func verifyPhoneNumber() -> Single<String> {
         let phoneNumber = AuthUserDefaults.phoneNumber
@@ -33,8 +32,8 @@ class Firebase {
         }
     }
     
-    func credential(verificationCode: String) -> Observable<Result<Bool, AuthCodeError>> {
-        return Observable<Result<Bool, AuthCodeError>>.create { observer in
+    func credential(verificationCode: String) -> Single<Void> {
+        return Single<Void>.create { single in
             let credential = PhoneAuthProvider.provider().credential(
                 withVerificationID: AuthUserDefaults.verificaitonID,
                 verificationCode: verificationCode
@@ -43,18 +42,18 @@ class Firebase {
             Auth.auth().signIn(with: credential) { _, error in
                 guard error == nil else {
                     print("invalidCode")
-                    observer.onNext(.failure(.invalidCode))
+                    single(.failure(AuthCodeError.invalidCode))
                     return
                 }
                 Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                     guard error == nil else {
                         print("idtokenError")
-                        observer.onNext(.failure(.idtokenError))
+                        single(.failure(AuthCodeError.idtokenError))
                         return
                     }
                     if let idToken = idToken {
                         AuthUserDefaults.idtoken = idToken
-                        observer.onNext(.success(true))
+                        single(.success(()))
                     }
                 }
             }

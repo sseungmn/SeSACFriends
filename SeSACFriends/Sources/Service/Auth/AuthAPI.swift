@@ -17,8 +17,6 @@ enum AuthCodeError: Error {
 }
 
 class AuthAPI {
-    static var shared = AuthAPI()
-    
     let provider = MoyaProvider<AuthTarget>()
     
     func isUser() -> Single<Bool> {
@@ -37,12 +35,12 @@ class AuthAPI {
             }
         }
     
-    func signUp() -> Single<Bool> {
+    func signUp() -> Single<Void> {
         return provider.rx.request(.signUp)
             .map { response in
                 switch response.statusCode {
                 case 200:
-                    return true
+                    return ()
                 case 201:
                     throw APIError.already
                 case 202:
@@ -59,12 +57,12 @@ class AuthAPI {
             }
     }
     
-    func withDraw() -> Single<Bool> {
+    func withDraw() -> Single<Void> {
         return provider.rx.request(.withdraw)
             .map { response in
                 switch response.statusCode {
                 case 200:
-                    return true
+                    return ()
                 case 401:
                     throw APIError.firebaseTokenError
                 case 406:

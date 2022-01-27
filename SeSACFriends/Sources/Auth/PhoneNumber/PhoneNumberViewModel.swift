@@ -20,6 +20,9 @@ class PhoneNumberViewModel: ViewModel {
     
     let phoneNumber = PublishRelay<String>()
     
+    let authAPI: AuthAPI = AuthAPI()
+    let firebaseAPI: Firebase = Firebase()
+    
     struct Input {
         let inputText: Observable<String>
         let submitButtonTap: ControlEvent<Void>
@@ -56,7 +59,7 @@ class PhoneNumberViewModel: ViewModel {
             .map { $0 ? .fill : .disable }
         
         let result = input.submitButtonTap
-            .flatMap(Firebase.shared.verifyPhoneNumber)
+            .flatMap(firebaseAPI.verifyPhoneNumber)
             .observe(on: MainScheduler.instance)
         
         return Output(
