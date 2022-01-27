@@ -10,16 +10,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BirthViewModel: ViewModel {
+class BirthViewModel: ViewModel, ViewModelType {
     
-    var disposeBag: DisposeBag = DisposeBag()
-    
+    let birth = BehaviorRelay<Date>(value: AuthUserDefaults.birth)
     let year = PublishRelay<Int?>()
     let month = PublishRelay<Int?>()
     let day = PublishRelay<Int?>()
     
     struct Input {
-        let inputDate: Observable<Date>
         let submitButtonTap: Observable<Void>
     }
     
@@ -31,21 +29,23 @@ class BirthViewModel: ViewModel {
         let monthFocus: Driver<Void>
         let dayFocus: Driver<Void>
         let buttonState: Driver<ButtonStyleState>
-        let submitButtonTap: Signal<Void>
+        let pushEmailViewController: Signal<Void>
     }
     
     func transform(input: Input) -> Output {
-        input.inputDate
+        let birthObservable = birth.share()
+        
+        birthObservable
             .map { $0.component(for: .year) }
             .bind(to: year)
             .disposed(by: disposeBag)
         
-        input.inputDate
+        birthObservable
             .map { $0.component(for: .month) }
             .bind(to: month)
             .disposed(by: disposeBag)
         
-        input.inputDate
+        birthObservable
             .map { $0.component(for: .day) }
             .bind(to: day)
             .disposed(by: disposeBag)
@@ -69,15 +69,22 @@ class BirthViewModel: ViewModel {
             .combineLatest(yearDriver, monthDriver, dayDriver)
             .map {  _ in .fill }
         
+        input.submitButtonTap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                AuthUserDefaults.birth = self.birth.value
+            })
+            .disposed(by: disposeBag)
+        
         return Output(
             yearString: yearDriver.map { String($0) },
             monthString: monthDriver.map { String($0) },
             dayString: dayDriver.map { String($0) },
-            yearFocus: yearDriver.map { _ in () },
-            monthFocus: monthDriver.map { _ in () },
-            dayFocus: dayDriver.map { _ in () },
+            yearFocus: yearDriver.mapToVoid(),
+            monthFocus: monthDriver.mapToVoid(),
+            dayFocus: dayDriver.mapToVoid(),
             buttonState: buttonState,
-            submitButtonTap: input.submitButtonTap.asSignal(onErrorJustReturn: ())
+            pushEmailViewController: input.submitButtonTap.asSignal(onErrorJustReturn: ())
         )
     }
 }

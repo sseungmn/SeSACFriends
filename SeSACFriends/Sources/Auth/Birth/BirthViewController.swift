@@ -21,15 +21,15 @@ class BirthViewController: BaseViewController {
     
     override func configure() {
         mainView.yearComponentView.textField.becomeFirstResponder()
-        mainView.datePicker.date = Date.now
     }
     
     override func bind() {
         let input = BirthViewModel.Input(
-            inputDate: self.mainView.datePicker.rx.date.share(replay: 1).debug("inputDate"),
             submitButtonTap: self.mainView.button.rx.tap.debug("submitButotnTap")
         )
         let output = viewModel.transform(input: input)
+        
+        mainView.datePicker.rx.date <-> viewModel.birth
         
         output.yearString
             .drive(self.mainView.yearComponentView.textField.rx.text)
@@ -55,7 +55,7 @@ class BirthViewController: BaseViewController {
             .drive(self.mainView.dayComponentView.textField.rx.becomeFirstResponder)
             .disposed(by: disposeBag)
         
-        output.submitButtonTap
+        output.pushEmailViewController
             .emit { [weak self] _ in
                 self?.push(viewController: EmailViewController())
             }

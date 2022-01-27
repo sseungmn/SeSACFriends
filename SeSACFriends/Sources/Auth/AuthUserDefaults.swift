@@ -11,7 +11,7 @@ class AuthUserDefaults {
     @UserDefault("phoneNumber", defaultValue: "") static var phoneNumber: String
     @UserDefault("FCMToken", defaultValue: "") static var FCMtoken: String
     @UserDefault("nick", defaultValue: "") static var nick: String
-    @UserDefault("birth", defaultValue: "") static var birth: String
+    @UserDefault("birth", defaultValue: Date(timeIntervalSinceReferenceDate: 0)) static var birth: Date
     @UserDefault("email", defaultValue: "") static var email: String
     @UserDefault("gender", defaultValue: -1) static var gender: Int
     
