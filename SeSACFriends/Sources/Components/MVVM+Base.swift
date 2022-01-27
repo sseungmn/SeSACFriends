@@ -9,15 +9,28 @@ import UIKit
 import RxSwift
 import RxRelay
 
-protocol ViewModel {
+protocol ViewModelType {
     associatedtype Input
     associatedtype Output
     
-    var disposeBag: DisposeBag { get set }
-    
-    var errorCollector: PublishRelay<Error> { get set }
-    
     func transform(input: Input) -> Output
+}
+
+class ViewModel {
+    var disposeBag = DisposeBag()
+    var errorCollector = PublishRelay<Error>()
+    
+    init() {
+        self.errorCollector
+            .subscribe(onNext: { error in
+                print("ERROR", error)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    deinit {
+        print("Deinit \(String(describing: self))")
+    }
 }
 
 class BaseViewController: UIViewController {

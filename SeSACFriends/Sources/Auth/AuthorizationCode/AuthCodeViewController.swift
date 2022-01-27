@@ -21,7 +21,7 @@ class AuthCodeViewController: BaseViewController {
     }
 
     override func configure() {
-        mainView.authCodeTextField.textContentType = .oneTimeCode
+        mainView.authCodeTextField.becomeFirstResponder()
     }
 
     override func bind() {
@@ -35,18 +35,18 @@ class AuthCodeViewController: BaseViewController {
         
         mainView.authCodeTextField.rx.textInput <-> viewModel.authCode
         
-        viewModel.error
-            .subscribe(onNext: { error in
-                self.mainView.authCodeTextField.resignFirstResponder()
+        viewModel.errorCollector
+            .subscribe(onNext: { [weak self] error in
+                self?.mainView.authCodeTextField.resignFirstResponder()
                 debug(title: "error", error)
                 guard let authError = error as? AuthCodeError else { return }
                 switch authError {
                 case .authCodeExpired:
-                    self.view.makeToast("전화 번호 인증 실패")
+                    self?.view.makeToast("전화 번호 인증 실패")
                 case .invalidCode:
-                    self.view.makeToast("전화 번호 인증 실패")
+                    self?.view.makeToast("전화 번호 인증 실패")
                 case .idtokenError:
-                    self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요")
+                    self?.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요")
                 }
             })
             .disposed(by: disposeBag)
@@ -63,20 +63,20 @@ class AuthCodeViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         output.makeRootMainViewController
-            .subscribe(onNext: {
-                    self.makeRoot(viewController: MainViewController())
+            .subscribe(onNext: { [weak self] in
+                    self?.makeRoot(viewController: MainViewController())
             })
             .disposed(by: disposeBag)
         
         output.pushNicknameViewControoler
-            .subscribe(onNext: {
-                    self.push(viewController: NicknameViewController())
+            .subscribe(onNext: { [weak self] in
+                    self?.push(viewController: NicknameViewController())
             })
             .disposed(by: disposeBag)
         
         output.sentAuthCode
-            .subscribe(onNext: { _ in
-                self.view.makeToast("인증번호를 보냈습니다.")
+            .subscribe(onNext: { [weak self] in
+                self?.view.makeToast("인증번호를 보냈습니다.")
             })
             .disposed(by: disposeBag)
     }

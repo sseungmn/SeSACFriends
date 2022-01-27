@@ -11,16 +11,12 @@ import FirebaseAuth
 import RxSwift
 import RxCocoa
 
-class AuthCodeViewModel: ViewModel {
+class AuthCodeViewModel: ViewModel, ViewModelType {
      
-    var disposeBag: DisposeBag = DisposeBag()
-    
     let authCode = BehaviorRelay<String>(value: "")
     
     let timeLimit = 60
     let setTimer = BehaviorRelay<Void>(value: ())
-    
-    let error = PublishRelay<Error>()
     
     let firebaseAPI: Firebase = Firebase()
     let authAPI: AuthAPI = AuthAPI()
@@ -45,7 +41,7 @@ class AuthCodeViewModel: ViewModel {
             .flatMapLatest { Driver<Int>.timer(.seconds(0), period: .seconds(1)) }
             .map { self.timeLimit - $0 }
             .filter { $0 >= 0 }
-            .share(replay: 1)
+            .share()
         
         // resend Authcode
         input.resendButtonTap
@@ -70,36 +66,38 @@ class AuthCodeViewModel: ViewModel {
         input.submitButtonTap
             .withLatestFrom(remainTime)
             .filter { $0 <= 0 }
-            .subscribe(onNext: { [unowned self] _ in
-                self.error.accept(AuthCodeError.authCodeExpired)
+            .subscribe(onNext: { [weak errorCollector] _ in
+                errorCollector?.accept(AuthCodeError.authCodeExpired)
             })
             .disposed(by: disposeBag)
         
-        // check isUser
+        // get idtoken
         let idtoken = input.submitButtonTap
             .withLatestFrom(remainTime)
             .filter { $0 > 0 }
             .withLatestFrom(authCode.asObservable())
-            .flatMapLatest{ [unowned self] in
-                self.firebaseAPI.credential(verificationCode: $0)
+            .flatMapLatest { [weak self] authCode -> Observable<Event<Void>> in
+                guard let self = self else { return Observable.just(Event.completed) }
+                return self.firebaseAPI.credential(verificationCode: authCode)
                     .asObservable()
                     .materialize()
             }
             .share()
         idtoken.errors()
-            .bind(to: self.error)
+            .bind(to: self.errorCollector)
             .disposed(by: disposeBag)
         
+        // check isUser
         let isUser = idtoken.elements()
-            .flatMapLatest { [unowned self] _ in
-                self.authAPI.isUser()
+            .flatMapLatest { [weak self] () -> Observable<Event<Bool>> in
+                guard let self = self else { return Observable.just(Event.completed) }
+                return self.authAPI.isUser()
                     .asObservable()
                     .materialize()
             }
             .share()
-        
         isUser.errors()
-            .bind(to: self.error)
+            .bind(to: self.errorCollector)
             .disposed(by: disposeBag)
         
         let makeRootMainViewController = isUser.elements()

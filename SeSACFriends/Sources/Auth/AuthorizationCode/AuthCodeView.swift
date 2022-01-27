@@ -20,6 +20,7 @@ class AuthCodeView: AuthBaseView {
     }
     let authCodeTextField = StateTextField().then { textField in
         textField.keyboardType = .numberPad
+        textField.textContentType = .oneTimeCode
     }
     let resendButton = StateButton(initialStyleState: .fill).then { button in
         button.snp.makeConstraints { make in
