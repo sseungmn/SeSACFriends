@@ -6,51 +6,58 @@
 //
 
 import UIKit
-
 import RxSwift
 import RxCocoa
 
-class EmailViewModel: ViewModel {
+class EmailViewModel: ViewModel, ViewModelType {
     
-    var disposeBag: DisposeBag = DisposeBag()
-    
-    let email = BehaviorRelay<String>(value: "")
-    let error = PublishRelay<EmailError>()
+    let email = BehaviorRelay<String>(value: AuthUserDefaults.email)
     
     struct Input {
-        let inputText: Driver<String>
         let confirmButtonTap: Driver<Void>
     }
     
     struct Output {
         let buttonState: Driver<ButtonStyleState>
-        let confirmButtonTap: Driver<Bool>
-        let error: Signal<EmailError>
+        let pushGenderViewController: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
-        input.inputText
-            .drive(email)
-            .disposed(by: disposeBag)
-        
-        let isValidEmail: Driver<Bool> = email
+        let isValidEmail = email
             .map(validate)
-            .asDriver(onErrorJustReturn: false)
+            .share()
         
         let buttonState: Driver<ButtonStyleState> = isValidEmail
             .map { $0 ? .fill : .disable }
+            .asDriver(onErrorJustReturn: .disable)
         
-        let confirmButtonTap = input.confirmButtonTap
+        let validEmail = input.confirmButtonTap.asObservable()
             .withLatestFrom(isValidEmail)
-            .map { isValid -> Bool in
-                if !isValid { self.error.accept(.invalidEmail) }
-                return isValid
-            }
-            
+            .share()
+        
+        validEmail
+            .filter { !$0 }
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.errorCollector.accept(EmailError.invalidEmail)
+            })
+            .disposed(by: disposeBag)
+        
+        validEmail
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                AuthUserDefaults.email = self.email.value
+            })
+            .disposed(by: disposeBag)
+        
+        let pushGenderViewController = validEmail
+            .filter { $0 }.mapToVoid()
+            .asDriver(onErrorJustReturn: ())
+        
         return Output(
             buttonState: buttonState,
-            confirmButtonTap: confirmButtonTap,
-            error: error.asSignal()
+            pushGenderViewController: pushGenderViewController
         )
     }
     

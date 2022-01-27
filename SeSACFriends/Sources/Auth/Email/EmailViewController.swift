@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import RxCocoa
 import RxSwift
 
@@ -27,32 +26,32 @@ class EmailViewController: BaseViewController {
     
     override func bind() {
         let input = EmailViewModel.Input(
-            inputText: self.mainView.emailTextField.rx.text.orEmpty.asDriver().debug("inputText"),
             confirmButtonTap: self.mainView.button.rx.tap.asDriver().debug("confirmButtonTap")
         )
         
         let output = viewModel.transform(input: input)
         
+        mainView.emailTextField.rx.textInput <-> viewModel.email
+        
         output.buttonState
             .drive(self.mainView.button.rx.styleState)
             .disposed(by: disposeBag)
-        output.confirmButtonTap
-            .asObservable()
-            .subscribe { [unowned self] isValid in
-                guard let isValid = isValid.element else { return }
-                if isValid { self.push(viewController: GenderViewController() )}
-            }
+        
+        output.pushGenderViewController
+            .drive(onNext: { [weak self] _ in
+                self?.push(viewController: GenderViewController())
+            })
             .disposed(by: disposeBag)
-
-        output.error.asObservable()
-            .subscribe { [unowned self] error in
-                guard let error = error.element else { return }
+            
+        viewModel.errorCollector
+            .subscribe(onNext: { [weak self] error in
+                guard let error = error as? EmailError else { return }
                 switch error {
                 case .invalidEmail:
-                    self.mainView.emailTextField.resignFirstResponder()
-                    self.view.makeToast("이메일 형식이 올바르지 않습니다.")
+                    self?.mainView.emailTextField.resignFirstResponder()
+                    self?.view.makeToast("이메일 형식이 올바르지 않습니다.")
                 }
-            }
+            })
             .disposed(by: disposeBag)
     }
 }
