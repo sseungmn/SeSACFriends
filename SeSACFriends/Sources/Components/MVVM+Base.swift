@@ -5,15 +5,17 @@
 //  Created by SEUNGMIN OH on 2022/01/23.
 //
 
-import Foundation
 import UIKit
 import RxSwift
+import RxRelay
 
 protocol ViewModel {
     associatedtype Input
     associatedtype Output
     
     var disposeBag: DisposeBag { get set }
+    
+    var errorCollector: PublishRelay<Error> { get set }
     
     func transform(input: Input) -> Output
 }

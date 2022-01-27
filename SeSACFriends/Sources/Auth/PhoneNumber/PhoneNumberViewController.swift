@@ -27,11 +27,12 @@ class PhoneNumberViewController: BaseViewController {
     
     override func bind() {
         let input = PhoneNumberViewModel.Input(
-            inputText: mainView.phoneNumberTextField.rx.text.orEmpty.share(replay: 1),
             submitButtonTap: mainView.button.rx.tap
         )
         
         let output = viewModel.transform(input: input)
+        
+        mainView.phoneNumberTextField.rx.textInput <-> viewModel.phoneNumber
         
         output.outputText
             .bind(to: mainView.phoneNumberTextField.rx.text)
@@ -42,15 +43,11 @@ class PhoneNumberViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.verifyResult
-            .subscribe(
-                onNext: { [weak self] verificationID in
-                    debug(title: "verificationID", verificationID)
-                    AuthUserDefaults.verificaitonID = verificationID
-                    self?.push(viewController: AuthCodeViewController())
-                },
-                onError: { error in
-                    debug(title: "PhoneNumberViewController/verifyResult/ERROR", error)
-                })
+            .subscribe(onNext: { [weak self] verificationID in
+                debug(title: "verificationID", verificationID)
+                AuthUserDefaults.verificaitonID = verificationID
+                self?.push(viewController: AuthCodeViewController())
+            })
             .disposed(by: disposeBag)
     }
 }

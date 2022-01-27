@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import RxSwift
 import RxCocoa
 
@@ -16,15 +15,15 @@ enum VerificationError: Error {
 
 class PhoneNumberViewModel: ViewModel {
     
-    var disposeBag: DisposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
+    var errorCollector = PublishRelay<Error>()
     
-    let phoneNumber = PublishRelay<String>()
+    let phoneNumber = BehaviorRelay<String>(value: AuthUserDefaults.phoneNumber)
     
     let authAPI: AuthAPI = AuthAPI()
     let firebaseAPI: Firebase = Firebase()
     
     struct Input {
-        let inputText: Observable<String>
         let submitButtonTap: ControlEvent<Void>
     }
     
@@ -35,7 +34,7 @@ class PhoneNumberViewModel: ViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let outputText = input.inputText
+        let outputText = phoneNumber
             .map { text -> String in
                 switch text.count {
                 case ...12:
@@ -48,33 +47,38 @@ class PhoneNumberViewModel: ViewModel {
             }
         
         outputText
-            .map(storingFormat)
             .subscribe(onNext: { phoneNumber in
                 AuthUserDefaults.phoneNumber = phoneNumber
             })
             .disposed(by: disposeBag)
         
-        let buttonState: Observable<ButtonStyleState> = input.inputText
+        let buttonState: Observable<ButtonStyleState> = phoneNumber
             .map(validateNumber)
             .map { $0 ? .fill : .disable }
         
         let result = input.submitButtonTap
-            .flatMap(firebaseAPI.verifyPhoneNumber)
-            .observe(on: MainScheduler.instance)
+            .flatMap { [weak self] () -> Observable<Event<String>> in
+                guard let self = self else { return Observable.just(.completed)}
+                return self.firebaseAPI.verifyPhoneNumber()
+                    .asObservable()
+                    .materialize()
+            }
+        
+        result.errors()
+            .subscribe(onNext: { [weak errorCollector] error in
+                errorCollector?.accept(error)
+            })
+            .disposed(by: disposeBag)
         
         return Output(
             outputText: outputText,
             buttonState: buttonState,
-            verifyResult: result
+            verifyResult: result.elements()
         )
     }
     
     func validateNumber(number: String) -> Bool {
         [12, 13].contains(number.count)
         && String(Array(number.decimalFilteredString)[...1]) == "01"
-    }
-    
-    func storingFormat(number: String) -> String {
-        "+82\(number.decimalFilteredString.dropFirst())"
     }
 }
