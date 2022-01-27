@@ -13,10 +13,7 @@ enum VerificationError: Error {
     case fail
 }
 
-class PhoneNumberViewModel: ViewModel {
-    
-    var disposeBag = DisposeBag()
-    var errorCollector = PublishRelay<Error>()
+class PhoneNumberViewModel: ViewModel, ViewModelType {
     
     let phoneNumber = BehaviorRelay<String>(value: AuthUserDefaults.phoneNumber)
     
@@ -65,9 +62,7 @@ class PhoneNumberViewModel: ViewModel {
             }
         
         result.errors()
-            .subscribe(onNext: { [weak errorCollector] error in
-                errorCollector?.accept(error)
-            })
+            .bind(to: errorCollector)
             .disposed(by: disposeBag)
         
         return Output(
