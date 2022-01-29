@@ -10,6 +10,13 @@ import RxSwift
 import RxCocoa
 
 extension ObservableType {
+    func asDriverOnErrorJustComplete() -> Driver<Element> {
+        return asDriver { error in
+            assertionFailure("Error \(error)")
+            return Driver.empty()
+        }
+    }
+    
     func mapToVoid() -> Observable<Void> {
         return map { _ in }
     }
@@ -40,7 +47,6 @@ extension ObservableType where Element: EventConvertible {
         return compactMap { $0.event.error }
     }
 }
-
 
 infix operator <-> : DefaultPrecedence
 
