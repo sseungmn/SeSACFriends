@@ -13,8 +13,8 @@ import RxCocoa
 
 class Firebase {
     
-    func verifyPhoneNumber() -> Single<String> {
-        let phoneNumber = AuthUserDefaults.phoneNumber
+    func verifyPhoneNumber(phoneNumber: String = AuthUserDefaults.phoneNumber) -> Single<String> {
+        let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"
         return Single<String>.create { single in
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in

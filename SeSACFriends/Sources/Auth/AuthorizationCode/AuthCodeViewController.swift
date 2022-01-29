@@ -75,7 +75,8 @@ class AuthCodeViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.sentAuthCode
-            .subscribe(onNext: { [weak self] in
+            .subscribe(onNext: { [weak self] verificationID in
+                AuthUserDefaults.verificaitonID = verificationID
                 self?.view.makeToast("인증번호를 보냈습니다.")
             })
             .disposed(by: disposeBag)

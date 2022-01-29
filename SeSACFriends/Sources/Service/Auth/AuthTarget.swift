@@ -10,7 +10,13 @@ import Moya
 
 enum AuthTarget {
     case isUser
-    case signUp
+    case signUp(
+        phoneNumber: String,
+        FCMToken: String,
+        nick: String,
+        birth: Date,
+        email: String,
+        gender: Int)
     case withdraw
 }
 
@@ -45,14 +51,15 @@ extension AuthTarget: TargetType {
         switch self {
         case .isUser:
             return .requestPlain
-        case .signUp:
+        case .signUp(let phoneNumber, let FCMtoken, let nick,
+                     let birth, let email, let gender):
             let params: [String: Any] = [
-                "phoneNumber": AuthUserDefaults.phoneNumber,
-                "FCMtoken": AuthUserDefaults.FCMtoken,
-                "nick": AuthUserDefaults.nick,
-                "birth": AuthUserDefaults.birth,
-                "email": AuthUserDefaults.email,
-                "gender": AuthUserDefaults.gender
+                "phoneNumber": phoneNumber,
+                "FCMtoken": FCMtoken,
+                "nick": nick,
+                "birth": birth,
+                "email": email,
+                "gender": gender
             ]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .withdraw:
@@ -62,7 +69,7 @@ extension AuthTarget: TargetType {
     
     var headers: [String: String]? {
         var headers = MoyaSupports.Headers.idtoken.toDict()
-        if self == .signUp {
+        if case .signUp = self {
             headers.append(MoyaSupports.Headers.contentType(.form).toDict())
         }
         debug(title: "headers", headers)

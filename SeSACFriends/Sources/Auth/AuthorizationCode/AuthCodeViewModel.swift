@@ -30,7 +30,7 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
     struct Output {
         let remainTime: Observable<Int>
         let buttonState: Observable<ButtonStyleState>
-        let sentAuthCode: Observable<Void>
+        let sentAuthCode: Observable<String>
         let makeRootMainViewController: Observable<Void>
         let pushNicknameViewControoler: Observable<Void>
     }
@@ -53,9 +53,16 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
                 input.resendButtonTap,
                 input.viewDidLoad.filter { $0 }.mapToVoid()
             )
-            .flatMap(firebaseAPI.verifyPhoneNumber)
-            .mapToVoid()
-            .debug()
+            .flatMap { [weak self] () -> Observable<Event<String>> in
+                guard let self = self else { return Observable.just(Event.completed) }
+                return self.firebaseAPI.verifyPhoneNumber()
+                    .asObservable()
+                    .materialize()
+            }
+        
+        sendAuthCode.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
         
         // Validation
         let buttonState: Observable<ButtonStyleState> = authCode
@@ -113,7 +120,7 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
         return Output(
             remainTime: remainTime,
             buttonState: buttonState,
-            sentAuthCode: sendAuthCode,
+            sentAuthCode: sendAuthCode.elements(),
             makeRootMainViewController: makeRootMainViewController,
             pushNicknameViewControoler: pushNicknameViewControoler
         )

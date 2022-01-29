@@ -35,8 +35,21 @@ class AuthAPI {
             }
         }
     
-    func signUp() -> Single<Void> {
-        return provider.rx.request(.signUp)
+    func signUp(
+        phoneNumber: String = AuthUserDefaults.phoneNumber,
+        FCMtoken: String = AuthUserDefaults.FCMtoken,
+        nick: String = AuthUserDefaults.nick,
+        birth: Date = AuthUserDefaults.birth,
+        email: String = AuthUserDefaults.email,
+        gender: Int = AuthUserDefaults.gender
+    ) -> Single<Void> {
+        
+        let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"
+//        let birth = DateFormatter().string(from: birth)
+        return provider.rx.request(.signUp(
+            phoneNumber: phoneNumber, FCMToken: FCMtoken, nick: nick,
+            birth: birth, email: email, gender: gender)
+        )
             .map { response in
                 switch response.statusCode {
                 case 200:
