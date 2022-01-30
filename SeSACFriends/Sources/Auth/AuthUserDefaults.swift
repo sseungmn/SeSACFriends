@@ -17,4 +17,12 @@ class AuthUserDefaults {
     
     @UserDefault("verificationID", defaultValue: "") static var verificaitonID: String
     @UserDefault("idtoken", defaultValue: "") static var idtoken: String
+    
+    static func clearAuthParams() {
+        self.phoneNumber = ""
+        self.nick = ""
+        self.birth = Date(timeIntervalSinceReferenceDate: 0)
+        self.email = ""
+        self.gender = -1
+    }
 }

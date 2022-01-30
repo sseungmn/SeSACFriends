@@ -17,4 +17,14 @@ extension UIViewController {
     func push(viewController: UIViewController) {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func pop<T: BaseViewController>(to viewController: T, completion: ((T) -> Void)? = nil) {
+        guard let navigationStack = self.navigationController?.viewControllers else { return }
+        for viewController in navigationStack {
+            if let targetViewController = viewController as? T {
+                completion?(targetViewController)
+                self.navigationController?.popToViewController(targetViewController, animated: false)
+            }
+        }
+    }
 }
