@@ -12,11 +12,11 @@ import RxCocoa
 
 class GenderViewModel: ViewModel {
     
-    var disposeBag: DisposeBag = DisposeBag()
-    
     let man = BehaviorRelay<Bool>(value: false)
     let woman = BehaviorRelay<Bool>(value: false)
     let gender = BehaviorRelay<Int>(value: -1)
+    
+    let authAPI: AuthAPI = AuthAPI()
     
     struct Input {
         let manButtonTap: Driver<Void>
@@ -28,6 +28,9 @@ class GenderViewModel: ViewModel {
         let manButtonState: Driver<ButtonStyleState>
         let womanButtonState: Driver<ButtonStyleState>
         let confirmButtonState: Driver<ButtonStyleState>
+        let makeRootMainViewController: Driver<Void>
+        let alreadyUser: Driver<Void>
+        let invalidNickname: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -42,7 +45,7 @@ class GenderViewModel: ViewModel {
             .disposed(by: disposeBag)
         
         input.womanButtonTap
-            .map { _ in
+            .map { 
                 if self.man.value && !self.woman.value {
                     self.man.accept(false)
                 }
@@ -53,12 +56,10 @@ class GenderViewModel: ViewModel {
         
         let manButtonState: Driver<ButtonStyleState> = man
             .asDriver()
-            .debug("man")
             .map { $0 ? ButtonStyleState.fill : ButtonStyleState.inactive }
         
         let womanButtonState: Driver<ButtonStyleState> = woman
             .asDriver()
-            .debug("woman")
             .map { $0 ? ButtonStyleState.fill : ButtonStyleState.inactive }
         
         let confirmButtonState: Driver<ButtonStyleState> = Driver
@@ -68,17 +69,50 @@ class GenderViewModel: ViewModel {
             .map { $0 ? ButtonStyleState.fill : ButtonStyleState.disable }
         
         Driver.combineLatest(man.asDriver(), woman.asDriver()) { man, woman in
-            if woman { return 1 }
-            else if man { return 2 }
-            else { return -1 }
+            if woman {
+                return 1
+            } else if man {
+                return 2
+            } else {
+                return -1
+            }
         }
         .drive(gender)
         .disposed(by: disposeBag)
         
+        let signup = input.confirmButtonTap.asObservable()
+            .flatMapLatest { [weak self] () -> Observable<Event<Void>> in
+                guard let self = self else { return Observable.just(Event.completed) }
+                return self.authAPI.signUp()
+                    .asObservable()
+                    .materialize()
+            }
+            .share()
+        
+        let makeRootMainViewController = signup.elements()
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                AuthUserDefaults.gender = self.gender.value
+            })
+            .asDriverOnErrorJustComplete()
+        
+        let alreadyUser: Driver<Void> = signup.errors()
+            .filter { $0 as? APIError == .already }
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+            
+        let invalidNickname = signup.errors()
+            .filter { $0 as? APIError == .invalidNickname }
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        
         return Output(
             manButtonState: manButtonState,
             womanButtonState: womanButtonState,
-            confirmButtonState: confirmButtonState
+            confirmButtonState: confirmButtonState,
+            makeRootMainViewController: makeRootMainViewController,
+            alreadyUser: alreadyUser,
+            invalidNickname: invalidNickname
         )
     }
 }

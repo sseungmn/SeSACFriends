@@ -38,5 +38,23 @@ class GenderViewController: BaseViewController {
         output.confirmButtonState
             .drive(self.mainView.button.rx.styleState)
             .disposed(by: disposeBag)
+        
+        output.makeRootMainViewController
+            .drive { [weak self] _ in
+                self?.makeRoot(viewController: MainViewController())
+            }
+            .disposed(by: disposeBag)
+        
+        output.alreadyUser
+            .drive { [weak self] _ in
+                self?.view.makeToast("이미 가입한 회원입니다.")
+            }
+            .disposed(by: disposeBag)
+            
+        output.invalidNickname
+            .drive { [weak self] _ in
+                self?.navigationController?.popToViewController(NicknameViewController(), animated: false)
+            }
+            .disposed(by: disposeBag)
     }
 }

@@ -25,35 +25,30 @@ class EmailViewModel: ViewModel, ViewModelType {
     func transform(input: Input) -> Output {
         let isValidEmail = email
             .map(validate)
-            .share()
+            .asDriver(onErrorJustReturn: false)
         
         let buttonState: Driver<ButtonStyleState> = isValidEmail
             .map { $0 ? .fill : .disable }
             .asDriver(onErrorJustReturn: .disable)
         
-        let validEmail = input.confirmButtonTap.asObservable()
+        let validEmail = input.confirmButtonTap
             .withLatestFrom(isValidEmail)
-            .share()
         
         validEmail
             .filter { !$0 }
-            .subscribe(onNext: { [weak self] _ in
+            .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.errorCollector.accept(EmailError.invalidEmail)
             })
             .disposed(by: disposeBag)
         
-        validEmail
-            .filter { $0 }
-            .subscribe(onNext: { [weak self] _ in
+        let pushGenderViewController = validEmail
+            .filter { $0 }.mapToVoid()
+            .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 AuthUserDefaults.email = self.email.value
             })
-            .disposed(by: disposeBag)
-        
-        let pushGenderViewController = validEmail
-            .filter { $0 }.mapToVoid()
-            .asDriver(onErrorJustReturn: ())
+            .asDriver()
         
         return Output(
             buttonState: buttonState,

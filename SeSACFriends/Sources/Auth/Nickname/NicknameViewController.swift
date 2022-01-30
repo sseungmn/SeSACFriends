@@ -27,7 +27,7 @@ class NicknameViewController: BaseViewController {
     
     override func bind() {
         let input = NicknameViewModel.Input(
-            submitButtonTap: mainView.button.rx.tap.debug("submitButtonTap")
+            submitButtonTap: mainView.button.rx.tap.asDriver()
         )
         
         let output = viewModel.transform(input: input)
@@ -35,11 +35,11 @@ class NicknameViewController: BaseViewController {
         mainView.nicknameTextField.rx.textInput <-> viewModel.nick
         
         output.buttonState
-            .bind(to: mainView.button.rx.styleState)
+            .drive(mainView.button.rx.styleState)
             .disposed(by: disposeBag)
         
         output.validNickname
-            .subscribe(onNext: { valid in
+            .drive(onNext: { valid in
                 switch valid {
                 case true:
                     self.push(viewController: BirthViewController())

@@ -14,32 +14,36 @@ class NicknameViewModel: ViewModel, ViewModelType {
     let nick = BehaviorRelay<String>(value: AuthUserDefaults.nick)
     
     struct Input {
-        let submitButtonTap: Observable<Void>
+        let submitButtonTap: Driver<Void>
     }
     
     struct Output {
-        let buttonState: Observable<ButtonStyleState>
-        let validNickname: Observable<Bool>
+        let buttonState: Driver<ButtonStyleState>
+        let validNickname: Driver<Bool>
     }
     
     func transform(input: Input) -> Output {
         
         let validation = nick
             .map(validation)
-            .share()
+            .asDriver(onErrorJustReturn: false)
                 
-        let buttonState: Observable<ButtonStyleState> = validation
+        let buttonState: Driver<ButtonStyleState> = validation
             .map { $0 ? .fill : .disable }
+            .asDriver(onErrorJustReturn: .disable)
         
-        let validNickname = input.submitButtonTap
-            .withLatestFrom(validation)
-            .share()
-        
-        validNickname
-            .filter { $0 }
-            .subscribe(onNext: { [weak self] _ in
+        let validNickname: Driver<Bool> = input.submitButtonTap
+            .do(onNext: { [weak self] in
                 guard let self = self else { return }
                 AuthUserDefaults.nick = self.nick.value
+            })
+            .withLatestFrom(validation)
+            .asDriver(onErrorJustReturn: false)
+        
+        validNickname
+            .filter { !$0 }
+            .drive(onNext: {  _ in
+                AuthUserDefaults.nick = ""
             })
             .disposed(by: disposeBag)
         

@@ -13,12 +13,12 @@ import RxCocoa
 class BirthViewModel: ViewModel, ViewModelType {
     
     let birth = BehaviorRelay<Date>(value: AuthUserDefaults.birth)
-    let year = PublishRelay<Int?>()
-    let month = PublishRelay<Int?>()
-    let day = PublishRelay<Int?>()
+    let year = BehaviorRelay<Int>(value: 0)
+    let month = BehaviorRelay<Int>(value: 0)
+    let day = BehaviorRelay<Int>(value: 0)
     
     struct Input {
-        let submitButtonTap: Observable<Void>
+        let submitButtonTap: Driver<Void>
     }
     
     struct Output {
@@ -29,52 +29,39 @@ class BirthViewModel: ViewModel, ViewModelType {
         let monthFocus: Driver<Void>
         let dayFocus: Driver<Void>
         let buttonState: Driver<ButtonStyleState>
-        let pushEmailViewController: Signal<Void>
+        let pushEmailViewController: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
-        let birthObservable = birth.share()
+        let birthDriver = birth.asDriver()
+        let yearDriver = year.asDriver()
+        let monthDriver = month.asDriver()
+        let dayDriver = day.asDriver()
         
-        birthObservable
-            .map { $0.component(for: .year) }
-            .bind(to: year)
+        birthDriver
+            .compactMap { $0.component(for: .year) }
+            .drive(year)
             .disposed(by: disposeBag)
         
-        birthObservable
-            .map { $0.component(for: .month) }
-            .bind(to: month)
+        birthDriver
+            .compactMap { $0.component(for: .month) }
+            .drive(month)
             .disposed(by: disposeBag)
         
-        birthObservable
-            .map { $0.component(for: .day) }
-            .bind(to: day)
+        birthDriver
+            .compactMap { $0.component(for: .day) }
+            .drive(day)
             .disposed(by: disposeBag)
             
-        let yearDriver = year
-            .asDriver(onErrorJustReturn: nil)
-            .compactMap { $0 }
-            .distinctUntilChanged()
-        
-        let monthDriver = month
-            .asDriver(onErrorJustReturn: nil)
-            .compactMap { $0 }
-            .distinctUntilChanged()
-        
-        let dayDriver = day
-            .asDriver(onErrorJustReturn: nil)
-            .compactMap { $0 }
-            .distinctUntilChanged()
-        
         let buttonState: Driver<ButtonStyleState> = Driver
             .combineLatest(yearDriver, monthDriver, dayDriver)
             .map {  _ in .fill }
         
-        input.submitButtonTap
-            .subscribe(onNext: { [weak self] _ in
+        let pushEmailViewController = input.submitButtonTap
+            .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 AuthUserDefaults.birth = self.birth.value
             })
-            .disposed(by: disposeBag)
         
         return Output(
             yearString: yearDriver.map { String($0) },
@@ -84,7 +71,7 @@ class BirthViewModel: ViewModel, ViewModelType {
             monthFocus: monthDriver.mapToVoid(),
             dayFocus: dayDriver.mapToVoid(),
             buttonState: buttonState,
-            pushEmailViewController: input.submitButtonTap.asSignal(onErrorJustReturn: ())
+            pushEmailViewController: pushEmailViewController
         )
     }
 }

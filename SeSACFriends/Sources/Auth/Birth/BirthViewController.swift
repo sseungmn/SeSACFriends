@@ -25,7 +25,7 @@ class BirthViewController: BaseViewController {
     
     override func bind() {
         let input = BirthViewModel.Input(
-            submitButtonTap: self.mainView.button.rx.tap.debug("submitButotnTap")
+            submitButtonTap: self.mainView.button.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         
@@ -56,7 +56,7 @@ class BirthViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.pushEmailViewController
-            .emit { [weak self] _ in
+            .drive { [weak self] _ in
                 self?.push(viewController: EmailViewController())
             }
             .disposed(by: disposeBag)

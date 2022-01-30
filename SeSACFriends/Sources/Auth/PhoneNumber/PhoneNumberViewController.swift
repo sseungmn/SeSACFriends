@@ -26,7 +26,7 @@ class PhoneNumberViewController: BaseViewController {
     
     override func bind() {
         let input = PhoneNumberViewModel.Input(
-            submitButtonTap: mainView.button.rx.tap
+            submitButtonTap: mainView.button.rx.tap.asDriver()
         )
         
         let output = viewModel.transform(input: input)
@@ -34,15 +34,15 @@ class PhoneNumberViewController: BaseViewController {
         mainView.phoneNumberTextField.rx.textInput <-> viewModel.phoneNumber
         
         output.outputText
-            .bind(to: mainView.phoneNumberTextField.rx.text)
+            .drive(mainView.phoneNumberTextField.rx.text)
             .disposed(by: disposeBag)
         
         output.buttonState
-            .bind(to: mainView.button.rx.styleState)
+            .drive(mainView.button.rx.styleState)
             .disposed(by: disposeBag)
         
         output.verifyResult
-            .subscribe(onNext: { [weak self] verificationID in
+            .drive(onNext: { [weak self] verificationID in
                 debug(title: "verificationID", verificationID)
                 AuthUserDefaults.verificaitonID = verificationID
                 self?.push(viewController: AuthCodeViewController())

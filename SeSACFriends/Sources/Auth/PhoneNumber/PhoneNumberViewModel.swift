@@ -21,13 +21,13 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
     let firebaseAPI: Firebase = Firebase()
     
     struct Input {
-        let submitButtonTap: ControlEvent<Void>
+        let submitButtonTap: Driver<Void>
     }
     
     struct Output {
-        let outputText: Observable<String>
-        let buttonState: Observable<ButtonStyleState>
-        let verifyResult: Observable<String>
+        let outputText: Driver<String>
+        let buttonState: Driver<ButtonStyleState>
+        let verifyResult: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -42,12 +42,18 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
                     return String(Array(text)[..<13])
                 }
             }
+            .asDriver(onErrorJustReturn: "")
         
-        let buttonState: Observable<ButtonStyleState> = phoneNumber
+        let buttonState: Driver<ButtonStyleState> = phoneNumber
             .map(validateNumber)
             .map { $0 ? .fill : .disable }
+            .asDriver(onErrorJustReturn: .disable)
         
-        let result = input.submitButtonTap
+        let result = input.submitButtonTap.asObservable()
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                AuthUserDefaults.phoneNumber = self.phoneNumber.value
+            })
             .flatMap { [weak self] () -> Observable<Event<String>> in
                 guard let self = self else { return Observable.just(.completed)}
                 return self.firebaseAPI.verifyPhoneNumber()
@@ -56,14 +62,10 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
             }
             .share()
         
-        result
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                AuthUserDefaults.phoneNumber = self.phoneNumber.value
-            })
-            .disposed(by: disposeBag)
-        
         result.errors()
+            .do(onNext: { _ in
+                AuthUserDefaults.phoneNumber = ""
+            })
             .bind(to: errorCollector)
             .disposed(by: disposeBag)
         
@@ -71,6 +73,7 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
             outputText: outputText,
             buttonState: buttonState,
             verifyResult: result.elements()
+                .asDriver(onErrorJustReturn: "")
         )
     }
     
