@@ -23,7 +23,7 @@ class ViewModel {
     init() {
         self.errorCollector
             .subscribe(onNext: { error in
-                print("ERROR", error)
+                debug(title: "ERROR", error)
             })
             .disposed(by: disposeBag)
     }

@@ -14,11 +14,12 @@ class UserDefault<Type> {
     
     var wrappedValue: Type {
         get {
-            debug(title: "getting \(self.key)")
-            return UserDefaults.standard.object(forKey: self.key) as? Type ?? self.defaultValue
+            let value = UserDefaults.standard.object(forKey: self.key) as? Type ?? self.defaultValue
+            debug(title: "UserDefault getting \(self.key)", value)
+            return value
         }
         set {
-            debug(title: "setting \(self.key)", newValue)
+            debug(title: "UserDefault setting \(self.key)", newValue)
             UserDefaults.standard.set(newValue, forKey: self.key)
         }
     }
