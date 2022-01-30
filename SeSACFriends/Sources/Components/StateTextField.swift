@@ -136,4 +136,3 @@ extension StateTextField {
         // infoLabel text color
     }
 }
-

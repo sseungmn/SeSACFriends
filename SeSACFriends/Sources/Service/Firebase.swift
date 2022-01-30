@@ -15,6 +15,7 @@ class Firebase {
     
     func verifyPhoneNumber(phoneNumber: String = AuthUserDefaults.phoneNumber) -> Single<String> {
         let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"
+        print(phoneNumber)
         return Single<String>.create { single in
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
