@@ -82,6 +82,7 @@ class GenderViewModel: ViewModel {
             .flatMapLatest { () -> Observable<Event<Void>> in
                 return AuthAPI.shared.signUp()
                     .asObservable()
+                    .retryWithTokenIfNeeded()
                     .materialize()
             }
             .share()
