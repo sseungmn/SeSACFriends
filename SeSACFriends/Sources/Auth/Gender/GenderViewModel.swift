@@ -16,8 +16,6 @@ class GenderViewModel: ViewModel {
     let woman = BehaviorRelay<Bool>(value: false)
     let gender = BehaviorRelay<Int>(value: -1)
     
-    let authAPI: AuthAPI = AuthAPI()
-    
     struct Input {
         let manButtonTap: Driver<Void>
         let womanButtonTap: Driver<Void>
@@ -81,9 +79,8 @@ class GenderViewModel: ViewModel {
         .disposed(by: disposeBag)
         
         let signup = input.confirmButtonTap.asObservable()
-            .flatMapLatest { [weak self] () -> Observable<Event<Void>> in
-                guard let self = self else { return Observable.just(Event.completed) }
-                return self.authAPI.signUp()
+            .flatMapLatest { () -> Observable<Event<Void>> in
+                return AuthAPI.shared.signUp()
                     .asObservable()
                     .materialize()
             }
@@ -95,7 +92,11 @@ class GenderViewModel: ViewModel {
                 AuthUserDefaults.gender = self.gender.value
             })
             .asDriverOnErrorJustComplete()
-        
+                
+        signup.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
+                
         let alreadyUser: Driver<Void> = signup.errors()
             .filter { $0 as? APIError == .already }
             .mapToVoid()

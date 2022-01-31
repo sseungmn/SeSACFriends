@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum CommonTarget {
-    case refrechFCMtoken
+    case refrechFCMtoken(FCMtoken: String)
 }
 
 extension CommonTarget: TargetType {
@@ -33,8 +33,8 @@ extension CommonTarget: TargetType {
     
     var task: Task {
         switch self {
-        case .refrechFCMtoken:
-            let params: [String: Any] = ["FCMtoken": AuthUserDefaults.FCMtoken]
+        case .refrechFCMtoken(let FCMtoken):
+            let params: [String: Any] = ["FCMtoken": FCMtoken]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }

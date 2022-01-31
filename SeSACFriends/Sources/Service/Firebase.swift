@@ -13,6 +13,8 @@ import RxSwift
 import RxCocoa
 
 class Firebase {
+    static let shared = Firebase()
+    private init() {}
     
     func verifyPhoneNumber(phoneNumber: String = AuthUserDefaults.phoneNumber) -> Single<String> {
         let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"

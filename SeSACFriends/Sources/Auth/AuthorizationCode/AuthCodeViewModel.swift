@@ -18,9 +18,6 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
     let timeLimit = 60
     let setTimer = BehaviorRelay<Void>(value: ())
     
-    let firebaseAPI: Firebase = Firebase()
-    let authAPI: AuthAPI = AuthAPI()
-    
     struct Input {
         let resendButtonTap: Observable<Void>
         let submitButtonTap: Observable<Void>
@@ -53,9 +50,8 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
                 input.resendButtonTap,
                 input.viewDidLoad.filter { $0 }.mapToVoid()
             )
-            .flatMap { [weak self] () -> Observable<Event<String>> in
-                guard let self = self else { return Observable.just(Event.completed) }
-                return self.firebaseAPI.verifyPhoneNumber()
+            .flatMap { () -> Observable<Event<String>> in
+                return Firebase.shared.verifyPhoneNumber()
                     .asObservable()
                     .materialize()
             }
@@ -83,9 +79,8 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
             .withLatestFrom(remainTime)
             .filter { $0 > 0 }
             .withLatestFrom(authCode.asObservable())
-            .flatMapLatest { [weak self] authCode -> Observable<Event<Void>> in
-                guard let self = self else { return Observable.just(Event.completed) }
-                return self.firebaseAPI.credential(verificationCode: authCode)
+            .flatMapLatest { authCode -> Observable<Event<Void>> in
+                return Firebase.shared.credential(verificationCode: authCode)
                     .asObservable()
                     .materialize()
             }
@@ -96,9 +91,8 @@ class AuthCodeViewModel: ViewModel, ViewModelType {
         
         // check isUser
         let isUser = idtoken.elements()
-            .flatMapLatest { [weak self] () -> Observable<Event<Bool>> in
-                guard let self = self else { return Observable.just(Event.completed) }
-                return self.authAPI.isUser()
+            .flatMapLatest { () -> Observable<Event<Bool>> in
+                return AuthAPI.shared.isUser()
                     .asObservable()
                     .materialize()
             }

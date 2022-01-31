@@ -17,6 +17,9 @@ enum AuthCodeError: Error {
 }
 
 class AuthAPI {
+    static let shared = AuthAPI()
+    private init() {}
+    
     let provider = MoyaProvider<AuthTarget>()
     
     func isUser() -> Single<Bool> {

@@ -11,11 +11,15 @@ import Moya
 import RxSwift
 
 class CommonAPI {
+    static let shared = CommonAPI()
+    private init() {}
     
     let provider = MoyaProvider<CommonTarget>()
     
-    func refreshFCMtoken() -> Single<Bool> {
-        provider.rx.request(.refrechFCMtoken)
+    func refreshFCMtoken(_ FCMtoken: String = AuthUserDefaults.FCMtoken) -> Single<Bool> {
+        provider.rx.request(
+            .refrechFCMtoken(FCMtoken: FCMtoken)
+        )
             .map { response in
                 switch response.statusCode {
                 case 200:

@@ -17,9 +17,6 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
     
     let phoneNumber = BehaviorRelay<String>(value: AuthUserDefaults.phoneNumber)
     
-    let authAPI: AuthAPI = AuthAPI()
-    let firebaseAPI: Firebase = Firebase()
-    
     struct Input {
         let submitButtonTap: Driver<Void>
     }
@@ -54,9 +51,8 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
                 guard let self = self else { return }
                 AuthUserDefaults.phoneNumber = self.phoneNumber.value
             })
-            .flatMap { [weak self] () -> Observable<Event<String>> in
-                guard let self = self else { return Observable.just(.completed)}
-                return self.firebaseAPI.verifyPhoneNumber()
+            .flatMap { () -> Observable<Event<String>> in
+                return Firebase.shared.verifyPhoneNumber()
                     .asObservable()
                     .materialize()
             }
