@@ -8,6 +8,7 @@
 import Foundation
 
 import FirebaseAuth
+import FirebaseMessaging
 import RxSwift
 import RxCocoa
 
@@ -56,6 +57,23 @@ class Firebase {
                         AuthUserDefaults.idtoken = idToken
                         single(.success(()))
                     }
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    @discardableResult
+    func token() -> Single<Void> {
+        return Single<Void>.create { single in
+            Messaging.messaging().token { FCMtoken, error in
+                if let error = error {
+                    debug(title: "Error fetching FCM registration token", "\(error)")
+                    single(.failure(error))
+                } else if let FCMtoken = FCMtoken {
+                    debug(title: "Firebase fetching FCM registration token", String(describing: FCMtoken))
+                    AuthUserDefaults.FCMtoken = FCMtoken
+                    single(.success(()))
                 }
             }
             return Disposables.create()

@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
 import Firebase
 import FirebaseMessaging
+import RxSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,14 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Auth.auth().languageCode = "kr"
         
-        Messaging.messaging().delegate = self
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-              AuthUserDefaults.FCMtoken = token
-          }
-        }
+        registerNotification(application)
+        registerMessaging(application)
         
         return true
     }
@@ -41,9 +35,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: Register to Fireabse
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func registerNotification(_ application: UIApplication) {
+        if #available(iOS 10.0, *) {
+          // For iOS 10 display notification (sent via APNS)
+          UNUserNotificationCenter.current().delegate = self
+
+          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+          UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in }
+          )
+        } else {
+          let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+          application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+    }
+    
+    func registerMessaging(_ application: UIApplication) {
+        Messaging.messaging().delegate = self
+    }
+}
+
+// MARK: Receieve AutoRefresh
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        guard let fcmToken = fcmToken else { return }
-        AuthUserDefaults.FCMtoken = fcmToken
+        debug(title: "Firebase registration token", String(describing: fcmToken))
+        guard let FCMtoken = fcmToken else { return }
+        CommonAPI.shared.refreshFCMtoken(FCMtoken)
+            .retry(3)
+            .filter { $0 }
+            .subscribe(onSuccess: {_ in
+                AuthUserDefaults.FCMtoken = FCMtoken
+            })
+            .dispose()
     }
 }
