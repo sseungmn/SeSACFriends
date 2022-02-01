@@ -47,7 +47,13 @@
 		B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5100B7B279F0E27009BBF8D /* AuthTarget.swift */; };
 		B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5344E3F27A280C000A73EB2 /* Rx+UtilExtension.swift */; };
 		B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */; };
-		B53B9A5827A7DAEE00384FF5 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5727A7DAEE00384FF5 /* Token.swift */; };
+		B53B9A5C27A9384200384FF5 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5B27A9384200384FF5 /* MyInfoView.swift */; };
+		B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6227A94D9600384FF5 /* Reusable.swift */; };
+		B53B9A6527A9502600384FF5 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6427A9502600384FF5 /* MyInfoViewController.swift */; };
+		B53B9A6727A9564D00384FF5 /* MyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6627A9564D00384FF5 /* MyInfoCell.swift */; };
+		B53B9A6927A968E300384FF5 /* MyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6827A968E300384FF5 /* MyInfoViewModel.swift */; };
+		B53B9A6B27A96A5900384FF5 /* MyInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6A27A96A5900384FF5 /* MyInfoSection.swift */; };
+		B53B9A6F27A992AB00384FF5 /* SettingMyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -70,7 +76,6 @@
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
-		B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FAA327970E6A00BE997E /* Preview.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,7 +143,13 @@
 		B5344E3F27A280C000A73EB2 /* Rx+UtilExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UtilExtension.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+ServiceExtension.swift"; sourceTree = "<group>"; };
-		B53B9A5727A7DAEE00384FF5 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		B53B9A5B27A9384200384FF5 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
+		B53B9A6227A94D9600384FF5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		B53B9A6427A9502600384FF5 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		B53B9A6627A9564D00384FF5 /* MyInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoCell.swift; sourceTree = "<group>"; };
+		B53B9A6827A968E300384FF5 /* MyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewModel.swift; sourceTree = "<group>"; };
+		B53B9A6A27A96A5900384FF5 /* MyInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoSection.swift; sourceTree = "<group>"; };
+		B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoViewController.swift; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		B567A86D2798517B005433F8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -165,7 +176,6 @@
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
-		B5C0FAA327970E6A00BE997E /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -315,20 +325,19 @@
 		B53B9A5927A937EC00384FF5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B53B9A5A27A9382A00384FF5 /* Myinfo */,
+				B53B9A5A27A9382A00384FF5 /* MyInfo */,
 				B567A88627994BA4005433F8 /* Auth */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		B53B9A5A27A9382A00384FF5 /* Myinfo */ = {
+		B53B9A5A27A9382A00384FF5 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				B53B9A5B27A9384200384FF5 /* MyinfoView.swift */,
-				B53B9A5F27A94C6600384FF5 /* MyinfoCell.swift */,
-				B53B9A6427A9502600384FF5 /* MyinfoViewController.swift */,
+				B53B9A6D27A9928E00384FF5 /* SettingMyInfo */,
+				B53B9A6C27A9927800384FF5 /* MyInfo */,
 			);
-			path = Myinfo;
+			path = MyInfo;
 			sourceTree = "<group>";
 		};
 		B53B9A6127A94D6500384FF5 /* Utility */ = {
@@ -340,6 +349,26 @@
 				B504637C2799C99700885DAD /* Extension */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		B53B9A6C27A9927800384FF5 /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B53B9A6627A9564D00384FF5 /* MyInfoCell.swift */,
+				B53B9A6A27A96A5900384FF5 /* MyInfoSection.swift */,
+				B53B9A6827A968E300384FF5 /* MyInfoViewModel.swift */,
+				B53B9A5B27A9384200384FF5 /* MyInfoView.swift */,
+				B53B9A6427A9502600384FF5 /* MyInfoViewController.swift */,
+			);
+			path = MyInfo;
+			sourceTree = "<group>";
+		};
+		B53B9A6D27A9928E00384FF5 /* SettingMyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
+			);
+			path = SettingMyInfo;
 			sourceTree = "<group>";
 		};
 		B567A8672798134D005433F8 /* Application */ = {
@@ -456,7 +485,6 @@
 			isa = PBXGroup;
 			children = (
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
-				B5C0FAA327970E6A00BE997E /* Preview.swift */,
 				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
 			);
 			path = Support;
@@ -805,7 +833,6 @@
 				B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
-				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
@@ -815,13 +842,15 @@
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */,
-				B53B9A5C27A9384200384FF5 /* MyinfoView.swift in Sources */,
+				B53B9A5C27A9384200384FF5 /* MyInfoView.swift in Sources */,
 				B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */,
 				B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */,
+				B53B9A6B27A96A5900384FF5 /* MyInfoSection.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
+				B53B9A6727A9564D00384FF5 /* MyInfoCell.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
-				B53B9A6527A9502600384FF5 /* MyinfoViewController.swift in Sources */,
+				B53B9A6527A9502600384FF5 /* MyInfoViewController.swift in Sources */,
 				B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
@@ -833,9 +862,11 @@
 				B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
+				B53B9A6927A968E300384FF5 /* MyInfoViewModel.swift in Sources */,
 				B5010C7B27A05E0100AD689A /* CommonTarget.swift in Sources */,
 				B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */,
 				B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */,
+				B53B9A6F27A992AB00384FF5 /* SettingMyInfoViewController.swift in Sources */,
 				B5010C8027A064C600AD689A /* Dictionary+Extension.swift in Sources */,
 				B567A88527990536005433F8 /* StateTextField.swift in Sources */,
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
@@ -848,7 +879,6 @@
 				B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
 				B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */,
-				B53B9A6027A94C6600384FF5 /* MyinfoCell.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
 			);

@@ -9,8 +9,11 @@ import UIKit
 import Then
 import SnapKit
 
-class MyinfoView: View {
-    let tableView = UITableView()
+class MyInfoView: View {
+    let tableView = UITableView().then { tableView in
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 17)
+        tableView.isScrollEnabled = false
+    }
     
     override func setConstraint() {
         addSubview(tableView)
