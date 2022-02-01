@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NicknameView: AuthBaseView {
+class NicknameView: AuthView {
     let nicknameTextField = StateTextField()
     
     override func configure() {

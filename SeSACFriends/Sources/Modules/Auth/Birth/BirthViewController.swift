@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class BirthViewController: BaseViewController {
+class BirthViewController: ViewController {
     
     let mainView = BirthView()
     let viewModel = BirthViewModel()

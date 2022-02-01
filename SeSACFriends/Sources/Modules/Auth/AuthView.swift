@@ -9,7 +9,7 @@ import UIKit
 
 import Then
 
-class AuthBaseView: UIView {
+class AuthView: View {
     let titleLabel = ParagraphLabel().then { label in
         label.font = .Display1_R20
         label.paragraphStyle.lineHeightMultiple = 1.08
@@ -32,19 +32,7 @@ class AuthBaseView: UIView {
     
     let button = StateButton(initialStyleState: .disable)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .white
-        configure()
-        setConstraint()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure() { }
-    func setConstraint() {
+    override func setConstraint() {
         addSubview(descriptionView)
         descriptionView.snp.makeConstraints { make in
             let remainHeight = UIScreen.main.bounds.height - 290
@@ -67,7 +55,7 @@ class AuthBaseView: UIView {
     }
 }
 
-extension AuthBaseView {
+extension AuthView {
     func setDescriptionTitle(title: String) {
         descriptionView.addArrangedSubview(titleLabel)
         titleLabel.text = title

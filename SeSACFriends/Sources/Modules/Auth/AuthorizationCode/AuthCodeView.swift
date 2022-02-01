@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthCodeView: AuthBaseView {
+class AuthCodeView: AuthView {
     let authCodeStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
         stackView.distribution = .fill

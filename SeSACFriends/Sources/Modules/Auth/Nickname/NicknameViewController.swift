@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import Toast_Swift
 
-class NicknameViewController: BaseViewController {
+class NicknameViewController: ViewController {
     
     let mainView = NicknameView()
     let viewModel = NicknameViewModel()

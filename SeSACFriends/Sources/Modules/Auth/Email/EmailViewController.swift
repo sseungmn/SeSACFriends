@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class EmailViewController: BaseViewController {
+class EmailViewController: ViewController {
     
     let mainView = EmailView()
     let viewModel = EmailViewModel()

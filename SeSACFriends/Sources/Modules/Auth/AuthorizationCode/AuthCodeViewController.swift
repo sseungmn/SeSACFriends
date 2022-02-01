@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 import Toast_Swift
 
-class AuthCodeViewController: BaseViewController {
+class AuthCodeViewController: ViewController {
     
     let mainView = AuthCodeView()
     let viewModel = AuthCodeViewModel()

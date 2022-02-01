@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class PhoneNumberViewController: BaseViewController {
+class PhoneNumberViewController: ViewController {
     
     let mainView = PhoneNumberView()
     let viewModel = PhoneNumberViewModel()

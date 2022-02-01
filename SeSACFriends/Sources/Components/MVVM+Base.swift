@@ -29,11 +29,11 @@ class ViewModel {
     }
     
     deinit {
-        print("Deinit \(String(describing: self))")
+        debug(title: "Deinit", String(describing: self))
     }
 }
 
-class BaseViewController: UIViewController {
+class ViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     
@@ -44,7 +44,27 @@ class BaseViewController: UIViewController {
         bind()
     }
     
-    func configure() { }
-    func setConstraint() { }
-    func bind() { }
+    func configure() {}
+    func setConstraint() {}
+    func bind() {}
+    
+    deinit {
+        debug(title: "Deinit", String(describing: self))
+    }
+}
+
+class View: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .white
+        configure()
+        setConstraint()
+    }
+    
+    func configure() {}
+    func setConstraint() {}
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

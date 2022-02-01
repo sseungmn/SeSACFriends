@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailView: AuthBaseView {
+class EmailView: AuthView {
     let emailTextField = StateTextField().then { textField in
         textField.setPlaceholder(placeholder: "SeSAC@email.com")
         textField.keyboardType = .emailAddress

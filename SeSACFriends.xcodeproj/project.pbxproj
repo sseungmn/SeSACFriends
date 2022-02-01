@@ -55,7 +55,7 @@
 		B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A87727985E22005433F8 /* Assets+Generated.swift */; };
 		B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A87827985E22005433F8 /* Fonts+Generated.swift */; };
 		B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A87B27985F28005433F8 /* Fonts+Sementic.swift */; };
-		B567A88127987A36005433F8 /* AuthBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A88027987A36005433F8 /* AuthBaseView.swift */; };
+		B567A88127987A36005433F8 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A88027987A36005433F8 /* AuthView.swift */; };
 		B567A88527990536005433F8 /* StateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A88427990536005433F8 /* StateTextField.swift */; };
 		B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA452795DB5A00BE997E /* AppDelegate.swift */; };
 		B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */; };
@@ -146,7 +146,7 @@
 		B567A87727985E22005433F8 /* Assets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
 		B567A87827985E22005433F8 /* Fonts+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fonts+Generated.swift"; sourceTree = "<group>"; };
 		B567A87B27985F28005433F8 /* Fonts+Sementic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fonts+Sementic.swift"; sourceTree = "<group>"; };
-		B567A88027987A36005433F8 /* AuthBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBaseView.swift; sourceTree = "<group>"; };
+		B567A88027987A36005433F8 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		B567A88427990536005433F8 /* StateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTextField.swift; sourceTree = "<group>"; };
 		B5C0FA422795DB5A00BE997E /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA452795DB5A00BE997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 		B567A88627994BA4005433F8 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				B567A88027987A36005433F8 /* AuthBaseView.swift */,
+				B567A88027987A36005433F8 /* AuthView.swift */,
 				B50463692799ACD900885DAD /* PhoneNumber */,
 				B504636A2799AD0100885DAD /* AuthorizationCode */,
 				B50463752799BB5300885DAD /* Nickname */,
@@ -412,9 +412,9 @@
 		B5C0FA762795DB7D00BE997E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B53B9A5927A937EC00384FF5 /* Modules */,
 				B5046393279C810000885DAD /* Service */,
 				B504637C2799C99700885DAD /* Extension */,
-				B567A88627994BA4005433F8 /* Auth */,
 				B567A8672798134D005433F8 /* Application */,
 				B5C0FA9E2796D1C500BE997E /* Components */,
 				B5C0FA862795F89400BE997E /* MainViewController.swift */,
@@ -452,7 +452,6 @@
 				B504636727999CFE00885DAD /* ParagraphLabel.swift */,
 				B5046394279C8DB500885DAD /* MVVM+Base.swift */,
 				B504639C279D853500885DAD /* UserDefault+Wrapper.swift */,
-				B53B9A5727A7DAEE00384FF5 /* Token.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -776,7 +775,7 @@
 				B50463A9279DC88600885DAD /* AuthUserDefaults.swift in Sources */,
 				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
 				B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */,
-				B567A88127987A36005433F8 /* AuthBaseView.swift in Sources */,
+				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B5C0FAA427970E6A00BE997E /* Preview.swift in Sources */,
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
@@ -785,7 +784,6 @@
 				B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */,
 				B5010C7827A054C400AD689A /* CommonAPI.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
-				B53B9A5827A7DAEE00384FF5 /* Token.swift in Sources */,
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */,

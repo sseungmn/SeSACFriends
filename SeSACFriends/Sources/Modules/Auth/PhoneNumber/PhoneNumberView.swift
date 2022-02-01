@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhoneNumberView: AuthBaseView {
+class PhoneNumberView: AuthView {
     let phoneNumberTextField = StateTextField()
     
     override func configure() {

@@ -37,7 +37,7 @@ class BirthComponentView: UIStackView {
     }
 }
 
-class BirthView: AuthBaseView {
+class BirthView: AuthView {
     let yearComponentView = BirthComponentView().then { view in
         view.suffixLabel.text = "년"
     }

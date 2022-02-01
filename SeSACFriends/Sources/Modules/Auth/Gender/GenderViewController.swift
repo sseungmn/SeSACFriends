@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class GenderViewController: BaseViewController {
+class GenderViewController: ViewController {
     
     let mainView = GenderView()
     let viewModel = GenderViewModel()

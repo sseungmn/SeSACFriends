@@ -35,7 +35,7 @@ final class GenderButton: StateButton {
     }
 }
 
-class GenderView: AuthBaseView {
+class GenderView: AuthView {
     let manButton = GenderButton().then { button in
         button.iconImageView.image = Asset.Assets.man.image
         button.label.text = "남자"
