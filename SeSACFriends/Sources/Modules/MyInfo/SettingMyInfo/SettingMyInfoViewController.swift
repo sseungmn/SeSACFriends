@@ -9,4 +9,9 @@ import UIKit
 
 class SettingMyInfoViewController: ViewController {
     
+    let mainView = SettingMyInfoView()
+    
+    override func loadView() {
+        view = mainView
+    }
 }

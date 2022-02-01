@@ -8,15 +8,16 @@
 import Foundation
 import UIKit
 
-class Settings {
+struct Settings {
     static let shared = Settings()
+    private init() {}
     
     var character: SesacCharacter = .basic
     var background: SesacBackground = .skyPark
 }
 
 // MARK: SesacCharacter
-enum SesacCharacter {
+enum SesacCharacter: Int {
     case basic, strong, mint, purple, gold
 }
 
@@ -38,7 +39,7 @@ extension SesacCharacter {
 }
 
 // MARK: SesacBackground
-enum SesacBackground {
+enum SesacBackground: Int {
     case skyPark, latinLivingRoom
 }
 
@@ -52,4 +53,3 @@ extension SesacBackground {
         }
     }
 }
-
