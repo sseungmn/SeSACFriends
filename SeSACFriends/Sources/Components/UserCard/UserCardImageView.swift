@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class UserCardView: View {
+class UserCardImageView: View {
     
     let backgroundImageView = UIImageView().then { imageView in
         imageView.image = Settings.shared.background.image
@@ -24,6 +24,9 @@ class UserCardView: View {
     }
     
     override func setConstraint() {
+        snp.makeConstraints { make in
+            make.height.equalTo(194)
+        }
         addSubview(backgroundImageView)
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
