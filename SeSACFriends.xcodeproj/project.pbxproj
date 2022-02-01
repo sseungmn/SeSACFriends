@@ -312,6 +312,36 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		B53B9A5927A937EC00384FF5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B53B9A5A27A9382A00384FF5 /* Myinfo */,
+				B567A88627994BA4005433F8 /* Auth */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B53B9A5A27A9382A00384FF5 /* Myinfo */ = {
+			isa = PBXGroup;
+			children = (
+				B53B9A5B27A9384200384FF5 /* MyinfoView.swift */,
+				B53B9A5F27A94C6600384FF5 /* MyinfoCell.swift */,
+				B53B9A6427A9502600384FF5 /* MyinfoViewController.swift */,
+			);
+			path = Myinfo;
+			sourceTree = "<group>";
+		};
+		B53B9A6127A94D6500384FF5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B50463A2279DC52200885DAD /* Utils.swift */,
+				B53B9A6227A94D9600384FF5 /* Reusable.swift */,
+				B504639C279D853500885DAD /* UserDefault+Wrapper.swift */,
+				B504637C2799C99700885DAD /* Extension */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		B567A8672798134D005433F8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +404,7 @@
 		B5C0FA442795DB5A00BE997E /* SeSACFriends */ = {
 			isa = PBXGroup;
 			children = (
+				B53B9A6127A94D6500384FF5 /* Utility */,
 				B5C0FA752795DB6F00BE997E /* Resources */,
 				B5C0FA762795DB7D00BE997E /* Sources */,
 				B5C0FA782795DB8B00BE997E /* Support */,
@@ -414,7 +445,6 @@
 			children = (
 				B53B9A5927A937EC00384FF5 /* Modules */,
 				B5046393279C810000885DAD /* Service */,
-				B504637C2799C99700885DAD /* Extension */,
 				B567A8672798134D005433F8 /* Application */,
 				B5C0FA9E2796D1C500BE997E /* Components */,
 				B5C0FA862795F89400BE997E /* MainViewController.swift */,
@@ -428,7 +458,6 @@
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
 				B5C0FAA327970E6A00BE997E /* Preview.swift */,
 				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
-				B50463A2279DC52200885DAD /* Utils.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -445,13 +474,12 @@
 		B5C0FA9E2796D1C500BE997E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				B5046394279C8DB500885DAD /* MVVM+Base.swift */,
 				B567A8652797EB6A005433F8 /* IconButton.swift */,
 				B5C0FA9F2796D2A700BE997E /* StateButton.swift */,
 				B567A88427990536005433F8 /* StateTextField.swift */,
 				B50463632799576400885DAD /* StyleStateChangeable.swift */,
 				B504636727999CFE00885DAD /* ParagraphLabel.swift */,
-				B5046394279C8DB500885DAD /* MVVM+Base.swift */,
-				B504639C279D853500885DAD /* UserDefault+Wrapper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -787,11 +815,13 @@
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
 				B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */,
 				B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */,
+				B53B9A5C27A9384200384FF5 /* MyinfoView.swift in Sources */,
 				B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */,
 				B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
+				B53B9A6527A9502600384FF5 /* MyinfoViewController.swift in Sources */,
 				B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
@@ -817,6 +847,8 @@
 				B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */,
 				B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
+				B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */,
+				B53B9A6027A94C6600384FF5 /* MyinfoCell.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
 			);
