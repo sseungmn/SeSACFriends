@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class UserCardImageView: View {
+final class UserCardImageView: View {
     
     let backgroundImageView = UIImageView().then { imageView in
         imageView.image = Settings.shared.background.image

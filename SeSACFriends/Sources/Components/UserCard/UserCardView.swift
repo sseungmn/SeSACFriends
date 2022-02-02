@@ -13,7 +13,7 @@ import RxGesture
 final class UserCardView: View {
     
     var disposeBag = DisposeBag()
-    var isCardOpen = BehaviorRelay<Bool>(value: false)
+    var isCardClose = BehaviorRelay<Bool>(value: true)
     
     let cardImageView = UserCardImageView()
     let contentView = UIStackView().then { stackView in
@@ -28,10 +28,14 @@ final class UserCardView: View {
         stackView.spacing = 24
         stackView.distribution = .fill
     }
-    fileprivate let nickContrainer = UserCardNickContainer()
-    fileprivate let sesacTitleContainer = UserCardSubContainer(
+    private let nickContrainer = UserCardNickComponent()
+    private let reputationContainer = UserCardSubContainer(
         title: "새싹 타이틀",
-        content: SesacTitleView(isUserInteractionEnabled: false)
+        content: ReputationComponent(isUserInteractionEnabled: false)
+    )
+    private let commentContainer = UserCardSubContainer(
+        title: "새싹 리뷰",
+        content: UserCardCommentComponent()
     )
     
     override init(frame: CGRect) {
@@ -55,7 +59,8 @@ final class UserCardView: View {
             make.trailing.leading.equalToSuperview()
         }
         contentView.addArrangedSubview(nickContrainer)
-        contentView.addArrangedSubview(sesacTitleContainer)
+        contentView.addArrangedSubview(reputationContainer)
+        contentView.addArrangedSubview(commentContainer)
         
         self.snp.makeConstraints { make in
             make.bottom.equalTo(contentView)
@@ -63,13 +68,12 @@ final class UserCardView: View {
     }
     
     func bind() {
-        let isCardOpenDriver = isCardOpen.asDriver()
+        let isCardOpenDriver = isCardClose.asDriver()
         
-        self.rx.tapGesture()
+        nickContrainer.rx.tapGesture()
             .when(.recognized)
-            .scan(false) { last, _ in !last }
-            .debug()
-            .bind(to: isCardOpen)
+            .scan(true) { last, _ in !last }
+            .bind(to: isCardClose)
             .disposed(by: disposeBag)
         
         isCardOpenDriver
@@ -85,48 +89,15 @@ final class UserCardView: View {
             .disposed(by: disposeBag)
         
         isCardOpenDriver
-            .drive(sesacTitleContainer.rx.isHidden)
+            .drive(
+                reputationContainer.rx.isHidden,
+                commentContainer.rx.isHidden
+            )
             .disposed(by: disposeBag)
     }
 }
-    
-final fileprivate class UserCardNickContainer: View {
-    
-    private let nickLabel = UILabel().then { label in
-        label.font = .Title1_M16
-        label.textColor = Asset.Colors.black.color
-        label.text = AuthUserDefaults.nick
-    }
-    
-    fileprivate let openCloseImageView = UIImageView().then { imageView in
-        imageView.tintColor = Asset.Colors.gray7.color
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "chevron.down")!
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func setConstraint() {
-        addSubview(nickLabel)
-        nickLabel.snp.makeConstraints { make in
-            make.top.leading.bottom.equalToSuperview()
-        }
-        addSubview(openCloseImageView)
-        openCloseImageView.snp.makeConstraints { make in
-            make.size.equalTo(16)
-            make.centerY.trailing.equalToSuperview()
-        }
-    }
-    
-}
 
-final fileprivate class UserCardSubContainer: View {
+final private class UserCardSubContainer: View {
     private let titleLabel = UILabel().then { label in
         label.font = .Title6_R12
         label.textColor = Asset.Colors.black.color
