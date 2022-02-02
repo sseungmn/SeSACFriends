@@ -20,6 +20,7 @@ target 'SeSACFriends' do
   
   pod 'RxDataSources'
   pod 'RxSwift'
+  pod 'RxGesture'
   pod 'Moya/RxSwift'
 
   target 'SeSACFriendsTests' do
