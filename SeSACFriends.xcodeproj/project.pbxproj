@@ -70,6 +70,7 @@
 		B567A88527990536005433F8 /* StateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A88427990536005433F8 /* StateTextField.swift */; };
 		B57878F227AABCDC00BE2BF6 /* UserCardNickComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F127AABCDC00BE2BF6 /* UserCardNickComponent.swift */; };
 		B57878F427AABF5300BE2BF6 /* UserCardCommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F327AABF5300BE2BF6 /* UserCardCommentComponent.swift */; };
+		B57878F827AACF0D00BE2BF6 /* SettingGenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */; };
 		B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA452795DB5A00BE997E /* AppDelegate.swift */; };
 		B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */; };
 		B5C0FA4A2795DB5A00BE997E /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA492795DB5A00BE997E /* PhoneNumberViewController.swift */; };
@@ -173,6 +174,7 @@
 		B567A88427990536005433F8 /* StateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTextField.swift; sourceTree = "<group>"; };
 		B57878F127AABCDC00BE2BF6 /* UserCardNickComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardNickComponent.swift; sourceTree = "<group>"; };
 		B57878F327AABF5300BE2BF6 /* UserCardCommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCommentComponent.swift; sourceTree = "<group>"; };
+		B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGenderComponent.swift; sourceTree = "<group>"; };
 		B5C0FA422795DB5A00BE997E /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA452795DB5A00BE997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -380,8 +382,9 @@
 		B53B9A6D27A9928E00384FF5 /* SettingMyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
 				B53B9A7027A996E600384FF5 /* SettingMyInfoView.swift */,
+				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
+				B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */,
 			);
 			path = SettingMyInfo;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
 				B53B9A6527A9502600384FF5 /* MyInfoViewController.swift in Sources */,
 				B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */,
+				B57878F827AACF0D00BE2BF6 /* SettingGenderComponent.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
 				B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */,

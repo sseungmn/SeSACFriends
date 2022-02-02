@@ -61,10 +61,26 @@ class View: UIView {
         setConstraint()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func configure() {}
     func setConstraint() {}
+    
+}
+
+class ReactiveView: View {
+    var disposeBag = DisposeBag()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        bind()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func bind() {}
 }
