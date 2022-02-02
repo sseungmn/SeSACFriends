@@ -19,7 +19,7 @@ final class MyInfoTitleCell: UITableViewCell {
         imageView.image = Asset.Assets.profileImg.image
     }
     
-    let nameLabel = UILabel().then { label in
+    let nickLabel = UILabel().then { label in
         label.font = .Title1_M16
         label.textColor = Asset.Colors.black.color
     }
@@ -52,8 +52,8 @@ final class MyInfoTitleCell: UITableViewCell {
         leftImageView.snp.makeConstraints { make in
             make.leading.centerY.equalToSuperview()
         }
-        containerView.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { make in
+        containerView.addSubview(nickLabel)
+        nickLabel.snp.makeConstraints { make in
             make.leading.equalTo(leftImageView.snp.trailing).offset(13)
             make.centerY.equalToSuperview()
         }
@@ -66,29 +66,6 @@ final class MyInfoTitleCell: UITableViewCell {
 
 final class MyInfoCell: UITableViewCell {
     
-//    var showSeparator: Bool = false {
-//        didSet {
-//            switch showSeparator {
-//            case true:
-//                separatorView.isHidden = false
-//            case false:
-//                separatorView.isHidden = true
-//            }
-//        }
-//    }
-    
-//    let contentView = UIView().then { view in
-//        view.backgroundColor = nil
-//    }
-    
-//    let separatorView = UIView().then { separator in
-//        separator.backgroundColor = Asset.Colors.gray2.color
-//        separator.snp.makeConstraints { make in
-//            make.bottom.equalToSuperview()
-//            make.width.equalToSuperview()
-//            make.height.equalTo(1)
-//        }
-//    }
     let containerView = UIView().then { view in
         view.backgroundColor = nil
     }
