@@ -27,7 +27,7 @@ extension UIFont {
     static var Title5_M12: UIFont {
         FontFamily.NotoSansKR.medium.font(size: 12)
     }
-    static var Title5_R12: UIFont {
+    static var Title6_R12: UIFont {
         FontFamily.NotoSansKR.regular.font(size: 12)
     }
     static var Body1_M16: UIFont {
