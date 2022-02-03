@@ -86,6 +86,8 @@
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
 		B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */; };
 		B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */; };
+		B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */; };
+		B5F8543527ABA46A0013FD3E /* SetttingAgeGroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +198,8 @@
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoViewModel.swift; sourceTree = "<group>"; };
 		B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHobbyComponent.swift; sourceTree = "<group>"; };
+		B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSearchableComponent.swift; sourceTree = "<group>"; };
+		B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingAgeGroupComponent.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -386,11 +390,13 @@
 		B53B9A6D27A9928E00384FF5 /* SettingMyInfo */ = {
 			isa = PBXGroup;
 			children = (
+				B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */,
 				B53B9A7027A996E600384FF5 /* SettingMyInfoView.swift */,
 				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
 				B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */,
-				B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */,
 				B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */,
+				B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */,
+				B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */,
 			);
 			path = SettingMyInfo;
 			sourceTree = "<group>";
@@ -903,6 +909,8 @@
 				B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */,
 				B57878F427AABF5300BE2BF6 /* UserCardCommentComponent.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
+				B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */,
+				B5F8543527ABA46A0013FD3E /* SetttingAgeGroupComponent.swift in Sources */,
 				B50463742799BA8B00885DAD /* AuthCodeView.swift in Sources */,
 				B50463772799BBEE00885DAD /* NickenameView.swift in Sources */,
 				B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */,

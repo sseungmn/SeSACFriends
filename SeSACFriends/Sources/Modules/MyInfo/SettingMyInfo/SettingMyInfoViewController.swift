@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SettingMyInfoViewController: ViewController {
     
@@ -19,11 +21,14 @@ class SettingMyInfoViewController: ViewController {
     override func bind() {
         let input = SettingMyInfoViewModel.Input(
             womanOptionButtonTap: mainView.genderComponent.womanOptionButton.rx.tap.asDriver(),
-            manOptionButtonTap: mainView.genderComponent.manOptionButton.rx.tap.asDriver()
+            manOptionButtonTap: mainView.genderComponent.manOptionButton.rx.tap.asDriver(),
+            rangeValues: mainView.ageGroupComponent.rangeSlider.rx.value.asDriver()
         )
         let output = viewModel.transform(input: input)
         
         mainView.hobbyComponent.textField.rx.textInput <-> viewModel.hobby
+        mainView.searchableComponent.`switch`.rx.isOn <-> viewModel.searchable
+        mainView.ageGroupComponent.rangeSlider.rx.value <-> viewModel.ageRange
         
         output.gender.debug()
             .drive(onNext: { [weak self] gender in
@@ -41,6 +46,10 @@ class SettingMyInfoViewController: ViewController {
                     womanButton.setStyleState(styleState: .inactive)
                 }
             })
+            .disposed(by: disposeBag)
+        
+        output.ageLabelText
+            .drive(mainView.ageGroupComponent.rangeLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }

@@ -14,9 +14,10 @@ target 'SeSACFriends' do
   pod 'Socket.IO-Client-Swift'
   
   pod 'IQKeyboardManagerSwift'
-  pod 'Toast-Swift'
+  pod 'MultiSlider'
   pod 'SnapKit'
   pod 'Then'
+  pod 'Toast-Swift'
   
   pod 'RxDataSources'
   pod 'RxSwift'

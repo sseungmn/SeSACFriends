@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.5.0)
+  - AvailableHapticFeedback (1.0.2)
   - Differentiator (5.0.0)
   - Firebase/Auth (8.10.0):
     - Firebase/CoreOnly
@@ -65,6 +66,9 @@ PODS:
   - Moya/RxSwift (15.0.0):
     - Moya/Core
     - RxSwift (~> 6.0)
+  - MultiSlider (1.11.2):
+    - AvailableHapticFeedback
+    - SweeterSwift
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -92,6 +96,7 @@ PODS:
   - Socket.IO-Client-Swift (16.0.1):
     - Starscream (~> 4.0)
   - Starscream (4.0.4)
+  - SweeterSwift (1.2.0)
   - Then (2.7.0)
   - Toast-Swift (5.0.1)
 
@@ -100,6 +105,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - IQKeyboardManagerSwift
   - Moya/RxSwift
+  - MultiSlider
   - RxBlocking
   - RxDataSources
   - RxGesture
@@ -113,6 +119,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AvailableHapticFeedback
     - Differentiator
     - Firebase
     - FirebaseAuth
@@ -125,6 +132,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - Moya
+    - MultiSlider
     - nanopb
     - PromisesObjC
     - RxBlocking
@@ -137,11 +145,13 @@ SPEC REPOS:
     - SnapKit
     - Socket.IO-Client-Swift
     - Starscream
+    - SweeterSwift
     - Then
     - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
   FirebaseAuth: 59a2d2b933b5b79e18fb1e6ad230c6abdaa73d26
@@ -154,6 +164,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  MultiSlider: 944d00877d371bbb5ce0a512fec517de87958775
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
@@ -166,9 +177,10 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  SweeterSwift: 31fa8cfbdc094d3ae41bafbeaf4bceed467ba5c7
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 7eb25644e72b1e626bf34230d8d4bea5d34517be
+PODFILE CHECKSUM: 6063d91e12db4bade9ab3b4743cc2bb27280d485
 
 COCOAPODS: 1.11.2
