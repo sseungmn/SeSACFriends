@@ -17,18 +17,42 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
     let ageRange = BehaviorRelay<[CGFloat]>(value: [18, 35])
     
     struct Input {
+        let viewDidLoad: Driver<Bool>
         let womanOptionButtonTap: Driver<Void>
         let manOptionButtonTap: Driver<Void>
         let withdrawButtonTap: Driver<Void>
         let rangeValues: Driver<[CGFloat]>
     }
     struct Output {
+        let user: Driver<User>
         let gender: Driver<Gender>
         let ageLabelText: Driver<String>
         let donwWithdraw: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
+        let user = input.viewDidLoad.asObservable()
+            .filter { $0 }
+            .flatMapLatest { _ -> Observable<Event<User>> in
+                return AuthAPI.shared.getUser()
+                    .asObservable()
+                    .retryWithTokenIfNeeded()
+                    .materialize()
+            }
+            .debug()
+            .share()
+        
+        user.elements()
+            .withUnretained(self)
+            .bind { (owner, user) in
+                owner.gender.accept(user.gender.toGender)
+            }
+            .disposed(by: disposeBag)
+        
+        user.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
+        
         input.womanOptionButtonTap.debug()
             .drive { [weak self] _ in
                 guard let self = self else { return }
@@ -62,6 +86,7 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(
+            user: user.elements().asDriverOnErrorJustComplete(),
             gender: gender.asDriver(),
             ageLabelText: ageLabelText,
             donwWithdraw: withdraw.elements().asDriverOnErrorJustComplete()

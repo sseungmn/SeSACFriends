@@ -38,6 +38,22 @@ class AuthAPI {
             }
         }
     
+    func getUser() -> Single<User> {
+        return provider.rx.request(.isUser)
+            .map { response in
+                switch response.statusCode {
+                case 200:
+                    return try JSONDecoder().decode(User.self, from: response.data)
+                case 401:
+                    throw APIError.firebaseTokenError
+                case 406:
+                    throw APIError.undefinedUser
+                default:
+                    throw APIError.undefinedError
+                }
+            }
+    }
+    
     func signUp(
         phoneNumber: String = AuthUserDefaults.phoneNumber,
         FCMtoken: String = AuthUserDefaults.FCMtoken,

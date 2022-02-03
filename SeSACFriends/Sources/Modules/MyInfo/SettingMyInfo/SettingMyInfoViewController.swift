@@ -20,6 +20,7 @@ class SettingMyInfoViewController: ViewController {
     
     override func bind() {
         let input = SettingMyInfoViewModel.Input(
+            viewDidLoad: rx.viewDidLoad.asDriver(),
             womanOptionButtonTap: mainView.genderComponent.womanOptionButton.rx.tap.asDriver(),
             manOptionButtonTap: mainView.genderComponent.manOptionButton.rx.tap.asDriver(),
             withdrawButtonTap: mainView.withdrawButton.rx.tap.asDriver(),
@@ -30,6 +31,17 @@ class SettingMyInfoViewController: ViewController {
         mainView.hobbyComponent.textField.rx.textInput <-> viewModel.hobby
         mainView.searchableComponent.`switch`.rx.isOn <-> viewModel.searchable
         mainView.ageGroupComponent.rangeSlider.rx.value <-> viewModel.ageRange
+        
+        output.user
+            .drive(onNext: { [weak self] user in
+                guard let self = self else { return }
+                // background, sesacCharacter
+                self.mainView.hobbyComponent.textField.text = user.hobby
+                self.mainView.searchableComponent.`switch`.isOn = Bool(truncating: user.searchable as NSNumber)
+                self.mainView.ageGroupComponent.rangeSlider.value[0] = CGFloat(user.ageMin)
+                self.mainView.ageGroupComponent.rangeSlider.value[1] = CGFloat(user.ageMin)
+            })
+            .disposed(by: disposeBag)
         
         output.gender.debug()
             .drive(onNext: { [weak self] gender in

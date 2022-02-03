@@ -15,6 +15,16 @@ enum Gender: Int {
     case man = 1
 }
 
+extension Int {
+    var toGender: Gender {
+        switch self {
+        case 0: return .woman
+        case 1: return .man
+        default: return .unknown
+        }
+    }
+}
+
 final class SettingGenderComponent: View {
     let titleLabel = UILabel().then { label in
         label.font = .Title4_R14

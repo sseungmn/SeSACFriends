@@ -84,6 +84,7 @@
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
+		B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1440527AC2B1A007C9BD5 /* User.swift */; };
 		B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */; };
 		B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */; };
 		B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */; };
@@ -197,6 +198,7 @@
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
+		B5C1440527AC2B1A007C9BD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoViewModel.swift; sourceTree = "<group>"; };
 		B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHobbyComponent.swift; sourceTree = "<group>"; };
 		B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSearchableComponent.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 		B5C0FA762795DB7D00BE997E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B5C1440427AC2B0E007C9BD5 /* Model */,
 				B53B9A5927A937EC00384FF5 /* Modules */,
 				B5046393279C810000885DAD /* Service */,
 				B567A8672798134D005433F8 /* Application */,
@@ -557,6 +560,14 @@
 				B504636727999CFE00885DAD /* ParagraphLabel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B5C1440427AC2B0E007C9BD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1440527AC2B1A007C9BD5 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B5F8543627AC09E30013FD3E /* Onboarding */ = {
@@ -928,6 +939,7 @@
 				B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */,
 				B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */,
 				B53B9A7B27A9B34500384FF5 /* ReputationComponent.swift in Sources */,
+				B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
 				B53B9A6927A968E300384FF5 /* MyInfoViewModel.swift in Sources */,
