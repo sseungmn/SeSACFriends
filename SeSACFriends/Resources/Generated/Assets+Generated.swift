@@ -73,9 +73,9 @@ internal enum Asset {
     internal static let toggleOn = ImageAsset(name: "toggle_on")
     internal static let woman = ImageAsset(name: "woman")
     internal static let write = ImageAsset(name: "write")
-    internal static let socialLifeCuate = ImageAsset(name: "Social life-cuate")
     internal static let onboardingImg1 = ImageAsset(name: "onboarding_img1")
     internal static let onboardingImg2 = ImageAsset(name: "onboarding_img2")
+    internal static let onboardingImg3 = ImageAsset(name: "onboarding_img3")
   }
   internal enum Colors {
     internal static let black = ColorAsset(name: "black")
