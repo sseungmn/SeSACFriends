@@ -66,7 +66,7 @@ class MyInfoViewModel: ViewModel, ViewModelType {
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoTitleCell.reuseID) as? MyInfoTitleCell else { return MyInfoCell() }
-            cell.nickLabel.text = "김새싹"
+            cell.nickLabel.text = AuthUserDefaults.nick
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoCell.reuseID) as? MyInfoCell else { return MyInfoCell() }

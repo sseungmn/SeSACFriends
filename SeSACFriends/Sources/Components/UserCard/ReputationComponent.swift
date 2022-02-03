@@ -117,7 +117,7 @@ final class ReputationButton: StateButton {
         super.bind()
         self.rx.tap
             .withUnretained(self)
-            .map { (owner, tap) -> ButtonStyleState in
+            .map { (owner, _) -> ButtonStyleState in
                 owner.isSelected.toggle()
                 switch owner.isSelected {
                 case true:
@@ -130,4 +130,3 @@ final class ReputationButton: StateButton {
             .disposed(by: disposeBag)
     }
 }
-

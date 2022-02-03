@@ -24,5 +24,8 @@ class AuthUserDefaults {
         self.birth = Date(timeIntervalSinceReferenceDate: 0)
         self.email = ""
         self.gender = -1
+        self.FCMtoken = ""
+        self.idtoken = ""
+        self.verificaitonID = ""
     }
 }
