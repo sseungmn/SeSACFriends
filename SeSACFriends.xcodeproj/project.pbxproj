@@ -88,6 +88,7 @@
 		B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */; };
 		B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */; };
 		B5F8543527ABA46A0013FD3E /* SetttingAgeGroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */; };
+		B5F8543827AC0A0A0013FD3E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543727AC0A0A0013FD3E /* OnboardingViewController.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHobbyComponent.swift; sourceTree = "<group>"; };
 		B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSearchableComponent.swift; sourceTree = "<group>"; };
 		B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingAgeGroupComponent.swift; sourceTree = "<group>"; };
+		B5F8543727AC0A0A0013FD3E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -349,6 +351,7 @@
 		B53B9A5927A937EC00384FF5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B5F8543627AC09E30013FD3E /* Onboarding */,
 				B53B9A5A27A9382A00384FF5 /* MyInfo */,
 				B567A88627994BA4005433F8 /* Auth */,
 			);
@@ -554,6 +557,14 @@
 				B504636727999CFE00885DAD /* ParagraphLabel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		B5F8543627AC09E30013FD3E /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B5F8543727AC0A0A0013FD3E /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		C604B3C71B5079656FA4082D /* Pods */ = {
@@ -873,6 +884,7 @@
 				B57878F227AABCDC00BE2BF6 /* UserCardNickComponent.swift in Sources */,
 				B504639F279D873900885DAD /* Firebase.swift in Sources */,
 				B5C0FA4A2795DB5A00BE997E /* PhoneNumberViewController.swift in Sources */,
+				B5F8543827AC0A0A0013FD3E /* OnboardingViewController.swift in Sources */,
 				B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */,
 				B50463A9279DC88600885DAD /* AuthUserDefaults.swift in Sources */,
 				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
