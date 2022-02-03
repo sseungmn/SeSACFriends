@@ -15,9 +15,7 @@ enum Gender: Int {
     case man = 1
 }
 
-final class SettingGenderComponent: ReactiveView {
-    let gender = BehaviorRelay<Gender>(value: .unknown)
-    
+final class SettingGenderComponent: View {
     let titleLabel = UILabel().then { label in
         label.font = .Title4_R14
         label.textColor = Asset.Colors.black.color
@@ -55,38 +53,5 @@ final class SettingGenderComponent: ReactiveView {
             make.width.equalTo(56)
             make.height.equalTo(48)
         }
-    }
-    
-    override func bind() {
-        
-        womanOptionButton.rx.tap
-            .bind { [weak self] _ in
-                guard let self = self else { return }
-                self.gender.accept(.woman)
-            }
-            .disposed(by: disposeBag)
-        
-        manOptionButton.rx.tap
-            .bind { [weak self] _ in
-                guard let self = self else { return }
-                self.gender.accept(.man)
-            }
-            .disposed(by: disposeBag)
-        
-        gender.debug()
-            .bind { [weak self] gender in
-                guard let self = self else { return }
-                if gender == .man {
-                    self.manOptionButton.setStyleState(styleState: .fill)
-                    self.womanOptionButton.setStyleState(styleState: .inactive)
-                } else if gender == .woman {
-                    self.manOptionButton.setStyleState(styleState: .inactive)
-                    self.womanOptionButton.setStyleState(styleState: .fill)
-                } else {
-                    self.manOptionButton.setStyleState(styleState: .inactive)
-                    self.womanOptionButton.setStyleState(styleState: .inactive)
-                }
-            }
-            .disposed(by: disposeBag)
     }
 }

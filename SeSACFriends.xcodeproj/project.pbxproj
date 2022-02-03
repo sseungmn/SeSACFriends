@@ -84,6 +84,8 @@
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
+		B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */; };
+		B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +194,8 @@
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
+		B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoViewModel.swift; sourceTree = "<group>"; };
+		B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHobbyComponent.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -385,6 +389,8 @@
 				B53B9A7027A996E600384FF5 /* SettingMyInfoView.swift */,
 				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
 				B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */,
+				B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */,
+				B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */,
 			);
 			path = SettingMyInfo;
 			sourceTree = "<group>";
@@ -424,13 +430,13 @@
 			isa = PBXGroup;
 			children = (
 				B567A88027987A36005433F8 /* AuthView.swift */,
+				B50463A8279DC88600885DAD /* AuthUserDefaults.swift */,
 				B50463692799ACD900885DAD /* PhoneNumber */,
 				B504636A2799AD0100885DAD /* AuthorizationCode */,
 				B50463752799BB5300885DAD /* Nickname */,
 				B504637D2799CB1900885DAD /* Birth */,
 				B5046382279B151F00885DAD /* Email */,
 				B5046387279B2FFE00885DAD /* Gender */,
-				B50463A8279DC88600885DAD /* AuthUserDefaults.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 				B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */,
 				B53B9A6B27A96A5900384FF5 /* MyInfoSection.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
+				B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B53B9A6727A9564D00384FF5 /* MyInfoCell.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
@@ -891,6 +898,7 @@
 				B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */,
 				B57878F827AACF0D00BE2BF6 /* SettingGenderComponent.swift in Sources */,
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
+				B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
 				B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */,
 				B57878F427AABF5300BE2BF6 /* UserCardCommentComponent.swift in Sources */,

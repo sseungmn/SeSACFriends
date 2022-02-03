@@ -16,6 +16,7 @@ class SettingMyInfoView: View {
     
     let userCardView = UserCardView()
     let genderComponent = SettingGenderComponent()
+    let hobbyComponent = SettingHobbyComponent()
     
     let settingsContainer = UIStackView().then { stackView in
         stackView.axis = .vertical
@@ -45,5 +46,6 @@ class SettingMyInfoView: View {
         }
         
         settingsContainer.addArrangedSubview(genderComponent)
+        settingsContainer.addArrangedSubview(hobbyComponent)
     }
 }

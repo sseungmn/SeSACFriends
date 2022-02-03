@@ -40,7 +40,7 @@ class StateTextField: UITextField, StyleStateChangebale {
         setConstraint()
     }
     
-    func bind() {
+    private func bind() {
         styleState
             .bind(to: self.rx.styleState)
             .disposed(by: disposeBag)
@@ -54,13 +54,13 @@ class StateTextField: UITextField, StyleStateChangebale {
             .disposed(by: disposeBag)
     }
     
-    func configure() {
+    private func configure() {
         font = .Title4_R14
         underline.borderWidth = lineHeight
         setStyleState(styleState: .normal)
     }
     
-    func setConstraint() {
+    private func setConstraint() {
         layer.addSublayer(underline)
         layer.masksToBounds = true
     }
