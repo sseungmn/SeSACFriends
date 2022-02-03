@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import IQKeyboardManagerSwift
 import RxSwift
 
 @main
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerNotification(application)
         registerMessaging(application)
+        setIQKeyboardManager()
         
         return true
     }
@@ -73,5 +75,14 @@ extension AppDelegate: MessagingDelegate {
                 AuthUserDefaults.FCMtoken = FCMtoken
             })
             .dispose()
+    }
+}
+
+// MARK: IQKeyboardManager
+extension AppDelegate {
+    func setIQKeyboardManager() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
     }
 }
