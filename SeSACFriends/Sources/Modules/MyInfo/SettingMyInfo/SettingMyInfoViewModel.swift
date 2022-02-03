@@ -19,11 +19,13 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
     struct Input {
         let womanOptionButtonTap: Driver<Void>
         let manOptionButtonTap: Driver<Void>
+        let withdrawButtonTap: Driver<Void>
         let rangeValues: Driver<[CGFloat]>
     }
     struct Output {
         let gender: Driver<Gender>
         let ageLabelText: Driver<String>
+        let donwWithdraw: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -46,9 +48,23 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
                 "\(Int(value[0])) - \(Int(value[1]))"
             }
         
+        let withdraw = input.withdrawButtonTap.asObservable()
+            .flatMapLatest { () -> Observable<Event<Void>> in
+                return AuthAPI.shared.withDraw()
+                    .asObservable()
+                    .retryWithTokenIfNeeded()
+                    .materialize()
+            }
+            .share()
+        
+        withdraw.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
+        
         return Output(
             gender: gender.asDriver(),
-            ageLabelText: ageLabelText
+            ageLabelText: ageLabelText,
+            donwWithdraw: withdraw.elements().asDriverOnErrorJustComplete()
         )
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 enum APIError: Error {
     case firebaseTokenError, severError, clientError
     case invalidNickname
-    case already
+    case already, undefinedUser
     case undefinedError
 }
 

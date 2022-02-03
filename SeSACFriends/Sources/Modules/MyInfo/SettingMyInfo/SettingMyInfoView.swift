@@ -19,6 +19,17 @@ class SettingMyInfoView: View {
     let hobbyComponent = SettingHobbyComponent()
     let searchableComponent = SettingSearchableComponent()
     let ageGroupComponent = SettingAgeGroupComponent()
+    let withdrawButton = UIButton().then { button in
+        let titleLabel = UILabel().then { label in
+            label.font = .Title4_R14
+            label.textColor = Asset.Colors.black.color
+            label.text = "회원탈퇴"
+        }
+        button.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.centerY.equalToSuperview()
+        }
+    }
     
     let settingsContainer = UIStackView().then { stackView in
         stackView.axis = .vertical
@@ -29,7 +40,7 @@ class SettingMyInfoView: View {
     override func setConstraint() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(safeAreaLayoutGuide)
+            make.top.bottom.equalTo(safeAreaLayoutGuide).inset(16)
             make.leading.trailing.equalToSuperview()
             make.width.equalToSuperview()
         }
@@ -51,5 +62,9 @@ class SettingMyInfoView: View {
         settingsContainer.addArrangedSubview(hobbyComponent)
         settingsContainer.addArrangedSubview(searchableComponent)
         settingsContainer.addArrangedSubview(ageGroupComponent)
+        withdrawButton.snp.makeConstraints { make in
+            make.height.equalTo(48)
+        }
+        settingsContainer.addArrangedSubview(withdrawButton)
     }
 }

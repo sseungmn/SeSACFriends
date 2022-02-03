@@ -22,6 +22,7 @@ class SettingMyInfoViewController: ViewController {
         let input = SettingMyInfoViewModel.Input(
             womanOptionButtonTap: mainView.genderComponent.womanOptionButton.rx.tap.asDriver(),
             manOptionButtonTap: mainView.genderComponent.manOptionButton.rx.tap.asDriver(),
+            withdrawButtonTap: mainView.withdrawButton.rx.tap.asDriver(),
             rangeValues: mainView.ageGroupComponent.rangeSlider.rx.value.asDriver()
         )
         let output = viewModel.transform(input: input)
@@ -50,6 +51,13 @@ class SettingMyInfoViewController: ViewController {
         
         output.ageLabelText
             .drive(mainView.ageGroupComponent.rangeLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.donwWithdraw
+            .drive(onNext: { [weak self] in
+                AuthUserDefaults.clearAuthParams()
+                self?.makeRoot(viewController: OnboardingViewController())
+            })
             .disposed(by: disposeBag)
     }
 }
