@@ -18,16 +18,19 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
     
     struct Input {
         let viewDidLoad: Driver<Bool>
+        let saveButtonTap: Driver<Void>
         let womanOptionButtonTap: Driver<Void>
         let manOptionButtonTap: Driver<Void>
         let withdrawButtonTap: Driver<Void>
         let rangeValues: Driver<[CGFloat]>
     }
+    
     struct Output {
         let user: Driver<User>
         let gender: Driver<Gender>
         let ageLabelText: Driver<String>
-        let donwWithdraw: Driver<Void>
+        let doneWithdraw: Driver<Void>
+        let saveCompleted: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -53,6 +56,25 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
             .bind(to: errorCollector)
             .disposed(by: disposeBag)
         
+        let updateUser = input.saveButtonTap.asObservable()
+            .withLatestFrom(
+                Observable.combineLatest(gender, hobby, searchable, ageRange)
+            )
+            .flatMapLatest { (gender, hobby, searchable, ageRange) -> Observable<Event<Void>> in
+                let gender = gender.rawValue
+                let searchable = searchable ? 1 : 0
+                let ageMin = Int(ageRange[0])
+                let ageMax = Int(ageRange[1])
+                return AuthAPI.shared.updateUser(gender: gender, hobby: hobby, searchable: searchable, ageMin: ageMin, ageMax: ageMax)
+                    .asObservable()
+                    .retryWithTokenIfNeeded()
+                    .materialize()
+            }
+        
+        updateUser.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
+        
         input.womanOptionButtonTap.debug()
             .drive { [weak self] _ in
                 guard let self = self else { return }
@@ -67,9 +89,9 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        let ageLabelText = ageRange.asDriver()
-            .map { value in
-                "\(Int(value[0])) - \(Int(value[1]))"
+        let ageLabelText = ageRange
+            .map { ageRange in
+                "\(ageRange[0]) - \(ageRange[1])"
             }
         
         let withdraw = input.withdrawButtonTap.asObservable()
@@ -88,8 +110,9 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
         return Output(
             user: user.elements().asDriverOnErrorJustComplete(),
             gender: gender.asDriver(),
-            ageLabelText: ageLabelText,
-            donwWithdraw: withdraw.elements().asDriverOnErrorJustComplete()
+            ageLabelText: ageLabelText.asDriverOnErrorJustComplete(),
+            doneWithdraw: withdraw.elements().asDriverOnErrorJustComplete(),
+            saveCompleted: updateUser.elements().asDriverOnErrorJustComplete()
         )
     }
 }

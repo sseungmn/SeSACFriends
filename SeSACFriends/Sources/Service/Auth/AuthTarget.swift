@@ -18,6 +18,13 @@ enum AuthTarget {
         email: String,
         gender: Int)
     case withdraw
+    case updateUser(
+        gender: Int,
+        hobby: String,
+        searchable: Int,
+        ageMin: Int,
+        ageMax: Int
+    )
 }
 
 extension AuthTarget: TargetType {
@@ -33,6 +40,8 @@ extension AuthTarget: TargetType {
             return "/user"
         case .withdraw:
             return "/user/withdraw"
+        case .updateUser:
+            return "/user/update/mypage"
         }
     }
     
@@ -43,6 +52,8 @@ extension AuthTarget: TargetType {
         case .signUp:
             return .post
         case .withdraw:
+            return .post
+        case .updateUser:
             return .post
         }
     }
@@ -64,13 +75,24 @@ extension AuthTarget: TargetType {
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .withdraw:
             return .requestPlain
+        case .updateUser(let gender, let hobby, let searchable, let ageMin, let ageMax):
+            let params: [String: Any] = [
+                "gender": gender,
+                "hobby": hobby,
+                "searchable": searchable,
+                "ageMin": ageMin,
+                "ageMax": ageMax
+            ]
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         var headers = MoyaSupports.Headers.idtoken.toDict()
-        if case .signUp = self {
+        switch self {
+        case .signUp, .updateUser:
             headers.append(MoyaSupports.Headers.contentType(.form).toDict())
+        default: break
         }
         debug(title: "headers", headers)
         return headers

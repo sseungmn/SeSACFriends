@@ -13,14 +13,22 @@ class SettingMyInfoViewController: ViewController {
     
     let mainView = SettingMyInfoView()
     let viewModel = SettingMyInfoViewModel()
+    let saveButton = UIBarButtonItem(title: "저장", style: .done, target: nil, action: nil).then { button in
+        button.tintColor = Asset.Colors.black.color
+    }
     
     override func loadView() {
         view = mainView
     }
     
+    override func configure() {
+        navigationItem.rightBarButtonItem = saveButton
+    }
+    
     override func bind() {
         let input = SettingMyInfoViewModel.Input(
             viewDidLoad: rx.viewDidLoad.asDriver(),
+            saveButtonTap: saveButton.rx.tap.asDriver(),
             womanOptionButtonTap: mainView.genderComponent.womanOptionButton.rx.tap.asDriver(),
             manOptionButtonTap: mainView.genderComponent.manOptionButton.rx.tap.asDriver(),
             withdrawButtonTap: mainView.withdrawButton.rx.tap.asDriver(),
@@ -65,7 +73,7 @@ class SettingMyInfoViewController: ViewController {
             .drive(mainView.ageGroupComponent.rangeLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output.donwWithdraw
+        output.doneWithdraw
             .drive(onNext: { [weak self] in
                 AuthUserDefaults.clearAuthParams()
                 self?.makeRoot(viewController: OnboardingViewController())

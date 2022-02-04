@@ -108,4 +108,24 @@ class AuthAPI {
                 }
             }
     }
+    
+    func updateUser(
+        gender: Int,
+        hobby: String,
+        searchable: Int,
+        ageMin: Int,
+        ageMax: Int
+    ) -> Single<Void> {
+        return provider.rx.request(.updateUser(gender: gender, hobby: hobby, searchable: searchable, ageMin: ageMin, ageMax: ageMax))
+            .map { response in
+                switch response.statusCode {
+                case 200:
+                    return ()
+                case 401:
+                    throw APIError.firebaseTokenError
+                default:
+                    throw APIError.undefinedError
+                }
+            }
+    }
 }
