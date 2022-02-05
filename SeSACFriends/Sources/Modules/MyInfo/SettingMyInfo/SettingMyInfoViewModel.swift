@@ -17,7 +17,7 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
     let ageRange = BehaviorRelay<[CGFloat]>(value: [18, 35])
     
     struct Input {
-        let viewDidLoad: Driver<Bool>
+        let viewWillAppear: Observable<Bool>
         let saveButtonTap: Driver<Void>
         let womanOptionButtonTap: Driver<Void>
         let manOptionButtonTap: Driver<Void>
@@ -26,15 +26,14 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
     }
     
     struct Output {
-        let user: Driver<User>
         let gender: Driver<Gender>
         let ageLabelText: Driver<String>
-        let doneWithdraw: Driver<Void>
+        let withdrawCompleted: Driver<Void>
         let saveCompleted: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
-        let user = input.viewDidLoad.asObservable()
+        let user = input.viewWillAppear
             .filter { $0 }
             .flatMapLatest { _ -> Observable<Event<User>> in
                 return AuthAPI.shared.getUser()
@@ -42,13 +41,18 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
                     .retryWithTokenIfNeeded()
                     .materialize()
             }
-            .debug()
             .share()
         
         user.elements()
             .withUnretained(self)
             .bind { (owner, user) in
                 owner.gender.accept(user.gender.toGender)
+                owner.hobby.accept(user.hobby)
+                owner.searchable.accept(
+                    Bool(truncating: user.searchable as NSNumber)
+                )
+                owner.ageRange.accept([CGFloat(user.ageMin), CGFloat(user.ageMax)]
+                )
             }
             .disposed(by: disposeBag)
         
@@ -70,19 +74,20 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
                     .retryWithTokenIfNeeded()
                     .materialize()
             }
+            .share()
         
         updateUser.errors()
             .bind(to: errorCollector)
             .disposed(by: disposeBag)
         
-        input.womanOptionButtonTap.debug()
+        input.womanOptionButtonTap
             .drive { [weak self] _ in
                 guard let self = self else { return }
                 self.gender.accept(.woman)
             }
             .disposed(by: disposeBag)
         
-        input.manOptionButtonTap.debug()
+        input.manOptionButtonTap
             .drive { [weak self] _ in
                 guard let self = self else { return }
                 self.gender.accept(.man)
@@ -108,10 +113,9 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
             .disposed(by: disposeBag)
         
         return Output(
-            user: user.elements().asDriverOnErrorJustComplete(),
             gender: gender.asDriver(),
             ageLabelText: ageLabelText.asDriverOnErrorJustComplete(),
-            doneWithdraw: withdraw.elements().asDriverOnErrorJustComplete(),
+            withdrawCompleted: withdraw.elements().asDriverOnErrorJustComplete(),
             saveCompleted: updateUser.elements().asDriverOnErrorJustComplete()
         )
     }
