@@ -27,4 +27,8 @@ extension UIViewController {
             }
         }
     }
+    
+    func pop() {
+        self.navigationController?.popViewController(animated: false)
+    }
 }
