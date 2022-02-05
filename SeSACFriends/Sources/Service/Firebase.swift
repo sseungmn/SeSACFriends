@@ -45,13 +45,11 @@ class Firebase {
             
             Auth.auth().signIn(with: credential) { _, error in
                 guard error == nil else {
-                    print("invalidCode")
                     single(.failure(AuthCodeError.invalidCode))
                     return
                 }
                 Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                     guard error == nil else {
-                        print("idtokenError")
                         single(.failure(AuthCodeError.idtokenError))
                         return
                     }
@@ -65,8 +63,28 @@ class Firebase {
         }
     }
     
+    func idToken() -> Single<Void> {
+        return Single<Void>.create { single in
+            if let currentUser = Auth.auth().currentUser {
+                currentUser.getIDTokenForcingRefresh(true) { idToken, error in
+                    if let error = error {
+                        single(.failure(error))
+                        return
+                    }
+                    if let idToken = idToken {
+                        AuthUserDefaults.idtoken = idToken
+                        single(.success(()))
+                    }
+                }
+            } else {
+                single(.failure(APIError.undefinedError()))
+            }
+            return Disposables.create()
+        }
+    }
+    
     @discardableResult
-    func token() -> Single<Void> {
+    func FCMtoken() -> Single<Void> {
         return Single<Void>.create { single in
             Messaging.messaging().token { FCMtoken, error in
                 if let error = error {

@@ -27,11 +27,11 @@ class CommonAPI {
                 case 401:
                     throw APIError.firebaseTokenError
                 case 500:
-                    throw APIError.severError
+                    throw APIError.serverError
                 case 501:
                     throw APIError.clientError
                 default:
-                    throw APIError.undefinedError
+                    throw APIError.undefinedError(statusCode: response.statusCode)
                 }
             }
     }

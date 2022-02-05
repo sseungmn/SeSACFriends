@@ -28,12 +28,16 @@ class AuthAPI {
                 switch response.statusCode {
                 case 200:
                     return true
-                case 201:
-                    return false
                 case 401:
                     throw APIError.firebaseTokenError
+                case 406:
+                    return false
+                case 500:
+                    throw APIError.serverError
+                case 501:
+                    throw APIError.clientError
                 default:
-                    throw APIError.undefinedError
+                    throw APIError.undefinedError(statusCode: response.statusCode)
                 }
             }
         }
@@ -49,7 +53,7 @@ class AuthAPI {
                 case 406:
                     throw APIError.undefinedUser
                 default:
-                    throw APIError.undefinedError
+                    throw APIError.undefinedError(statusCode: response.statusCode)
                 }
             }
     }
@@ -64,7 +68,6 @@ class AuthAPI {
     ) -> Single<Void> {
         
         let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"
-//        let birth = DateFormatter().string(from: birth)
         return provider.rx.request(.signUp(
             phoneNumber: phoneNumber, FCMToken: FCMtoken, nick: nick,
             birth: birth, email: email, gender: gender)
@@ -80,11 +83,11 @@ class AuthAPI {
                 case 401:
                     throw APIError.firebaseTokenError
                 case 500:
-                    throw APIError.severError
+                    throw APIError.serverError
                 case 501:
                     throw APIError.clientError
                 default:
-                    throw APIError.undefinedError
+                    throw APIError.undefinedError(statusCode: response.statusCode)
                 }
             }
     }
@@ -100,11 +103,9 @@ class AuthAPI {
                 case 406:
                     throw APIError.already
                 case 500:
-                    throw APIError.severError
-                case 501:
-                    throw APIError.clientError
+                    throw APIError.serverError
                 default:
-                    throw APIError.undefinedError
+                    throw APIError.undefinedError(statusCode: response.statusCode)
                 }
             }
     }
@@ -123,8 +124,14 @@ class AuthAPI {
                     return ()
                 case 401:
                     throw APIError.firebaseTokenError
+                case 406:
+                    throw APIError.undefinedUser
+                case 500:
+                    throw APIError.serverError
+                case 501:
+                    throw APIError.clientError
                 default:
-                    throw APIError.undefinedError
+                    throw APIError.undefinedError(statusCode: response.statusCode)
                 }
             }
     }

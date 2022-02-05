@@ -8,10 +8,32 @@
 import Foundation
 
 enum APIError: Error {
-    case firebaseTokenError, severError, clientError
+    case firebaseTokenError, serverError, clientError
     case invalidNickname
     case already, undefinedUser
-    case undefinedError
+    case undefinedError(statusCode: Int? = nil)
+}
+
+extension APIError: Equatable {
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.firebaseTokenError, .firebaseTokenError),
+            (.serverError, .serverError),
+            (.clientError, .clientError),
+            (.invalidNickname, .invalidNickname),
+            (.already, .already),
+            (.undefinedUser, .undefinedUser):
+            return true
+        case (let .undefinedError(statusCode1), let .undefinedError(statusCode2)):
+            if let statusCode1 = statusCode1,
+               let statusCode2 = statusCode2 {
+                return statusCode1 == statusCode2
+            }
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 class MoyaSupports {

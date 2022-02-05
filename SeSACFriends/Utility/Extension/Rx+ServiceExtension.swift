@@ -22,13 +22,8 @@ public extension ObservableType {
                 resultSelector: { $1 }
             )
                 .flatMap { _ in // 범위가 3인 옵져버블과 묶어서 3번만 수행하게 한다.
-                    return Firebase.shared.token()
+                    return Firebase.shared.idToken()
                         .asObservable()
-                        .flatMapLatest { _ in
-                            CommonAPI.shared.refreshFCMtoken()
-                                .asObservable()
-                                .mapToVoid()
-                        }
                 }
         }
     }
