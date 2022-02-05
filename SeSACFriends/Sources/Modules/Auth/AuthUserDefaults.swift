@@ -18,6 +18,8 @@ class AuthUserDefaults {
     @UserDefault("verificationID", defaultValue: "") static var verificaitonID: String
     @UserDefault("idtoken", defaultValue: "") static var idtoken: String
     
+    @UserDefault("isUser", defaultValue: false) static var isUser: Bool
+    
     static func clearAuthParams() {
         self.phoneNumber = ""
         self.nick = ""

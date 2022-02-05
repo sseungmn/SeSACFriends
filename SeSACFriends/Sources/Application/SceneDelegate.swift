@@ -15,8 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let mainViewController = PhoneNumberViewController()
-        let nav = UINavigationController(rootViewController: mainViewController)
+        
+        var entryViewController: UIViewController
+        if AuthUserDefaults.isUser {
+            entryViewController = MainViewController()
+        } else if AuthUserDefaults.idtoken.isEmpty {
+            entryViewController = OnboardingViewController()
+        } else {
+            entryViewController = NicknameViewController()
+        }
+        
+        let nav = UINavigationController(rootViewController: entryViewController)
         
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
