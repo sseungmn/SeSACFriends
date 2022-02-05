@@ -38,7 +38,6 @@ class AuthCodeViewController: ViewController {
         viewModel.errorCollector
             .subscribe(onNext: { [weak self] error in
                 self?.mainView.authCodeTextField.resignFirstResponder()
-                debug(title: "error", error)
                 guard let authError = error as? AuthCodeError else { return }
                 switch authError {
                 case .authCodeExpired:

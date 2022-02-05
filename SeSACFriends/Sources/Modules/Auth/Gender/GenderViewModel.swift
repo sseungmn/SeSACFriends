@@ -68,9 +68,9 @@ class GenderViewModel: ViewModel {
         
         Driver.combineLatest(man.asDriver(), woman.asDriver()) { man, woman in
             if woman {
-                return 1
+                return 0
             } else if man {
-                return 2
+                return 1
             } else {
                 return -1
             }

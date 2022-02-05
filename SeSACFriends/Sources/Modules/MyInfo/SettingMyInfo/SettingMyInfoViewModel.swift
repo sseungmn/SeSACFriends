@@ -91,7 +91,7 @@ class SettingMyInfoViewModel: ViewModel, ViewModelType {
         
         let ageLabelText = ageRange
             .map { ageRange in
-                "\(ageRange[0]) - \(ageRange[1])"
+                "\(Int(ageRange[0])) - \(Int(ageRange[1]))"
             }
         
         let withdraw = input.withdrawButtonTap.asObservable()

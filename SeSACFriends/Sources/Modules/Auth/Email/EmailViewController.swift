@@ -26,7 +26,7 @@ class EmailViewController: ViewController {
     
     override func bind() {
         let input = EmailViewModel.Input(
-            confirmButtonTap: self.mainView.button.rx.tap.asDriver().debug("confirmButtonTap")
+            confirmButtonTap: self.mainView.button.rx.tap.asDriver()
         )
         
         let output = viewModel.transform(input: input)

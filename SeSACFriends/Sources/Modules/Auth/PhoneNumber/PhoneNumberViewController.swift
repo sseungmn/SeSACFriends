@@ -43,7 +43,6 @@ class PhoneNumberViewController: ViewController {
         
         output.verifyResult
             .drive(onNext: { [weak self] verificationID in
-                debug(title: "verificationID", verificationID)
                 AuthUserDefaults.verificaitonID = verificationID
                 self?.push(viewController: AuthCodeViewController())
             })
