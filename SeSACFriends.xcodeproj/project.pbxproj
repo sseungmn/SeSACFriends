@@ -59,6 +59,8 @@
 		B53B9A7527A99D8500384FF5 /* UserCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A7427A99D8500384FF5 /* UserCardImageView.swift */; };
 		B53B9A7927A9B1EA00384FF5 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A7827A9B1EA00384FF5 /* UserCardView.swift */; };
 		B53B9A7B27A9B34500384FF5 /* ReputationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A7A27A9B34500384FF5 /* ReputationComponent.swift */; };
+		B55896FE27AEA40A00777B11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55896FD27AEA40A00777B11 /* HomeViewController.swift */; };
+		B558970027AEAA0B00777B11 /* SesacShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */; };
 		B567A8662797EB6A005433F8 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B567A8652797EB6A005433F8 /* IconButton.swift */; };
 		B567A86B27984E7B005433F8 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B567A86A27984E7B005433F8 /* swiftgen.yml */; };
 		B567A86E2798517B005433F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B567A86D2798517B005433F8 /* Colors.xcassets */; };
@@ -169,6 +171,8 @@
 		B53B9A7427A99D8500384FF5 /* UserCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardImageView.swift; sourceTree = "<group>"; };
 		B53B9A7827A9B1EA00384FF5 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		B53B9A7A27A9B34500384FF5 /* ReputationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReputationComponent.swift; sourceTree = "<group>"; };
+		B55896FD27AEA40A00777B11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacShopViewController.swift; sourceTree = "<group>"; };
 		B567A8652797EB6A005433F8 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		B567A86A27984E7B005433F8 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		B567A86D2798517B005433F8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -354,8 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				B5F8543627AC09E30013FD3E /* Onboarding */,
-				B53B9A5A27A9382A00384FF5 /* MyInfo */,
 				B567A88627994BA4005433F8 /* Auth */,
+				B53B9A5A27A9382A00384FF5 /* MyInfo */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -525,6 +529,8 @@
 				B567A8672798134D005433F8 /* Application */,
 				B5C0FA9E2796D1C500BE997E /* Components */,
 				B5C0FA862795F89400BE997E /* MainViewController.swift */,
+				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
+				B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */,
 				B53B9A7227A9991B00384FF5 /* Settings.swift */,
 			);
 			path = Sources;
@@ -899,6 +905,7 @@
 				B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */,
 				B50463A9279DC88600885DAD /* AuthUserDefaults.swift in Sources */,
 				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
+				B558970027AEAA0B00777B11 /* SesacShopViewController.swift in Sources */,
 				B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
 				B53B9A7527A99D8500384FF5 /* UserCardImageView.swift in Sources */,
@@ -930,6 +937,7 @@
 				B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
 				B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */,
+				B55896FE27AEA40A00777B11 /* HomeViewController.swift in Sources */,
 				B57878F427AABF5300BE2BF6 /* UserCardCommentComponent.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
 				B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */,
