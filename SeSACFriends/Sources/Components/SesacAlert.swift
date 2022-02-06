@@ -10,6 +10,7 @@ import Then
 import SnapKit
 
 class SesacAlertController: ViewController {
+    
     let backgroundView = UIView().then { view in
         view.backgroundColor = Asset.Colors.black.color
         view.alpha = 0.5
@@ -57,6 +58,12 @@ class SesacAlertController: ViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func bind() {
+        cancelButton.rx.tap
+            .bind(onNext: { self.dismiss(animated: false) })
+            .disposed(by: disposeBag)
     }
     
     override func setConstraint() {

@@ -16,6 +16,7 @@ class SettingMyInfoViewController: ViewController {
     let saveButton = UIBarButtonItem(title: "저장", style: .done, target: nil, action: nil).then { button in
         button.tintColor = Asset.Colors.black.color
     }
+    let withdrawAlert = SesacAlertController(title: "정말 탈퇴하시겠습니까?", message: "탈퇴하시면 새싹 프렌즈를 이용하실 수 없어요ㅠ")
     
     override func loadView() {
         view = mainView
@@ -31,7 +32,7 @@ class SettingMyInfoViewController: ViewController {
             saveButtonTap: saveButton.rx.tap.asDriver(),
             womanOptionButtonTap: mainView.genderComponent.womanOptionButton.rx.tap.asDriver(),
             manOptionButtonTap: mainView.genderComponent.manOptionButton.rx.tap.asDriver(),
-            withdrawButtonTap: mainView.withdrawButton.rx.tap.asDriver(),
+            withdrawButtonTap: withdrawAlert.okButton.rx.tap.asDriver(),
             rangeValues: mainView.ageGroupComponent.rangeSlider.rx.value.asDriver()
         )
         let output = viewModel.transform(input: input)
@@ -60,6 +61,13 @@ class SettingMyInfoViewController: ViewController {
         
         output.ageLabelText
             .drive(mainView.ageGroupComponent.rangeLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        mainView.withdrawButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.present(self.withdrawAlert, animated: false)
+            })
             .disposed(by: disposeBag)
         
         output.withdrawCompleted
