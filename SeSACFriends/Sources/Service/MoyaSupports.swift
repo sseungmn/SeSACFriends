@@ -15,7 +15,7 @@ enum APIError: Error {
 }
 
 extension APIError: Equatable {
-    static func ==(lhs: Self, rhs: Self) -> Bool {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         switch (lhs, rhs) {
         case (.firebaseTokenError, .firebaseTokenError),
             (.serverError, .serverError),

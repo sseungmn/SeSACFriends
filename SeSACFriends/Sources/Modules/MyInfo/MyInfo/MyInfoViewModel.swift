@@ -70,7 +70,6 @@ class MyInfoViewModel: ViewModel, ViewModelType {
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MyInfoCell.reuseID) as? MyInfoCell else { return MyInfoCell() }
-            debug(title: "cell(\(indexPath.row))", myInfoSection[indexPath.row])
             cell.leftImageView.image = myInfoSection[indexPath.row].image
             cell.titleLabel.text = myInfoSection[indexPath.row].title
             return cell

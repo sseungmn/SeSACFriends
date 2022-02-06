@@ -20,6 +20,7 @@ class BirthViewController: ViewController {
     }
     
     override func configure() {
+        super.configure()
         mainView.yearComponentView.textField.becomeFirstResponder()
     }
     

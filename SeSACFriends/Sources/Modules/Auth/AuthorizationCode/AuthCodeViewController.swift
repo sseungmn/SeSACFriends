@@ -21,6 +21,7 @@ class AuthCodeViewController: ViewController {
     }
 
     override func configure() {
+        super.configure()
         mainView.authCodeTextField.becomeFirstResponder()
     }
 
@@ -63,7 +64,7 @@ class AuthCodeViewController: ViewController {
 
         output.makeRootMainViewController
             .subscribe(onNext: { [weak self] in
-                    self?.makeRoot(viewController: MainViewController())
+                    self?.makeRoot(viewController: MainViewController(), withNavigationController: false)
             })
             .disposed(by: disposeBag)
         
