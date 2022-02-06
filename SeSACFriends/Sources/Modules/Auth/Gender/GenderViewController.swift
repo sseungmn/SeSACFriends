@@ -42,7 +42,7 @@ class GenderViewController: ViewController {
         output.makeRootMainViewController
             .drive { [weak self] _ in
                 AuthUserDefaults.isUser = true
-                self?.makeRoot(viewController: MainViewController())
+                self?.makeRoot(viewController: MainViewController(), withNavigationController: false)
             }
             .disposed(by: disposeBag)
         

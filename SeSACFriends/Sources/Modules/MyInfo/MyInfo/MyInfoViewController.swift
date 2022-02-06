@@ -23,6 +23,11 @@ class MyInfoViewController: ViewController {
         delegate()
     }
     
+    override func configure() {
+        super.configure()
+        navigationTitle = "내정보"
+    }
+    
     override func bind() {
         let output = viewModel.transform(input: MyInfoViewModel.Input())
         output.pushSettingMyInfoViewController

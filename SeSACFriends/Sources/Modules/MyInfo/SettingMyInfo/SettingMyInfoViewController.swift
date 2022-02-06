@@ -23,6 +23,8 @@ class SettingMyInfoViewController: ViewController {
     }
     
     override func configure() {
+        super.configure()
+        navigationTitle = "정보 관리"
         navigationItem.rightBarButtonItem = saveButton
     }
     

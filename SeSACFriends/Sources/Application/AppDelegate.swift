@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Auth.auth().languageCode = "kr"
         
+        setNavigationBar()
         registerNotification(application)
         registerMessaging(application)
         setIQKeyboardManager()
@@ -35,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) { }
 
+}
+
+// MARK: Setting NavigationBar
+extension AppDelegate {
+    func setNavigationBar() {
+        UINavigationBar.appearance().backIndicatorImage = Asset.Assets.arrow.image
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = Asset.Assets.arrow.image
+        UINavigationBar.appearance().tintColor = Asset.Colors.black.color
+    }
 }
 
 // MARK: Register to Fireabse

@@ -8,13 +8,20 @@
 import UIKit
 
 extension UIViewController {
-    func makeRoot(viewController: UIViewController) {
+    func makeRoot(viewController: UIViewController, withNavigationController: Bool = true) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-        windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: viewController)
+        var rootViewController: UIViewController
+        if withNavigationController {
+            rootViewController = UINavigationController(rootViewController: viewController)
+        } else {
+            rootViewController = viewController
+        }
+        windowScene.windows.first?.rootViewController = rootViewController
         windowScene.windows.first?.makeKeyAndVisible()
     }
     
     func push(viewController: UIViewController) {
+        navigationItem.backButtonTitle = ""
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     

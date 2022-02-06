@@ -36,6 +36,15 @@ class ViewModel {
 class ViewController: UIViewController {
     
     let disposeBag = DisposeBag()
+    var navigationTitle: String {
+        get {
+            guard let title = self.navigationItem.title else { return "" }
+            return title
+        }
+        set(newTitle) {
+            self.navigationItem.title = newTitle
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
