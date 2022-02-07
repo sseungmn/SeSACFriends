@@ -94,7 +94,6 @@ extension AuthTarget: TargetType {
             headers.append(MoyaSupports.Headers.contentType(.form).toDict())
         default: break
         }
-        debug(title: "headers", headers)
         return headers
     }
 }

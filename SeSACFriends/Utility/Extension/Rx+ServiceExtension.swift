@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 public extension ObservableType {
+    /// https://sapandiwakar.in/refresh-oauth-tokens-using-moya-rxswift/
     /// Tries to refresh auth token on 401 errors and retry the request.
     /// If the refresh fails, the signal errors.
     func retryWithTokenIfNeeded() -> Observable<Element> {
