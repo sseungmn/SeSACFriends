@@ -15,6 +15,7 @@ target 'SeSACFriends' do
   
   pod 'IQKeyboardManagerSwift'
   pod 'MultiSlider'
+  pod 'NMapsMap'
   pod 'SnapKit'
   pod 'Then'
   pod 'Toast-Swift'

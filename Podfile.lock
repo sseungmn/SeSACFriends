@@ -74,6 +74,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - NMapsMap (3.14.1)
   - PromisesObjC (2.0.0)
   - RxBlocking (6.5.0):
     - RxSwift (= 6.5.0)
@@ -106,6 +107,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Moya/RxSwift
   - MultiSlider
+  - NMapsMap
   - RxBlocking
   - RxDataSources
   - RxGesture
@@ -134,6 +136,7 @@ SPEC REPOS:
     - Moya
     - MultiSlider
     - nanopb
+    - NMapsMap
     - PromisesObjC
     - RxBlocking
     - RxCocoa
@@ -166,6 +169,7 @@ SPEC CHECKSUMS:
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   MultiSlider: 944d00877d371bbb5ce0a512fec517de87958775
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  NMapsMap: 79bae4e0d7cc5214dd6dabdb95687a1356616556
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -181,6 +185,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 6063d91e12db4bade9ab3b4743cc2bb27280d485
+PODFILE CHECKSUM: 7aaf290545849431d03a7a4879d9d987974e8c79
 
 COCOAPODS: 1.11.2

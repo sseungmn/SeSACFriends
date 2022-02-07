@@ -59,6 +59,10 @@
 		B53B9A7527A99D8500384FF5 /* UserCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A7427A99D8500384FF5 /* UserCardImageView.swift */; };
 		B53B9A7927A9B1EA00384FF5 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A7827A9B1EA00384FF5 /* UserCardView.swift */; };
 		B53B9A7B27A9B34500384FF5 /* ReputationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A7A27A9B34500384FF5 /* ReputationComponent.swift */; };
+		B54FDAD827B17A03005F4249 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDAD727B17A03005F4249 /* UIView.swift */; };
+		B54FDADB27B17BCB005F4249 /* GenderFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */; };
+		B54FDADD27B17C1C005F4249 /* MatchingStatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */; };
+		B54FDADF27B17C3D005F4249 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDADE27B17C3D005F4249 /* HomeView.swift */; };
 		B55896FE27AEA40A00777B11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55896FD27AEA40A00777B11 /* HomeViewController.swift */; };
 		B558970027AEAA0B00777B11 /* SesacShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */; };
 		B558970227AEEEFD00777B11 /* SesacAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558970127AEEEFD00777B11 /* SesacAlert.swift */; };
@@ -172,6 +176,10 @@
 		B53B9A7427A99D8500384FF5 /* UserCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardImageView.swift; sourceTree = "<group>"; };
 		B53B9A7827A9B1EA00384FF5 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		B53B9A7A27A9B34500384FF5 /* ReputationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReputationComponent.swift; sourceTree = "<group>"; };
+		B54FDAD727B17A03005F4249 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderFilterView.swift; sourceTree = "<group>"; };
+		B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingStatusButton.swift; sourceTree = "<group>"; };
+		B54FDADE27B17C3D005F4249 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B55896FD27AEA40A00777B11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacShopViewController.swift; sourceTree = "<group>"; };
 		B558970127AEEEFD00777B11 /* SesacAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAlert.swift; sourceTree = "<group>"; };
@@ -311,6 +319,7 @@
 				B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */,
 				B5344E3F27A280C000A73EB2 /* Rx+UtilExtension.swift */,
 				B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */,
+				B54FDAD727B17A03005F4249 /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -360,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				B5F8543627AC09E30013FD3E /* Onboarding */,
+				B54FDAD927B17BA2005F4249 /* Home */,
 				B567A88627994BA4005433F8 /* Auth */,
 				B53B9A5A27A9382A00384FF5 /* MyInfo */,
 			);
@@ -422,6 +432,17 @@
 				B57878F327AABF5300BE2BF6 /* UserCardCommentComponent.swift */,
 			);
 			path = UserCard;
+			sourceTree = "<group>";
+		};
+		B54FDAD927B17BA2005F4249 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
+				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
+				B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */,
+				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		B567A8672798134D005433F8 /* Application */ = {
@@ -531,7 +552,6 @@
 				B567A8672798134D005433F8 /* Application */,
 				B5C0FA9E2796D1C500BE997E /* Components */,
 				B5C0FA862795F89400BE997E /* MainViewController.swift */,
-				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
 				B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */,
 				B53B9A7227A9991B00384FF5 /* Settings.swift */,
 			);
@@ -915,6 +935,7 @@
 				B53B9A7927A9B1EA00384FF5 /* UserCardView.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
+				B54FDADF27B17C3D005F4249 /* HomeView.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
 				B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */,
@@ -960,6 +981,7 @@
 				B53B9A6F27A992AB00384FF5 /* SettingMyInfoViewController.swift in Sources */,
 				B5010C8027A064C600AD689A /* Dictionary+Extension.swift in Sources */,
 				B567A88527990536005433F8 /* StateTextField.swift in Sources */,
+				B54FDADD27B17C1C005F4249 /* MatchingStatusButton.swift in Sources */,
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
 				B558970227AEEEFD00777B11 /* SesacAlert.swift in Sources */,
 				B5046386279B153900885DAD /* EmailViewController.swift in Sources */,
@@ -969,10 +991,12 @@
 				B504638A279BDB7D00885DAD /* GenderView.swift in Sources */,
 				B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */,
 				B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */,
+				B54FDAD827B17A03005F4249 /* UIView.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
 				B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
+				B54FDADB27B17BCB005F4249 /* GenderFilterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
