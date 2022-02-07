@@ -12,7 +12,7 @@
 		B5010C7827A054C400AD689A /* CommonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7727A054C400AD689A /* CommonAPI.swift */; };
 		B5010C7B27A05E0100AD689A /* CommonTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7A27A05E0100AD689A /* CommonTarget.swift */; };
 		B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7D27A05FEF00AD689A /* MoyaSupports.swift */; };
-		B5010C8027A064C600AD689A /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */; };
+		B5010C8027A064C600AD689A /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5010C7F27A064C600AD689A /* Dictionary.swift */; };
 		B50463642799576400885DAD /* StyleStateChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463632799576400885DAD /* StyleStateChangeable.swift */; };
 		B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504636527999A1F00885DAD /* PhoneNumberView.swift */; };
 		B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504636727999CFE00885DAD /* ParagraphLabel.swift */; };
@@ -20,7 +20,7 @@
 		B50463742799BA8B00885DAD /* AuthCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463722799BA8B00885DAD /* AuthCodeView.swift */; };
 		B50463772799BBEE00885DAD /* NickenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463762799BBEE00885DAD /* NickenameView.swift */; };
 		B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463782799BC7E00885DAD /* NicknameViewController.swift */; };
-		B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504637A2799C99300885DAD /* UIViewController+Extension.swift */; };
+		B504637B2799C99300885DAD /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504637A2799C99300885DAD /* UIViewController.swift */; };
 		B504637F2799CB2D00885DAD /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504637E2799CB2D00885DAD /* BirthView.swift */; };
 		B50463812799D68800885DAD /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463802799D68800885DAD /* BirthViewController.swift */; };
 		B5046384279B152C00885DAD /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046383279B152C00885DAD /* EmailView.swift */; };
@@ -28,7 +28,7 @@
 		B504638A279BDB7D00885DAD /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046389279BDB7D00885DAD /* GenderView.swift */; };
 		B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638B279BDB8600885DAD /* GenderViewController.swift */; };
 		B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */; };
-		B5046390279C05B700885DAD /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638F279C05B700885DAD /* String+Extension.swift */; };
+		B5046390279C05B700885DAD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638F279C05B700885DAD /* String.swift */; };
 		B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */; };
 		B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046394279C8DB500885DAD /* MVVM+Base.swift */; };
 		B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046396279D829E00885DAD /* UIViewController+Rx.swift */; };
@@ -41,11 +41,11 @@
 		B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A6279DC72B00885DAD /* AuthAPI.swift */; };
 		B50463A9279DC88600885DAD /* AuthUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A8279DC88600885DAD /* AuthUserDefaults.swift */; };
 		B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AA279E724300885DAD /* BirthViewModel.swift */; };
-		B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AC279E7A7D00885DAD /* Date+Extension.swift */; };
+		B50463AD279E7A7D00885DAD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AC279E7A7D00885DAD /* Date.swift */; };
 		B50463AF279E901D00885DAD /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AE279E901D00885DAD /* EmailViewModel.swift */; };
 		B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463B0279EEACE00885DAD /* GenderViewModel.swift */; };
 		B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5100B7B279F0E27009BBF8D /* AuthTarget.swift */; };
-		B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5344E3F27A280C000A73EB2 /* Rx+UtilExtension.swift */; };
+		B5344E4027A280C000A73EB2 /* Rx+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */; };
 		B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */; };
 		B53B9A5C27A9384200384FF5 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5B27A9384200384FF5 /* MyInfoView.swift */; };
 		B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A6227A94D9600384FF5 /* Reusable.swift */; };
@@ -128,7 +128,7 @@
 		B5010C7727A054C400AD689A /* CommonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAPI.swift; sourceTree = "<group>"; };
 		B5010C7A27A05E0100AD689A /* CommonTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTarget.swift; sourceTree = "<group>"; };
 		B5010C7D27A05FEF00AD689A /* MoyaSupports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaSupports.swift; sourceTree = "<group>"; };
-		B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		B5010C7F27A064C600AD689A /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B50463632799576400885DAD /* StyleStateChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleStateChangeable.swift; sourceTree = "<group>"; };
 		B504636527999A1F00885DAD /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
 		B504636727999CFE00885DAD /* ParagraphLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphLabel.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		B50463722799BA8B00885DAD /* AuthCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCodeView.swift; sourceTree = "<group>"; };
 		B50463762799BBEE00885DAD /* NickenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickenameView.swift; sourceTree = "<group>"; };
 		B50463782799BC7E00885DAD /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
-		B504637A2799C99300885DAD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		B504637A2799C99300885DAD /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B504637E2799CB2D00885DAD /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
 		B50463802799D68800885DAD /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
 		B5046383279B152C00885DAD /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		B5046389279BDB7D00885DAD /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
 		B504638B279BDB8600885DAD /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
-		B504638F279C05B700885DAD /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		B504638F279C05B700885DAD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCodeViewModel.swift; sourceTree = "<group>"; };
 		B5046394279C8DB500885DAD /* MVVM+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MVVM+Base.swift"; sourceTree = "<group>"; };
 		B5046396279D829E00885DAD /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
@@ -157,11 +157,11 @@
 		B50463A6279DC72B00885DAD /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		B50463A8279DC88600885DAD /* AuthUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDefaults.swift; sourceTree = "<group>"; };
 		B50463AA279E724300885DAD /* BirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewModel.swift; sourceTree = "<group>"; };
-		B50463AC279E7A7D00885DAD /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		B50463AC279E7A7D00885DAD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		B50463AE279E901D00885DAD /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		B50463B0279EEACE00885DAD /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
 		B5100B7B279F0E27009BBF8D /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
-		B5344E3F27A280C000A73EB2 /* Rx+UtilExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UtilExtension.swift"; sourceTree = "<group>"; };
+		B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extension.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+ServiceExtension.swift"; sourceTree = "<group>"; };
 		B53B9A5B27A9384200384FF5 /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
@@ -310,15 +310,10 @@
 		B504637C2799C99700885DAD /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B504637A2799C99300885DAD /* UIViewController+Extension.swift */,
-				B5046396279D829E00885DAD /* UIViewController+Rx.swift */,
-				B504638F279C05B700885DAD /* String+Extension.swift */,
-				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
-				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
-				B50463AC279E7A7D00885DAD /* Date+Extension.swift */,
-				B5010C7F27A064C600AD689A /* Dictionary+Extension.swift */,
-				B5344E3F27A280C000A73EB2 /* Rx+UtilExtension.swift */,
-				B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */,
+				B504637A2799C99300885DAD /* UIViewController.swift */,
+				B504638F279C05B700885DAD /* String.swift */,
+				B50463AC279E7A7D00885DAD /* Date.swift */,
+				B5010C7F27A064C600AD689A /* Dictionary.swift */,
 				B54FDAD727B17A03005F4249 /* UIView.swift */,
 			);
 			path = Extension;
@@ -391,6 +386,7 @@
 				B50463A2279DC52200885DAD /* Utils.swift */,
 				B53B9A6227A94D9600384FF5 /* Reusable.swift */,
 				B504639C279D853500885DAD /* UserDefault+Wrapper.swift */,
+				B54FDAE027B18892005F4249 /* Rx */,
 				B504637C2799C99700885DAD /* Extension */,
 			);
 			path = Utility;
@@ -437,12 +433,24 @@
 		B54FDAD927B17BA2005F4249 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
-				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
 				B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */,
+				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
 				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
+				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		B54FDAE027B18892005F4249 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				B5046396279D829E00885DAD /* UIViewController+Rx.swift */,
+				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
+				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
+				B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */,
+				B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		B567A8672798134D005433F8 /* Application */ = {
@@ -937,8 +945,8 @@
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
 				B54FDADF27B17C3D005F4249 /* HomeView.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
-				B5046390279C05B700885DAD /* String+Extension.swift in Sources */,
-				B50463AD279E7A7D00885DAD /* Date+Extension.swift in Sources */,
+				B5046390279C05B700885DAD /* String.swift in Sources */,
+				B50463AD279E7A7D00885DAD /* Date.swift in Sources */,
 				B5010C7827A054C400AD689A /* CommonAPI.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,
@@ -960,7 +968,7 @@
 				B50463812799D68800885DAD /* BirthViewController.swift in Sources */,
 				B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */,
 				B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */,
-				B5344E4027A280C000A73EB2 /* Rx+UtilExtension.swift in Sources */,
+				B5344E4027A280C000A73EB2 /* Rx+Extension.swift in Sources */,
 				B55896FE27AEA40A00777B11 /* HomeViewController.swift in Sources */,
 				B57878F427AABF5300BE2BF6 /* UserCardCommentComponent.swift in Sources */,
 				B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */,
@@ -979,7 +987,7 @@
 				B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */,
 				B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */,
 				B53B9A6F27A992AB00384FF5 /* SettingMyInfoViewController.swift in Sources */,
-				B5010C8027A064C600AD689A /* Dictionary+Extension.swift in Sources */,
+				B5010C8027A064C600AD689A /* Dictionary.swift in Sources */,
 				B567A88527990536005433F8 /* StateTextField.swift in Sources */,
 				B54FDADD27B17C1C005F4249 /* MatchingStatusButton.swift in Sources */,
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
@@ -992,7 +1000,7 @@
 				B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */,
 				B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */,
 				B54FDAD827B17A03005F4249 /* UIView.swift in Sources */,
-				B504637B2799C99300885DAD /* UIViewController+Extension.swift in Sources */,
+				B504637B2799C99300885DAD /* UIViewController.swift in Sources */,
 				B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
