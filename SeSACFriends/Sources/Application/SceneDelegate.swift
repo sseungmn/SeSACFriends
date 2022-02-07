@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             entryViewController = MainViewController()
         } else if AuthUserDefaults.idtoken.isEmpty {
             entryViewController = OnboardingViewController()
-            entryViewController.view.makeToast("번호인증을 완료한 기록이 있습니다. 세부 정보를 입력해주세요.")
         } else {
             entryViewController = UINavigationController(rootViewController: NicknameViewController())
+            entryViewController.view.makeToast("번호인증을 완료한 기록이 있습니다. 세부 정보를 입력해주세요.")
         }
         
         window?.rootViewController = entryViewController

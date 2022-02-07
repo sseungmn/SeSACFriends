@@ -78,7 +78,13 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         debug(title: "Firebase registration token", String(describing: fcmToken))
         guard let FCMtoken = fcmToken else { return }
-        AuthUserDefaults.FCMtoken = FCMtoken
+        if AuthUserDefaults.FCMtoken != FCMtoken {
+            AuthUserDefaults.FCMtoken = FCMtoken
+            CommonAPI.shared.refreshFCMtoken()
+                .debug("Refresh FCMtoken")
+                .subscribe()
+                .dispose()
+        }
     }
 }
 

@@ -64,7 +64,8 @@ class AuthCodeViewController: ViewController {
 
         output.makeRootMainViewController
             .subscribe(onNext: { [weak self] in
-                    self?.makeRoot(viewController: MainViewController(), withNavigationController: false)
+                AuthUserDefaults.isUser = true
+                self?.makeRoot(viewController: MainViewController(), withNavigationController: false)
             })
             .disposed(by: disposeBag)
         
