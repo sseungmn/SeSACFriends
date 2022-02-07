@@ -6,11 +6,10 @@
 //
 
 import UIKit
-import NMapsMap
 
 class HomeView: View {
     
-    let mapView = NMFMapView()
+    let mapView = SesacMapView()
     
     let genderFilterView = GenderFilterView()
     
@@ -34,7 +33,7 @@ class HomeView: View {
         }
         addSubview(genderFilterView)
         genderFilterView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(52)
+            make.top.equalTo(safeAreaLayoutGuide).inset(8)
             make.leading.equalToSuperview().inset(16)
         }
         addSubview(currentLocationButton)

@@ -48,8 +48,10 @@ class SesacAlertController: ViewController {
         button.setTitle("확인", for: .normal)
         button.setStyleState(styleState: .fill)
     }
+    var okAction: (() -> Void)?
     
-    init(title: String, message: String) {
+    init(title: String, message: String, okAction: (() -> Void)? = nil) {
+        self.okAction = okAction
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overCurrentContext
         titleLabel.text = title
@@ -63,6 +65,9 @@ class SesacAlertController: ViewController {
     override func bind() {
         cancelButton.rx.tap
             .bind(onNext: { self.dismiss(animated: false) })
+            .disposed(by: disposeBag)
+        okButton.rx.tap
+            .bind(onNext: { self.okAction?() })
             .disposed(by: disposeBag)
     }
     

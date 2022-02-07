@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import NMapsMap
 import IQKeyboardManagerSwift
 import RxSwift
 
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Auth.auth().languageCode = "kr"
         
+        setNMapsMap()
         setNavigationBar()
         registerNotification(application)
         registerMessaging(application)
@@ -36,6 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) { }
 
+}
+
+extension AppDelegate {
+    func setNMapsMap() {
+        NMFAuthManager.shared().clientId = APIKeys.NMFClientId.keyString
+    }
 }
 
 // MARK: Setting NavigationBar

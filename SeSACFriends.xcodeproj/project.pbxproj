@@ -63,6 +63,9 @@
 		B54FDADB27B17BCB005F4249 /* GenderFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */; };
 		B54FDADD27B17C1C005F4249 /* MatchingStatusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */; };
 		B54FDADF27B17C3D005F4249 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDADE27B17C3D005F4249 /* HomeView.swift */; };
+		B54FDAE227B1A645005F4249 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDAE127B1A645005F4249 /* APIKeys.swift */; };
+		B54FDAE427B1A668005F4249 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B54FDAE327B1A668005F4249 /* APIKeys.plist */; };
+		B54FDAE627B1B54D005F4249 /* SesacMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54FDAE527B1B54D005F4249 /* SesacMapView.swift */; };
 		B55896FE27AEA40A00777B11 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55896FD27AEA40A00777B11 /* HomeViewController.swift */; };
 		B558970027AEAA0B00777B11 /* SesacShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */; };
 		B558970227AEEEFD00777B11 /* SesacAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B558970127AEEEFD00777B11 /* SesacAlert.swift */; };
@@ -180,6 +183,9 @@
 		B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderFilterView.swift; sourceTree = "<group>"; };
 		B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingStatusButton.swift; sourceTree = "<group>"; };
 		B54FDADE27B17C3D005F4249 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B54FDAE127B1A645005F4249 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		B54FDAE327B1A668005F4249 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		B54FDAE527B1B54D005F4249 /* SesacMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacMapView.swift; sourceTree = "<group>"; };
 		B55896FD27AEA40A00777B11 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B55896FF27AEAA0B00777B11 /* SesacShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacShopViewController.swift; sourceTree = "<group>"; };
 		B558970127AEEEFD00777B11 /* SesacAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SesacAlert.swift; sourceTree = "<group>"; };
@@ -437,6 +443,7 @@
 				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
 				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
 				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
+				B54FDAE527B1B54D005F4249 /* SesacMapView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -569,6 +576,7 @@
 		B5C0FA782795DB8B00BE997E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				B54FDAE327B1A668005F4249 /* APIKeys.plist */,
 				B5C0FA532795DB5B00BE997E /* Info.plist */,
 				B5C0FA502795DB5B00BE997E /* LaunchScreen.storyboard */,
 			);
@@ -603,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C1440527AC2B1A007C9BD5 /* User.swift */,
+				B54FDAE127B1A645005F4249 /* APIKeys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -746,6 +755,7 @@
 				B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */,
 				B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */,
 				B5C0FA522795DB5B00BE997E /* LaunchScreen.storyboard in Resources */,
+				B54FDAE427B1A668005F4249 /* APIKeys.plist in Resources */,
 				B567A86E2798517B005433F8 /* Colors.xcassets in Resources */,
 				B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */,
 			);
@@ -939,6 +949,7 @@
 				B558970027AEAA0B00777B11 /* SesacShopViewController.swift in Sources */,
 				B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
+				B54FDAE627B1B54D005F4249 /* SesacMapView.swift in Sources */,
 				B53B9A7527A99D8500384FF5 /* UserCardImageView.swift in Sources */,
 				B53B9A7927A9B1EA00384FF5 /* UserCardView.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
@@ -982,6 +993,7 @@
 				B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
+				B54FDAE227B1A645005F4249 /* APIKeys.swift in Sources */,
 				B53B9A6927A968E300384FF5 /* MyInfoViewModel.swift in Sources */,
 				B5010C7B27A05E0100AD689A /* CommonTarget.swift in Sources */,
 				B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */,

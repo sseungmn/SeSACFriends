@@ -44,6 +44,7 @@ internal enum Asset {
     internal static let mainStatusButton2 = ImageAsset(name: "main_status_button-2")
     internal static let mainStatusButton3 = ImageAsset(name: "main_status_button-3")
     internal static let man = ImageAsset(name: "man")
+    internal static let mapMarker = ImageAsset(name: "map_marker")
     internal static let message = ImageAsset(name: "message")
     internal static let more = ImageAsset(name: "more")
     internal static let moreArrow = ImageAsset(name: "more_arrow")

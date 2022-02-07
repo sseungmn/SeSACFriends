@@ -44,7 +44,7 @@ class GenderFilterView: ReactiveView {
             allOptionButton.rx.tap.map { _ in Gender.unknown },
             manOptionButton.rx.tap.map { _ in Gender.man },
             womanOptionButton.rx.tap.map { _ in Gender.woman }
-        ).debug()
+        )
             .bind(to: filteredGender)
             .disposed(by: disposeBag)
         
