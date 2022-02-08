@@ -29,7 +29,7 @@ enum AuthTarget {
 
 extension AuthTarget: TargetType {
     var baseURL: URL {
-        return URL(string: "http://test.monocoding.com:35484")!
+        return MoyaSupports.shared.baseURL
     }
     
     var path: String {
@@ -62,8 +62,13 @@ extension AuthTarget: TargetType {
         switch self {
         case .isUser:
             return .requestPlain
-        case .signUp(let phoneNumber, let FCMtoken, let nick,
-                     let birth, let email, let gender):
+        case .signUp(let phoneNumber,
+                     let FCMtoken,
+                     let nick,
+                     let birth,
+                     let email,
+                     let gender
+        ):
             let params: [String: Any] = [
                 "phoneNumber": phoneNumber,
                 "FCMtoken": FCMtoken,

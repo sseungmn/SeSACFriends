@@ -14,7 +14,7 @@ enum CommonTarget {
 
 extension CommonTarget: TargetType {
     var baseURL: URL {
-        return URL(string: "http://test.monocoding.com:35484")!
+        return MoyaSupports.shared.baseURL
     }
     
     var path: String {

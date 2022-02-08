@@ -39,6 +39,8 @@ extension APIError: Equatable {
 class MoyaSupports {
     static let shared = MoyaSupports()
     
+    var baseURL = URL(string: "http://test.monocoding.com:35484")!
+    
     enum Headers {
         case idtoken
         case contentType(_ type: ContentType)
