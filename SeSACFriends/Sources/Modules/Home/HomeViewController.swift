@@ -26,7 +26,9 @@ class HomeViewController: ViewController {
     }
     
     override func configure() {
-        self.mainView.mapView.updateLocation()
+        checkLocationAuthorization()
+        self.mainView.mapView.updateLocation(coordinate: locationManager.location?.coordinate.NMGLatLng)
+        self.mainView.mapView.setZoomLevel()
     }
     
     override func bind() {

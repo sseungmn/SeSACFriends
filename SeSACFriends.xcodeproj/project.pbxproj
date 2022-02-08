@@ -441,9 +441,9 @@
 			children = (
 				B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */,
 				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
+				B54FDAE527B1B54D005F4249 /* SesacMapView.swift */,
 				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
 				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
-				B54FDAE527B1B54D005F4249 /* SesacMapView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

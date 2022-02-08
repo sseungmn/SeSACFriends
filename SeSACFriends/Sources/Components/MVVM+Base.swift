@@ -48,8 +48,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
         setConstraint()
+        configure()
         bind()
     }
     
