@@ -31,9 +31,9 @@
 		B5046390279C05B700885DAD /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504638F279C05B700885DAD /* String.swift */; };
 		B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */; };
 		B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046394279C8DB500885DAD /* MVVM+Base.swift */; };
-		B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046396279D829E00885DAD /* UIViewController+Rx.swift */; };
-		B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046398279D82D800885DAD /* UITextField+Rx.swift */; };
-		B504639B279D82DE00885DAD /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639A279D82DE00885DAD /* UIButton+Rx.swift */; };
+		B5046397279D829E00885DAD /* Rx+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046396279D829E00885DAD /* Rx+UIViewController.swift */; };
+		B5046399279D82D800885DAD /* Rx+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5046398279D82D800885DAD /* Rx+UITextField.swift */; };
+		B504639B279D82DE00885DAD /* Rx+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639A279D82DE00885DAD /* Rx+UIButton.swift */; };
 		B504639D279D853500885DAD /* UserDefault+Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639C279D853500885DAD /* UserDefault+Wrapper.swift */; };
 		B504639F279D873900885DAD /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504639E279D873900885DAD /* Firebase.swift */; };
 		B50463A3279DC52200885DAD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463A2279DC52200885DAD /* Utils.swift */; };
@@ -45,6 +45,9 @@
 		B50463AF279E901D00885DAD /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463AE279E901D00885DAD /* EmailViewModel.swift */; };
 		B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50463B0279EEACE00885DAD /* GenderViewModel.swift */; };
 		B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5100B7B279F0E27009BBF8D /* AuthTarget.swift */; };
+		B51756E227B2B70900E0B539 /* Onqueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E127B2B70900E0B539 /* Onqueue.swift */; };
+		B51756E427B2B84800E0B539 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E327B2B84800E0B539 /* HomeViewModel.swift */; };
+		B51756E627B2DB9C00E0B539 /* Rx+NMFMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E527B2DB9C00E0B539 /* Rx+NMFMapView.swift */; };
 		B5344E4027A280C000A73EB2 /* Rx+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */; };
 		B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */; };
 		B53B9A5C27A9384200384FF5 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5B27A9384200384FF5 /* MyInfoView.swift */; };
@@ -95,6 +98,8 @@
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
 		B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1440527AC2B1A007C9BD5 /* User.swift */; };
+		B5F0186B27B29DF50020346C /* QueueTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F0186A27B29DF50020346C /* QueueTarget.swift */; };
+		B5F0186D27B2A0520020346C /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F0186C27B2A0520020346C /* QueueAPI.swift */; };
 		B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */; };
 		B5F8543127AB9C780013FD3E /* SettingHobbyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */; };
 		B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */; };
@@ -150,9 +155,9 @@
 		B504638F279C05B700885DAD /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCodeViewModel.swift; sourceTree = "<group>"; };
 		B5046394279C8DB500885DAD /* MVVM+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MVVM+Base.swift"; sourceTree = "<group>"; };
-		B5046396279D829E00885DAD /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
-		B5046398279D82D800885DAD /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
-		B504639A279D82DE00885DAD /* UIButton+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Rx.swift"; sourceTree = "<group>"; };
+		B5046396279D829E00885DAD /* Rx+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UIViewController.swift"; sourceTree = "<group>"; };
+		B5046398279D82D800885DAD /* Rx+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UITextField.swift"; sourceTree = "<group>"; };
+		B504639A279D82DE00885DAD /* Rx+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+UIButton.swift"; sourceTree = "<group>"; };
 		B504639C279D853500885DAD /* UserDefault+Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+Wrapper.swift"; sourceTree = "<group>"; };
 		B504639E279D873900885DAD /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		B50463A2279DC52200885DAD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -164,6 +169,9 @@
 		B50463AE279E901D00885DAD /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		B50463B0279EEACE00885DAD /* GenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
 		B5100B7B279F0E27009BBF8D /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
+		B51756E127B2B70900E0B539 /* Onqueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onqueue.swift; sourceTree = "<group>"; };
+		B51756E327B2B84800E0B539 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		B51756E527B2DB9C00E0B539 /* Rx+NMFMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+NMFMapView.swift"; sourceTree = "<group>"; };
 		B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extension.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+ServiceExtension.swift"; sourceTree = "<group>"; };
@@ -219,6 +227,8 @@
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		B5C1440527AC2B1A007C9BD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B5F0186A27B29DF50020346C /* QueueTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTarget.swift; sourceTree = "<group>"; };
+		B5F0186C27B2A0520020346C /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoViewModel.swift; sourceTree = "<group>"; };
 		B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHobbyComponent.swift; sourceTree = "<group>"; };
 		B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSearchableComponent.swift; sourceTree = "<group>"; };
@@ -359,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				B5010C7D27A05FEF00AD689A /* MoyaSupports.swift */,
+				B5F0186927B29DD90020346C /* Queue */,
 				B5010C7C27A05E1500AD689A /* Auth */,
 				B5010C7927A05DF500AD689A /* Common */,
 				B504639E279D873900885DAD /* Firebase.swift */,
@@ -443,6 +454,7 @@
 				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
 				B54FDAE527B1B54D005F4249 /* SesacMapView.swift */,
 				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
+				B51756E327B2B84800E0B539 /* HomeViewModel.swift */,
 				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -451,9 +463,10 @@
 		B54FDAE027B18892005F4249 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				B5046396279D829E00885DAD /* UIViewController+Rx.swift */,
-				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
-				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
+				B5046396279D829E00885DAD /* Rx+UIViewController.swift */,
+				B51756E527B2DB9C00E0B539 /* Rx+NMFMapView.swift */,
+				B5046398279D82D800885DAD /* Rx+UITextField.swift */,
+				B504639A279D82DE00885DAD /* Rx+UIButton.swift */,
 				B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */,
 				B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */,
 			);
@@ -612,8 +625,18 @@
 			children = (
 				B5C1440527AC2B1A007C9BD5 /* User.swift */,
 				B54FDAE127B1A645005F4249 /* APIKeys.swift */,
+				B51756E127B2B70900E0B539 /* Onqueue.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B5F0186927B29DD90020346C /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				B5F0186A27B29DF50020346C /* QueueTarget.swift */,
+				B5F0186C27B2A0520020346C /* QueueAPI.swift */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 		B5F8543627AC09E30013FD3E /* Onboarding */ = {
@@ -951,6 +974,7 @@
 				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
 				B54FDAE627B1B54D005F4249 /* SesacMapView.swift in Sources */,
 				B53B9A7527A99D8500384FF5 /* UserCardImageView.swift in Sources */,
+				B51756E627B2DB9C00E0B539 /* Rx+NMFMapView.swift in Sources */,
 				B53B9A7927A9B1EA00384FF5 /* UserCardView.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
@@ -965,14 +989,16 @@
 				B50463A7279DC72B00885DAD /* AuthAPI.swift in Sources */,
 				B53B9A7127A996E600384FF5 /* SettingMyInfoView.swift in Sources */,
 				B53B9A5C27A9384200384FF5 /* MyInfoView.swift in Sources */,
-				B5046399279D82D800885DAD /* UITextField+Rx.swift in Sources */,
+				B5046399279D82D800885DAD /* Rx+UITextField.swift in Sources */,
 				B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */,
 				B53B9A6B27A96A5900384FF5 /* MyInfoSection.swift in Sources */,
+				B51756E227B2B70900E0B539 /* Onqueue.swift in Sources */,
 				B504638E279BF42900885DAD /* PhoneNumberViewModel.swift in Sources */,
 				B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
 				B53B9A6727A9564D00384FF5 /* MyInfoCell.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
+				B5F0186D27B2A0520020346C /* QueueAPI.swift in Sources */,
 				B53B9A6527A9502600384FF5 /* MyInfoViewController.swift in Sources */,
 				B50463AB279E724300885DAD /* BirthViewModel.swift in Sources */,
 				B57878F827AACF0D00BE2BF6 /* SettingGenderComponent.swift in Sources */,
@@ -988,12 +1014,13 @@
 				B50463742799BA8B00885DAD /* AuthCodeView.swift in Sources */,
 				B50463772799BBEE00885DAD /* NickenameView.swift in Sources */,
 				B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */,
-				B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */,
+				B5046397279D829E00885DAD /* Rx+UIViewController.swift in Sources */,
 				B53B9A7B27A9B34500384FF5 /* ReputationComponent.swift in Sources */,
 				B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
 				B54FDAE227B1A645005F4249 /* APIKeys.swift in Sources */,
+				B5F0186B27B29DF50020346C /* QueueTarget.swift in Sources */,
 				B53B9A6927A968E300384FF5 /* MyInfoViewModel.swift in Sources */,
 				B5010C7B27A05E0100AD689A /* CommonTarget.swift in Sources */,
 				B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */,
@@ -1005,7 +1032,7 @@
 				B50463792799BC7E00885DAD /* NicknameViewController.swift in Sources */,
 				B558970227AEEEFD00777B11 /* SesacAlert.swift in Sources */,
 				B5046386279B153900885DAD /* EmailViewController.swift in Sources */,
-				B504639B279D82DE00885DAD /* UIButton+Rx.swift in Sources */,
+				B504639B279D82DE00885DAD /* Rx+UIButton.swift in Sources */,
 				B567A8662797EB6A005433F8 /* IconButton.swift in Sources */,
 				B50463AF279E901D00885DAD /* EmailViewModel.swift in Sources */,
 				B504638A279BDB7D00885DAD /* GenderView.swift in Sources */,
@@ -1016,6 +1043,7 @@
 				B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */,
 				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
+				B51756E427B2B84800E0B539 /* HomeViewModel.swift in Sources */,
 				B54FDADB27B17BCB005F4249 /* GenderFilterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

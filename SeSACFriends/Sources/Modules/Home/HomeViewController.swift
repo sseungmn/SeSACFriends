@@ -14,6 +14,7 @@ import RxCocoa
 class HomeViewController: ViewController {
     
     let mainView = HomeView()
+    var viewModel = HomeViewModel()
     var locationManager: CLLocationManager!
     
     override func loadView() {
@@ -32,6 +33,18 @@ class HomeViewController: ViewController {
     }
     
     override func bind() {
+        let input = HomeViewModel.Input(
+            curCoordinates: mainView.mapView.rx.curCoordinates,
+            mapViewIdleState: mainView.mapView.rx.mapViewIdleState
+        )
+        let output = viewModel.transform(input: input)
+        
+        output.onqueueResponse
+            .bind(onNext: { onqueueResponse in
+                debug(title: "onqueue", onqueueResponse.fromQueueDB)
+            })
+            .disposed(by: disposeBag)
+        
         mainView.currentLocationButton.rx.tap
             .map(checkLocationAuthorization)
             .filter { $0 }
