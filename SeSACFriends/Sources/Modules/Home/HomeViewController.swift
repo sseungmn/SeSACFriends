@@ -35,13 +35,21 @@ class HomeViewController: ViewController {
     override func bind() {
         let input = HomeViewModel.Input(
             curCoordinates: mainView.mapView.rx.curCoordinates,
-            mapViewIdleState: mainView.mapView.rx.mapViewIdleState
+            mapViewIdleState: mainView.mapView.rx.mapViewIdleState,
+            filteredGender: mainView.genderFilterView.filteredGender.asObservable()
         )
         let output = viewModel.transform(input: input)
         
-        output.onqueueResponse
-            .bind(onNext: { onqueueResponse in
-                debug(title: "onqueue", onqueueResponse.fromQueueDB)
+        output.queuedUsers
+            .drive(onNext: { (users) in
+                MarkerManager.shared.clearMarkers()
+                users.forEach { user in
+                    let marker = NMFMarker(
+                        position: NMGLatLng(lat: user.lat, lng: user.long),
+                        iconImage: MarkerManager.shared.markerImage(sesacCharacter: user.sesac.sesacCharacter)
+                    )
+                    MarkerManager.shared.markers.insert(marker)
+                }
             })
             .disposed(by: disposeBag)
         

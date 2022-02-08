@@ -48,6 +48,7 @@
 		B51756E227B2B70900E0B539 /* Onqueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E127B2B70900E0B539 /* Onqueue.swift */; };
 		B51756E427B2B84800E0B539 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E327B2B84800E0B539 /* HomeViewModel.swift */; };
 		B51756E627B2DB9C00E0B539 /* Rx+NMFMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E527B2DB9C00E0B539 /* Rx+NMFMapView.swift */; };
+		B51756E827B2F41100E0B539 /* MarkerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E727B2F41100E0B539 /* MarkerManager.swift */; };
 		B5344E4027A280C000A73EB2 /* Rx+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */; };
 		B53B9A5627A6F53600384FF5 /* Rx+ServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */; };
 		B53B9A5C27A9384200384FF5 /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5B27A9384200384FF5 /* MyInfoView.swift */; };
@@ -172,6 +173,7 @@
 		B51756E127B2B70900E0B539 /* Onqueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onqueue.swift; sourceTree = "<group>"; };
 		B51756E327B2B84800E0B539 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B51756E527B2DB9C00E0B539 /* Rx+NMFMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+NMFMapView.swift"; sourceTree = "<group>"; };
+		B51756E727B2F41100E0B539 /* MarkerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerManager.swift; sourceTree = "<group>"; };
 		B5344E3F27A280C000A73EB2 /* Rx+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Extension.swift"; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B53B9A5527A6F53600384FF5 /* Rx+ServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+ServiceExtension.swift"; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				B54FDADC27B17C1C005F4249 /* MatchingStatusButton.swift */,
 				B54FDADA27B17BCB005F4249 /* GenderFilterView.swift */,
+				B51756E727B2F41100E0B539 /* MarkerManager.swift */,
 				B54FDAE527B1B54D005F4249 /* SesacMapView.swift */,
 				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
 				B51756E327B2B84800E0B539 /* HomeViewModel.swift */,
@@ -982,6 +985,7 @@
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String.swift in Sources */,
 				B50463AD279E7A7D00885DAD /* Date.swift in Sources */,
+				B51756E827B2F41100E0B539 /* MarkerManager.swift in Sources */,
 				B5010C7827A054C400AD689A /* CommonAPI.swift in Sources */,
 				B567A87927985E22005433F8 /* Assets+Generated.swift in Sources */,
 				B50463A3279DC52200885DAD /* Utils.swift in Sources */,

@@ -27,6 +27,7 @@ class SesacMapView: NMFMapView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setContraints()
+        MarkerManager.shared.mapView = self
     }
     
     required init?(coder: NSCoder) {

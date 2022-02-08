@@ -12,13 +12,16 @@ import RxCocoa
 
 class HomeViewModel: ViewModel, ViewModelType {
     
+    let queuedUsers = BehaviorRelay<[QueuedUser]>(value: [])
+    
     struct Input {
         var curCoordinates: Observable<NMGLatLng>
         var mapViewIdleState: Observable<Void>
+        var filteredGender: Observable<Gender>
     }
     
     struct Output {
-        var onqueueResponse: Observable<Onqueue>
+        var queuedUsers: Driver<[QueuedUser]>
     }
     
     func transform(input: Input) -> Output {
@@ -27,6 +30,7 @@ class HomeViewModel: ViewModel, ViewModelType {
             .withLatestFrom(input.curCoordinates)
             .flatMap { coordinates in
                 QueueAPI.shared.onqueue(lat: coordinates.lat, long: coordinates.lng)
+                    .map { $0.fromQueueDB }
                     .asObservable()
                     .retryWithTokenIfNeeded()
                     .materialize()
@@ -37,8 +41,24 @@ class HomeViewModel: ViewModel, ViewModelType {
             .bind(to: errorCollector)
             .disposed(by: disposeBag)
         
+        onqueue.elements()
+            .bind(to: queuedUsers)
+            .disposed(by: disposeBag)
+        
+        let filteredQueuedUsers = Observable.combineLatest(input.filteredGender, queuedUsers.asObservable()) { (filteredGender, queuedUsers) -> [QueuedUser] in
+            return queuedUsers.filter { user in
+                switch filteredGender {
+                case .unknown:
+                    return true
+                default:
+                    return user.gender == filteredGender.rawValue
+                }
+            }
+        }
+            .asDriverOnErrorJustComplete()
+        
         return Output(
-            onqueueResponse: onqueue.elements()
+            queuedUsers: filteredQueuedUsers
         )
     }
 }
