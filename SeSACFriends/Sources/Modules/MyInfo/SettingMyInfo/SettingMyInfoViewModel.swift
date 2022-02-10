@@ -11,7 +11,7 @@ import RxCocoa
 
 class SettingMyInfoViewModel: ViewModel, ViewModelType {
     
-    let gender = BehaviorRelay<Gender>(value: .unknown)
+    let gender = BehaviorRelay<Gender>(value: SesacUserDefaults.gender.toGender)
     let hobby = BehaviorRelay<String>(value: "")
     let searchable = BehaviorRelay<Bool>(value: false)
     let ageRange = BehaviorRelay<[CGFloat]>(value: [18, 35])

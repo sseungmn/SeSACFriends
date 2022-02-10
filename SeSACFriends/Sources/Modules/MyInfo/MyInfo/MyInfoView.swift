@@ -13,6 +13,7 @@ class MyInfoView: View {
     let tableView = UITableView().then { tableView in
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 17)
         tableView.isScrollEnabled = false
+        tableView.backgroundColor = .white
     }
     
     override func setConstraint() {

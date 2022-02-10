@@ -40,6 +40,7 @@ final class MyInfoTitleCell: UITableViewCell {
     
     func configure() {
         selectionStyle = .none
+        backgroundColor = .white
     }
     
     func setContraint() {
