@@ -28,7 +28,7 @@ class RxNMFMapViewDelegateProxy: DelegateProxy<NMFMapView, NMFMapViewDelegate>, 
 }
 
 extension Reactive where Base: NMFMapView {
-    var delegate : DelegateProxy<NMFMapView, NMFMapViewDelegate> {
+    var delegate: DelegateProxy<NMFMapView, NMFMapViewDelegate> {
         return RxNMFMapViewDelegateProxy.proxy(for: self.base)
     }
     

@@ -51,7 +51,7 @@ extension QueueTarget: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         var headers = MoyaSupports.Headers.idtoken.toDict()
         switch self {
         case .onqueue:
