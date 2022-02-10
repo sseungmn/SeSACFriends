@@ -43,7 +43,7 @@ class PhoneNumberViewController: ViewController {
         
         output.verifyResult
             .drive(onNext: { [weak self] verificationID in
-                AuthUserDefaults.verificaitonID = verificationID
+                SesacUserDefaults.verificaitonID = verificationID
                 self?.push(viewController: AuthCodeViewController())
             })
             .disposed(by: disposeBag)

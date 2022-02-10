@@ -48,7 +48,7 @@ class MoyaSupports {
         func toDict() -> [String: String] {
             switch self {
             case .idtoken:
-                return ["idtoken": AuthUserDefaults.idtoken]
+                return ["idtoken": SesacUserDefaults.idtoken]
             case .contentType(let type):
                 switch type {
                 case .json:

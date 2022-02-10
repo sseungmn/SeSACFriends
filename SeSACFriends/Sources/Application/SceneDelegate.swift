@@ -17,9 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         var entryViewController: UIViewController
-        if AuthUserDefaults.isUser {
+        if SesacUserDefaults.isUser {
             entryViewController = MainViewController()
-        } else if AuthUserDefaults.idtoken.isEmpty {
+        } else if SesacUserDefaults.idtoken.isEmpty {
             entryViewController = OnboardingViewController()
         } else {
             entryViewController = UINavigationController(rootViewController: NicknameViewController())

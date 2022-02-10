@@ -74,7 +74,7 @@ class SettingMyInfoViewController: ViewController {
         
         output.withdrawCompleted
             .drive(onNext: { [weak self] in
-                AuthUserDefaults.clearAuthParams()
+                SesacUserDefaults.clearAuthParams()
                 self?.makeRoot(viewController: OnboardingViewController())
             })
             .disposed(by: disposeBag)

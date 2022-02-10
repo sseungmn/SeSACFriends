@@ -12,7 +12,7 @@ final class UserCardNickComponent: View {
     let nickLabel = UILabel().then { label in
         label.font = .Title1_M16
         label.textColor = Asset.Colors.black.color
-        label.text = AuthUserDefaults.nick
+        label.text = SesacUserDefaults.nick
     }
     
     let openCloseImageView = UIImageView().then { imageView in

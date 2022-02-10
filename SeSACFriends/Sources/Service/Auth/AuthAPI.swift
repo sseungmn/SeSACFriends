@@ -59,12 +59,12 @@ class AuthAPI {
     }
     
     func signUp(
-        phoneNumber: String = AuthUserDefaults.phoneNumber,
-        FCMtoken: String = AuthUserDefaults.FCMtoken,
-        nick: String = AuthUserDefaults.nick,
-        birth: Date = AuthUserDefaults.birth,
-        email: String = AuthUserDefaults.email,
-        gender: Int = AuthUserDefaults.gender
+        phoneNumber: String = SesacUserDefaults.phoneNumber,
+        FCMtoken: String = SesacUserDefaults.FCMtoken,
+        nick: String = SesacUserDefaults.nick,
+        birth: Date = SesacUserDefaults.birth,
+        email: String = SesacUserDefaults.email,
+        gender: Int = SesacUserDefaults.gender
     ) -> Single<Void> {
         
         let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"

@@ -11,7 +11,7 @@ import RxCocoa
 
 class EmailViewModel: ViewModel, ViewModelType {
     
-    let email = BehaviorRelay<String>(value: AuthUserDefaults.email)
+    let email = BehaviorRelay<String>(value: SesacUserDefaults.email)
     
     struct Input {
         let confirmButtonTap: Driver<Void>
@@ -46,7 +46,7 @@ class EmailViewModel: ViewModel, ViewModelType {
             .filter { $0 }.mapToVoid()
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                AuthUserDefaults.email = self.email.value
+                SesacUserDefaults.email = self.email.value
             })
             .asDriver()
         

@@ -11,7 +11,7 @@ import RxCocoa
 
 class NicknameViewModel: ViewModel, ViewModelType {
     
-    let nick = BehaviorRelay<String>(value: AuthUserDefaults.nick)
+    let nick = BehaviorRelay<String>(value: SesacUserDefaults.nick)
     
     struct Input {
         let submitButtonTap: Driver<Void>
@@ -35,7 +35,7 @@ class NicknameViewModel: ViewModel, ViewModelType {
         let validNickname: Driver<Bool> = input.submitButtonTap
             .do(onNext: { [weak self] in
                 guard let self = self else { return }
-                AuthUserDefaults.nick = self.nick.value
+                SesacUserDefaults.nick = self.nick.value
             })
             .withLatestFrom(validation)
             .asDriver(onErrorJustReturn: false)
@@ -43,7 +43,7 @@ class NicknameViewModel: ViewModel, ViewModelType {
         validNickname
             .filter { !$0 }
             .drive(onNext: {  _ in
-                AuthUserDefaults.nick = ""
+                SesacUserDefaults.nick = ""
             })
             .disposed(by: disposeBag)
         

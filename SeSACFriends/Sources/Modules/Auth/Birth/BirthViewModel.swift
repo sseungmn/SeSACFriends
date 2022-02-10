@@ -12,7 +12,7 @@ import RxCocoa
 
 class BirthViewModel: ViewModel, ViewModelType {
     
-    let birth = BehaviorRelay<Date>(value: AuthUserDefaults.birth)
+    let birth = BehaviorRelay<Date>(value: SesacUserDefaults.birth)
     let year = BehaviorRelay<Int>(value: 0)
     let month = BehaviorRelay<Int>(value: 0)
     let day = BehaviorRelay<Int>(value: 0)
@@ -60,7 +60,7 @@ class BirthViewModel: ViewModel, ViewModelType {
         let pushEmailViewController = input.submitButtonTap
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                AuthUserDefaults.birth = self.birth.value
+                SesacUserDefaults.birth = self.birth.value
             })
         
         return Output(

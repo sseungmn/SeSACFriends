@@ -64,7 +64,7 @@ class AuthCodeViewController: ViewController {
 
         output.makeRootMainViewController
             .subscribe(onNext: { [weak self] in
-                AuthUserDefaults.isUser = true
+                SesacUserDefaults.isUser = true
                 self?.makeRoot(viewController: MainViewController(), withNavigationController: false)
             })
             .disposed(by: disposeBag)
@@ -77,7 +77,7 @@ class AuthCodeViewController: ViewController {
         
         output.sentAuthCode
             .subscribe(onNext: { [weak self] verificationID in
-                AuthUserDefaults.verificaitonID = verificationID
+                SesacUserDefaults.verificaitonID = verificationID
                 self?.view.makeToast("인증번호를 보냈습니다.")
             })
             .disposed(by: disposeBag)

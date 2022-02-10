@@ -15,7 +15,7 @@ enum VerificationError: Error {
 
 class PhoneNumberViewModel: ViewModel, ViewModelType {
     
-    let phoneNumber = BehaviorRelay<String>(value: AuthUserDefaults.phoneNumber)
+    let phoneNumber = BehaviorRelay<String>(value: SesacUserDefaults.phoneNumber)
     
     struct Input {
         let submitButtonTap: Driver<Void>
@@ -49,7 +49,7 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
         let result = input.submitButtonTap.asObservable()
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                AuthUserDefaults.phoneNumber = self.phoneNumber.value
+                SesacUserDefaults.phoneNumber = self.phoneNumber.value
             })
             .flatMap { () -> Observable<Event<String>> in
                 return Firebase.shared.verifyPhoneNumber()
@@ -60,7 +60,7 @@ class PhoneNumberViewModel: ViewModel, ViewModelType {
         
         result.errors()
             .do(onNext: { _ in
-                AuthUserDefaults.phoneNumber = ""
+                SesacUserDefaults.phoneNumber = ""
             })
             .bind(to: errorCollector)
             .disposed(by: disposeBag)

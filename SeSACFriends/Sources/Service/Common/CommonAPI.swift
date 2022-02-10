@@ -16,7 +16,7 @@ class CommonAPI {
     
     let provider = MoyaProvider<CommonTarget>()
     
-    func refreshFCMtoken(_ FCMtoken: String = AuthUserDefaults.FCMtoken) -> Single<Bool> {
+    func refreshFCMtoken(_ FCMtoken: String = SesacUserDefaults.FCMtoken) -> Single<Bool> {
         provider.rx.request(
             .refrechFCMtoken(FCMtoken: FCMtoken)
         )

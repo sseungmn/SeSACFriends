@@ -90,7 +90,7 @@ class GenderViewModel: ViewModel {
         let makeRootMainViewController = signup.elements()
             .do(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                AuthUserDefaults.gender = self.gender.value
+                SesacUserDefaults.gender = self.gender.value
             })
             .asDriverOnErrorJustComplete()
                 

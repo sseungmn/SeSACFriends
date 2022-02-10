@@ -16,7 +16,7 @@ class Firebase {
     static let shared = Firebase()
     private init() {}
     
-    func verifyPhoneNumber(phoneNumber: String = AuthUserDefaults.phoneNumber) -> Single<String> {
+    func verifyPhoneNumber(phoneNumber: String = SesacUserDefaults.phoneNumber) -> Single<String> {
         let phoneNumber = "+82\(phoneNumber.decimalFilteredString.dropFirst())"
         print(phoneNumber)
         return Single<String>.create { single in
@@ -39,7 +39,7 @@ class Firebase {
     func credential(verificationCode: String) -> Single<Void> {
         return Single<Void>.create { single in
             let credential = PhoneAuthProvider.provider().credential(
-                withVerificationID: AuthUserDefaults.verificaitonID,
+                withVerificationID: SesacUserDefaults.verificaitonID,
                 verificationCode: verificationCode
             )
             
@@ -54,7 +54,7 @@ class Firebase {
                         return
                     }
                     if let idToken = idToken {
-                        AuthUserDefaults.idtoken = idToken
+                        SesacUserDefaults.idtoken = idToken
                         single(.success(()))
                     }
                 }
@@ -72,7 +72,7 @@ class Firebase {
                         return
                     }
                     if let idToken = idToken {
-                        AuthUserDefaults.idtoken = idToken
+                        SesacUserDefaults.idtoken = idToken
                         single(.success(()))
                     }
                 }
@@ -92,7 +92,7 @@ class Firebase {
                     single(.failure(error))
                 } else if let FCMtoken = FCMtoken {
                     debug(title: "Firebase fetching FCM registration token", String(describing: FCMtoken))
-                    AuthUserDefaults.FCMtoken = FCMtoken
+                    SesacUserDefaults.FCMtoken = FCMtoken
                     single(.success(()))
                 }
             }
