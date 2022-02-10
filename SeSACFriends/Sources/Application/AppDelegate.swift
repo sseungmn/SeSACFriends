@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Auth.auth().languageCode = "kr"
         
         setNMapsMap()
+        setDefaultConfiguration()
         setNavigationBar()
         registerNotification(application)
         registerMessaging(application)
@@ -52,6 +53,15 @@ extension AppDelegate {
         UINavigationBar.appearance().backIndicatorImage = Asset.Assets.arrow.image
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = Asset.Assets.arrow.image
         UINavigationBar.appearance().tintColor = Asset.Colors.black.color
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: Asset.Colors.black.color,
+            NSAttributedString.Key.font: UIFont.Title3_M14
+        ]
+        
+    }
+    func setDefaultConfiguration() {
+        UILabel.appearance().textColor = Asset.Colors.black.color
+        UIView.appearance().backgroundColor = .clear
     }
 }
 

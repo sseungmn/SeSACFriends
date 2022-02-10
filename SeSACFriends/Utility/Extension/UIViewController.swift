@@ -22,6 +22,7 @@ extension UIViewController {
     
     func push(viewController: UIViewController) {
         navigationItem.backButtonTitle = ""
+        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
