@@ -23,7 +23,7 @@ enum MatchingStatus {
 }
 
 class MatchingStatusButton: UIButton {
-    private var status: MatchingStatus = .default {
+    private var status: MatchingStatus = SesacUserDefaults.matchingStatus {
         didSet {
             self.setImage(status.icon, for: .normal)
         }

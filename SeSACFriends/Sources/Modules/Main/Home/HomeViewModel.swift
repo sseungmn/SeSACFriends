@@ -18,21 +18,39 @@ class HomeViewModel: ViewModel, ViewModelType {
     
     struct Input {
         var curCoordinates: Observable<NMGLatLng>
-        var viewWillAppear: Observable<Bool>
+        var viewWillAppear: Driver<Bool>
         var gpsButtonTrigger: Observable<Void>
         var mapViewIdleTrigger: Driver<Void>
-        var filteredGender: Observable<Gender>
+        var filteredGender: Driver<Gender>
         var curAuthorizationState: Driver<CLAuthorizationStatus>
+        var matchingStatusButtonTrigger: Driver<Void>
     }
     
     struct Output {
+        var fetchInfo: Driver<User>
         var queuedUsers: Driver<[QueuedUser]>
         var requestLocationAuthorization: Signal<Void>
         var updateCameraToCurrentLocation: Driver<Void>
         var isUserInteractionEnabledMap: Signal<Bool>
+        var needGenderSelection: Driver<Void>
+        var pushHobbyScene: Driver<Void>
+        var pushSearchSesacScene: Driver<Void>
+        var pushChattingScene: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
+        
+        let info = input.viewWillAppear.asObservable().debug()
+            .flatMap { _ in
+                AuthAPI.shared.getUser()
+                    .asObservable()
+                    .retryWithTokenIfNeeded()
+                    .materialize()
+            }
+        
+        info.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
         
         let onqueue = input.mapViewIdleTrigger.asObservable()
             .withLatestFrom(input.curCoordinates)
@@ -77,11 +95,11 @@ class HomeViewModel: ViewModel, ViewModelType {
             .mapToVoid()
         
         let filteredQueuedUsers = Observable.combineLatest(
-                input.filteredGender,
+                input.filteredGender.asObservable(),
                 queuedUsers.asObservable(),
                 updateCameraToCurLocation,
                 locationDidAuthorized.asObservable(),
-                input.viewWillAppear
+                input.viewWillAppear.asObservable()
             ) { (filteredGender, queuedUsers, _, _, _) -> [QueuedUser] in
                 return queuedUsers.filter { user in
                     switch filteredGender {
@@ -93,11 +111,48 @@ class HomeViewModel: ViewModel, ViewModelType {
                 }
             }
         
+        // MARK: Matching Status
+        let matchingStatus = input.matchingStatusButtonTrigger
+            .withLatestFrom(input.curAuthorizationState)
+            .filter { [weak self] state in
+                switch state {
+                case .restricted, .denied:
+                    self?.requestLocationAuthorization.accept(())
+                    return false
+                default: return true
+                }
+            }
+            .mapToVoid()
+        
+        let defaultStatus = matchingStatus
+            .filter { SesacUserDefaults.matchingStatus == .default }
+            
+        let pushHobbyScene = defaultStatus
+            .filter { SesacUserDefaults.gender != -1 }
+            .mapToVoid()
+        
+        let needGenderSelection = defaultStatus
+            .filter { SesacUserDefaults.gender == -1 }
+            .mapToVoid()
+        
+        let pushSerachSesacScene = matchingStatus
+            .filter { SesacUserDefaults.matchingStatus == .waiting }
+            .mapToVoid()
+        
+        let pushChattingScene = matchingStatus
+            .filter { SesacUserDefaults.matchingStatus == .matched }
+            .mapToVoid()
+        
         return Output(
+            fetchInfo: info.elements().asDriverOnErrorJustComplete(),
             queuedUsers: filteredQueuedUsers.asDriverOnErrorJustComplete(),
             requestLocationAuthorization: requestLocationAuthorization.debug().asSignal(onErrorJustReturn: ()),
             updateCameraToCurrentLocation: updateCameraToCurLocation.asDriverOnErrorJustComplete(),
-            isUserInteractionEnabledMap: isUserInteractionEnabledMap.asSignal()
+            isUserInteractionEnabledMap: isUserInteractionEnabledMap.asSignal(),
+            needGenderSelection: needGenderSelection,
+            pushHobbyScene: pushHobbyScene,
+            pushSearchSesacScene: pushSerachSesacScene,
+            pushChattingScene: pushChattingScene
         )
     }
 }

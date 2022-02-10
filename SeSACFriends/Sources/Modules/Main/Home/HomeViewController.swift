@@ -27,7 +27,6 @@ class HomeViewController: ViewController {
     }
     
     override func configure() {
-//        checkLocationAuthorization()
 //        self.mainView.mapView.updateLocation(coordinate: locationManager.location?.coordinate.NMGLatLng)
         self.mainView.mapView.updateLocation()
         self.mainView.mapView.setZoomLevel()
@@ -36,13 +35,21 @@ class HomeViewController: ViewController {
     override func bind() {
         let input = HomeViewModel.Input(
             curCoordinates: mainView.mapView.rx.curCoordinates,
-            viewWillAppear: rx.viewDidLoad.asObservable(),
+            viewWillAppear: rx.viewWillAppear.asDriver(),
             gpsButtonTrigger: mainView.gpsButton.rx.tap.asObservable(),
             mapViewIdleTrigger: mainView.mapView.rx.mapViewIdleState.asDriverOnErrorJustComplete(),
-            filteredGender: mainView.genderFilterView.filteredGender.asObservable(),
-            curAuthorizationState: locationManager.rx.curAuthrizationState.asDriverOnErrorJustComplete()
+            filteredGender: mainView.genderFilterView.filteredGender.asDriver(),
+            curAuthorizationState: locationManager.rx.curAuthrizationState.asDriverOnErrorJustComplete(),
+            matchingStatusButtonTrigger: mainView.matchingStatusButton.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
+        
+        output.fetchInfo
+            .drive(onNext: { user in
+                SesacUserDefaults.nick = user.nick
+                SesacUserDefaults.gender = user.gender
+            })
+            .disposed(by: disposeBag)
         
         output.queuedUsers
             .drive(onNext: { (users) in
@@ -83,11 +90,36 @@ class HomeViewController: ViewController {
             }
             .disposed(by: disposeBag)
         
-//        mainView.gpsButton.rx.tap
-//            .map(checkLocationAuthorization)
-//            .filter { $0 }
-//            .asDriverOnErrorJustComplete()
-//            .disposed(by: disposeBag)
+        output.needGenderSelection
+            .drive { [weak self] _ in
+                self?.tabBarController?.selectedIndex = 2
+                guard let nav = self?.tabBarController?.selectedViewController as? UINavigationController else {
+                    return
+                }
+                let targetViewController = SettingMyInfoViewController()
+                targetViewController.hidesBottomBarWhenPushed = true
+                targetViewController.view.makeToast("새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!")
+                nav.pushViewController(targetViewController, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
+        output.pushHobbyScene
+            .drive { [weak self] _ in
+                self?.push(viewController: HobbyViewController())
+            }
+            .disposed(by: disposeBag)
+        
+        output.pushSearchSesacScene
+            .drive { [weak self] _ in
+                self?.push(viewController: SearchSesacViewController())
+            }
+            .disposed(by: disposeBag)
+        
+        output.pushChattingScene
+            .drive { [weak self] _ in
+                self?.push(viewController: ChattingViewController())
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -103,22 +135,6 @@ extension HomeViewController: CLLocationManagerDelegate {
         }
     }
     
-//    func checkLocationAuthorization() -> Bool {
-//        switch locationManager.authorizationStatus {
-//        case .denied, .restricted:
-//            let alert = SesacAlertController(title: "위치 서비스 사용 불가", message: "서비스 사용을 위해 설청창으로 이동합니다.") {
-//                if let bundleId = Bundle.main.bundleIdentifier,
-//                   let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)") {
-//                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//                    self.dismiss(animated: false)
-//                }
-//            }
-//            present(alert, animated: false)
-//            return false
-//        default:
-//            return true
-//        }
-//    }
 }
 
 class RxCLLocationManagerDelegateProxy: DelegateProxy<CLLocationManager, CLLocationManagerDelegate>, DelegateProxyType, CLLocationManagerDelegate {

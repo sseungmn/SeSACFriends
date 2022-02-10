@@ -17,6 +17,13 @@ extension ObservableType {
         }
     }
     
+    func asSignalOnErrorJustComplete() -> Signal<Element> {
+        return asSignal { error in
+            assertionFailure("Error \(error)")
+            return Signal.empty()
+        }
+    }
+    
     func mapToVoid() -> Observable<Void> {
         return map { _ in }
     }
