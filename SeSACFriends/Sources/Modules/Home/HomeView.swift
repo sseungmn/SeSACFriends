@@ -13,7 +13,7 @@ class HomeView: View {
     
     let genderFilterView = GenderFilterView()
     
-    let currentLocationButton = UIButton().then { button in
+    let gpsButton = UIButton().then { button in
         button.bounds = CGRect(x: 0, y: 0, width: 48, height: 48)
         button.setImage(Asset.Assets.place.image, for: .normal)
         button.contentMode = .scaleAspectFill
@@ -36,8 +36,8 @@ class HomeView: View {
             make.top.equalTo(safeAreaLayoutGuide).inset(8)
             make.leading.equalToSuperview().inset(16)
         }
-        addSubview(currentLocationButton)
-        currentLocationButton.snp.makeConstraints { make in
+        addSubview(gpsButton)
+        gpsButton.snp.makeConstraints { make in
             make.top.equalTo(genderFilterView.snp.bottom).offset(16)
             make.leading.equalToSuperview().inset(16)
             make.size.equalTo(48)
