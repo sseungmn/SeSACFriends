@@ -103,6 +103,7 @@
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
 		B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1440527AC2B1A007C9BD5 /* User.swift */; };
+		B5D0C99F27B698B6005B49FC /* HobbyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0C99E27B698B6005B49FC /* HobbyCollectionView.swift */; };
 		B5F0186B27B29DF50020346C /* QueueTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F0186A27B29DF50020346C /* QueueTarget.swift */; };
 		B5F0186D27B2A0520020346C /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F0186C27B2A0520020346C /* QueueAPI.swift */; };
 		B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */; };
@@ -237,6 +238,7 @@
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		B5C1440527AC2B1A007C9BD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B5D0C99E27B698B6005B49FC /* HobbyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionView.swift; sourceTree = "<group>"; };
 		B5F0186A27B29DF50020346C /* QueueTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTarget.swift; sourceTree = "<group>"; };
 		B5F0186C27B2A0520020346C /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
 		B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMyInfoViewModel.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				B502375727B4F7B30090C66D /* HobbyView.swift */,
+				B5D0C99E27B698B6005B49FC /* HobbyCollectionView.swift */,
 				B58872FA27B57E9F000863AA /* HobbyViewController.swift */,
 			);
 			path = Hobby;
@@ -1047,6 +1050,7 @@
 				B5F8542F27AB98DC0013FD3E /* SettingMyInfoViewModel.swift in Sources */,
 				B502375827B4F7B30090C66D /* HobbyView.swift in Sources */,
 				B5046384279B152C00885DAD /* EmailView.swift in Sources */,
+				B5D0C99F27B698B6005B49FC /* HobbyCollectionView.swift in Sources */,
 				B53B9A6727A9564D00384FF5 /* MyInfoCell.swift in Sources */,
 				B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */,
 				B5F0186D27B2A0520020346C /* QueueAPI.swift in Sources */,
