@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import FirebaseMessaging
 import Moya
 import RxSwift
 import RxTest
@@ -24,21 +23,6 @@ class SeSACFriendsTests: XCTestCase {
         disposeBag = DisposeBag()
         auth = AuthAPI.shared
         common = CommonAPI.shared
-        
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-              AuthUserDefaults.FCMtoken = token
-          }
-        }
-        
-        AuthUserDefaults.phoneNumber = "+821042225861"
-        AuthUserDefaults.nick = "minios"
-        AuthUserDefaults.birth = "1998-09-15T00:00:00.000Z"
-        AuthUserDefaults.email = "minios@gmail.com"
-        AuthUserDefaults.gender = -1
-        
     }
 
     override func tearDownWithError() throws {
@@ -48,9 +32,9 @@ class SeSACFriendsTests: XCTestCase {
     }
 
     func testIsUser() throws {
-        let isUser: Single<Void> = auth.isUser()
+        let isUser: Single<Bool> = auth.isUser()
        
-        XCTAssertTrue(try isUser.toBlocking().first())
+        XCTAssertTrue(try isUser.toBlocking().first()!)
     }
     
     func testFCMToken() throws {
@@ -60,14 +44,14 @@ class SeSACFriendsTests: XCTestCase {
     }
     
     func testSignUp() throws {
-        let signUp: Single<Bool> = auth.signUp()
+        let signUp: Single<Void> = auth.signUp()
         
-        XCTAssertEqual(try signUp.toBlocking().first(), true)
+        XCTAssertEqual(((try signUp.toBlocking().first()) != nil), true)
     }
 
     func testWithdraw() throws {
-        let withdraw: Single<Bool> = auth.withDraw()
+        let withdraw: Single<Void> = auth.withDraw()
         
-        XCTAssertEqual(try withdraw.toBlocking().first(), true)
+        XCTAssertEqual(((try withdraw.toBlocking().first()) != nil), true)
     }
 }
