@@ -33,7 +33,7 @@ class HomeViewModel: ViewModel, ViewModelType {
         var updateCameraToCurrentLocation: Driver<Void>
         var isUserInteractionEnabledMap: Signal<Bool>
         var needGenderSelection: Driver<Void>
-        var pushHobbyScene: Driver<Void>
+        var pushHobbyScene: Driver<NMGLatLng>
         var pushSearchSesacScene: Driver<Void>
         var pushChattingScene: Driver<Void>
     }
@@ -133,7 +133,7 @@ class HomeViewModel: ViewModel, ViewModelType {
             
         let pushHobbyScene = defaultStatus
             .filter { SesacUserDefaults.gender != -1 }
-            .mapToVoid()
+            .withLatestFrom(input.curCoordinates)
         
         let needGenderSelection = defaultStatus
             .filter { SesacUserDefaults.gender == -1 }
@@ -149,7 +149,7 @@ class HomeViewModel: ViewModel, ViewModelType {
         
         return Output(
             fetchInfo: info.elements().asDriverOnErrorJustComplete(),
-            queuedUsers:  filteredQueuedUsers.asDriverOnErrorJustComplete(),
+            queuedUsers: filteredQueuedUsers.asDriverOnErrorJustComplete(),
             requestLocationAuthorization: requestLocationAuthorization.debug().asSignal(onErrorJustReturn: ()),
             updateCameraToCurrentLocation: updateCameraToCurLocation.asDriverOnErrorJustComplete(),
             isUserInteractionEnabledMap: isUserInteractionEnabledMap.asSignal(),

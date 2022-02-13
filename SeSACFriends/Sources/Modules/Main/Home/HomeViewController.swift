@@ -104,8 +104,8 @@ class HomeViewController: ViewController {
             .disposed(by: disposeBag)
         
         output.pushHobbyScene
-            .drive { [weak self] _ in
-                self?.push(viewController: HobbyViewController())
+            .drive { [weak self] curCoordinates in
+                self?.push(viewController: HobbyViewController(viewModel: HobbyViewModel(curCoordinates: curCoordinates)))
             }
             .disposed(by: disposeBag)
         
