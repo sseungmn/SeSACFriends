@@ -17,7 +17,7 @@ class HomeViewModel: ViewModel, ViewModelType {
     let isUserInteractionEnabledMap = PublishRelay<Bool>()
     
     struct Input {
-        var curCoordinates: Observable<NMGLatLng>
+        var curCoordinates: Driver<NMGLatLng>
         var viewWillAppear: Driver<Bool>
         var gpsButtonTrigger: Observable<Void>
         var mapViewIdleTrigger: Driver<Void>
@@ -52,17 +52,6 @@ class HomeViewModel: ViewModel, ViewModelType {
             .bind(to: errorCollector)
             .disposed(by: disposeBag)
         
-        let onqueue = input.mapViewIdleTrigger.asObservable()
-            .withLatestFrom(input.curCoordinates)
-            .flatMap { coordinates in
-                QueueAPI.shared.onqueue(lat: coordinates.lat, long: coordinates.lng)
-                    .map { $0.fromQueueDB }
-                    .asObservable()
-                    .retryWithTokenIfNeeded()
-                    .materialize()
-            }
-            .share()
-        
         input.mapViewIdleTrigger.asObservable()
             .bind { [weak self] _ in
                 self?.isUserInteractionEnabledMap.accept(false)
@@ -72,14 +61,7 @@ class HomeViewModel: ViewModel, ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        onqueue.errors()
-            .bind(to: errorCollector)
-            .disposed(by: disposeBag)
-        
-        onqueue.elements()
-            .bind(to: queuedUsers)
-            .disposed(by: disposeBag)
-        
+        // MARK: Onqueue
         let locationDidAuthorized = input.curAuthorizationState
             .filter { [weak self] state in
                 switch state {
@@ -94,22 +76,44 @@ class HomeViewModel: ViewModel, ViewModelType {
             .withLatestFrom(locationDidAuthorized)
             .mapToVoid()
         
+        let onqueue = Observable.merge(
+            input.mapViewIdleTrigger.asObservable(),
+            input.filteredGender.mapToVoid().asObservable(),
+            updateCameraToCurLocation,
+            locationDidAuthorized.mapToVoid().asObservable(),
+            input.viewWillAppear.mapToVoid().asObservable()
+        )
+            .withLatestFrom(input.curCoordinates)
+            .flatMap { coor in
+                QueueAPI.shared.onqueue(lat: coor.lat, long: coor.lng)
+                    .map { $0.fromQueueDB }
+                    .asObservable()
+                    .retryWithTokenIfNeeded()
+                    .materialize()
+            }
+            .share()
+        
+        onqueue.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
+        
+        onqueue.elements()
+            .bind(to: queuedUsers)
+            .disposed(by: disposeBag)
+        
         let filteredQueuedUsers = Observable.combineLatest(
-                input.filteredGender.asObservable(),
-                queuedUsers.asObservable(),
-                updateCameraToCurLocation,
-                locationDidAuthorized.asObservable(),
-                input.viewWillAppear.asObservable()
-            ) { (filteredGender, queuedUsers, _, _, _) -> [QueuedUser] in
-                return queuedUsers.filter { user in
-                    switch filteredGender {
-                    case .unknown:
-                        return true
-                    default:
-                        return user.gender == filteredGender.rawValue
-                    }
+            queuedUsers.asObservable(),
+            input.filteredGender.asObservable()
+        ) { (queuedUsers, filteredGender) -> [QueuedUser] in
+            return queuedUsers.filter { user in
+                switch filteredGender {
+                case .unknown:
+                    return true
+                default:
+                    return user.gender == filteredGender.rawValue
                 }
             }
+        }
         
         // MARK: Matching Status
         let matchingStatus = input.matchingStatusButtonTrigger
@@ -145,7 +149,7 @@ class HomeViewModel: ViewModel, ViewModelType {
         
         return Output(
             fetchInfo: info.elements().asDriverOnErrorJustComplete(),
-            queuedUsers: filteredQueuedUsers.asDriverOnErrorJustComplete(),
+            queuedUsers:  filteredQueuedUsers.asDriverOnErrorJustComplete(),
             requestLocationAuthorization: requestLocationAuthorization.debug().asSignal(onErrorJustReturn: ()),
             updateCameraToCurrentLocation: updateCameraToCurLocation.asDriverOnErrorJustComplete(),
             isUserInteractionEnabledMap: isUserInteractionEnabledMap.asSignal(),

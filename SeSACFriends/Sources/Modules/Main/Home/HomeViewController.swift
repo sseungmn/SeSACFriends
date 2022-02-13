@@ -34,7 +34,7 @@ class HomeViewController: ViewController {
     
     override func bind() {
         let input = HomeViewModel.Input(
-            curCoordinates: mainView.mapView.rx.curCoordinates,
+            curCoordinates: mainView.mapView.rx.curCoordinates.asDriverOnErrorJustComplete(),
             viewWillAppear: rx.viewWillAppear.asDriver(),
             gpsButtonTrigger: mainView.gpsButton.rx.tap.asObservable(),
             mapViewIdleTrigger: mainView.mapView.rx.mapViewIdleState.asDriverOnErrorJustComplete(),
