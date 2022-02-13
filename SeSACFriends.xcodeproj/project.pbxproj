@@ -86,6 +86,7 @@
 		B57878F227AABCDC00BE2BF6 /* UserCardNickComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F127AABCDC00BE2BF6 /* UserCardNickComponent.swift */; };
 		B57878F427AABF5300BE2BF6 /* UserCardCommentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F327AABF5300BE2BF6 /* UserCardCommentComponent.swift */; };
 		B57878F827AACF0D00BE2BF6 /* SettingGenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */; };
+		B57C8BA027B8E6AB00CBB69A /* HobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C8B9F27B8E6AB00CBB69A /* HobbyViewModel.swift */; };
 		B58872FB27B57E9F000863AA /* HobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58872FA27B57E9F000863AA /* HobbyViewController.swift */; };
 		B58872FF27B57F6A000863AA /* SearchSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58872FE27B57F6A000863AA /* SearchSesacViewController.swift */; };
 		B588730227B57F9C000863AA /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588730127B57F9C000863AA /* ChattingViewController.swift */; };
@@ -217,6 +218,7 @@
 		B57878F127AABCDC00BE2BF6 /* UserCardNickComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardNickComponent.swift; sourceTree = "<group>"; };
 		B57878F327AABF5300BE2BF6 /* UserCardCommentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardCommentComponent.swift; sourceTree = "<group>"; };
 		B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGenderComponent.swift; sourceTree = "<group>"; };
+		B57C8B9F27B8E6AB00CBB69A /* HobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewModel.swift; sourceTree = "<group>"; };
 		B58872FA27B57E9F000863AA /* HobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewController.swift; sourceTree = "<group>"; };
 		B58872FE27B57F6A000863AA /* SearchSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSesacViewController.swift; sourceTree = "<group>"; };
 		B588730127B57F9C000863AA /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
@@ -313,8 +315,8 @@
 				B51756E727B2F41100E0B539 /* MarkerManager.swift */,
 				B54FDAE527B1B54D005F4249 /* SesacMapView.swift */,
 				B54FDADE27B17C3D005F4249 /* HomeView.swift */,
-				B51756E327B2B84800E0B539 /* HomeViewModel.swift */,
 				B55896FD27AEA40A00777B11 /* HomeViewController.swift */,
+				B51756E327B2B84800E0B539 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -325,6 +327,7 @@
 				B502375727B4F7B30090C66D /* HobbyView.swift */,
 				B5D0C99E27B698B6005B49FC /* HobbyCollectionView.swift */,
 				B58872FA27B57E9F000863AA /* HobbyViewController.swift */,
+				B57C8B9F27B8E6AB00CBB69A /* HobbyViewModel.swift */,
 			);
 			path = Hobby;
 			sourceTree = "<group>";
@@ -333,8 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				B504636527999A1F00885DAD /* PhoneNumberView.swift */,
-				B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */,
 				B5C0FA492795DB5A00BE997E /* PhoneNumberViewController.swift */,
+				B504638D279BF42900885DAD /* PhoneNumberViewModel.swift */,
 			);
 			path = PhoneNumber;
 			sourceTree = "<group>";
@@ -343,8 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				B50463722799BA8B00885DAD /* AuthCodeView.swift */,
-				B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */,
 				B50463712799BA8B00885DAD /* AuthCodeViewController.swift */,
+				B5046391279C5B2600885DAD /* AuthCodeViewModel.swift */,
 			);
 			path = AuthorizationCode;
 			sourceTree = "<group>";
@@ -353,8 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				B50463762799BBEE00885DAD /* NickenameView.swift */,
-				B50463A4279DC6C900885DAD /* NicknameViewModel.swift */,
 				B50463782799BC7E00885DAD /* NicknameViewController.swift */,
+				B50463A4279DC6C900885DAD /* NicknameViewModel.swift */,
 			);
 			path = Nickname;
 			sourceTree = "<group>";
@@ -375,8 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				B504637E2799CB2D00885DAD /* BirthView.swift */,
-				B50463AA279E724300885DAD /* BirthViewModel.swift */,
 				B50463802799D68800885DAD /* BirthViewController.swift */,
+				B50463AA279E724300885DAD /* BirthViewModel.swift */,
 			);
 			path = Birth;
 			sourceTree = "<group>";
@@ -385,8 +388,8 @@
 			isa = PBXGroup;
 			children = (
 				B5046383279B152C00885DAD /* EmailView.swift */,
-				B50463AE279E901D00885DAD /* EmailViewModel.swift */,
 				B5046385279B153900885DAD /* EmailViewController.swift */,
+				B50463AE279E901D00885DAD /* EmailViewModel.swift */,
 			);
 			path = Email;
 			sourceTree = "<group>";
@@ -395,8 +398,8 @@
 			isa = PBXGroup;
 			children = (
 				B5046389279BDB7D00885DAD /* GenderView.swift */,
-				B50463B0279EEACE00885DAD /* GenderViewModel.swift */,
 				B504638B279BDB8600885DAD /* GenderViewController.swift */,
+				B50463B0279EEACE00885DAD /* GenderViewModel.swift */,
 			);
 			path = Gender;
 			sourceTree = "<group>";
@@ -460,13 +463,13 @@
 		B53B9A6D27A9928E00384FF5 /* SettingMyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */,
 				B53B9A7027A996E600384FF5 /* SettingMyInfoView.swift */,
-				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
 				B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */,
 				B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */,
 				B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */,
 				B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */,
+				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
+				B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */,
 			);
 			path = SettingMyInfo;
 			sourceTree = "<group>";
@@ -1068,6 +1071,7 @@
 				B5F8543527ABA46A0013FD3E /* SetttingAgeGroupComponent.swift in Sources */,
 				B50463742799BA8B00885DAD /* AuthCodeView.swift in Sources */,
 				B50463772799BBEE00885DAD /* NickenameView.swift in Sources */,
+				B57C8BA027B8E6AB00CBB69A /* HobbyViewModel.swift in Sources */,
 				B5046392279C5B2600885DAD /* AuthCodeViewModel.swift in Sources */,
 				B5046397279D829E00885DAD /* UIViewController+Rx.swift in Sources */,
 				B53B9A7B27A9B34500384FF5 /* ReputationComponent.swift in Sources */,
