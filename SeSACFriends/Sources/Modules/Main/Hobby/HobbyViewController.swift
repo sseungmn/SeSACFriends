@@ -43,7 +43,7 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
             viewWillAppear: rx.viewWillAppear.asObservable(),
             textDidEndEditing: searchBar.rx.searchButtonClicked.asObservable(),
             itemSelected: mainView.hobbyCollectionView.rx.itemSelected.asObservable(),
-            searchButtonTrigger: mainView.sesacSearchButton.rx.tap.asObservable()
+            searchButtonTrigger: mainView.sesacSearchButton.rx.tap.debug("buttonTrigger").asObservable()
         )
         let output = viewModel.transform(input: input)
         
@@ -57,8 +57,8 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
             .disposed(by: disposeBag)
 
         output.error
-            .drive(onNext: { [weak self] error in
-                guard let hobbyError = error as? HobbyError else { return }
+            .compactMap { $0 as? HobbyError }
+            .drive(onNext: { [weak self] hobbyError in
                 switch hobbyError {
                 case .already:
                     self?.mainView.makeToast("이미 등록된 취미입니다")
@@ -70,6 +70,35 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
             })
             .disposed(by: disposeBag)
         
+        output.pushSearchSesacScene
+            .drive(onNext: { [weak self] _ in
+                self?.push(viewController: SearchSesacViewController())
+            })
+            .disposed(by: disposeBag)
+        
+        output.prohibited
+            .drive(onNext: { [weak self] error in
+                if case QueueError.penalty(let level) = error {
+                    self?.mainView.makeToast("약속 취소 패널티로, \(level)분동안 이용하실 수 없습니다")
+                } else if case QueueError.banned = error {
+                    self?.mainView.makeToast("신고가 누적되어 이용하실 수 없습니다.")
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        output.needGenderSelection
+            .drive { [weak self] _ in
+                self?.tabBarController?.selectedIndex = 2
+                guard let nav = self?.tabBarController?.selectedViewController as? UINavigationController else {
+                    return
+                }
+                let targetViewController = SettingMyInfoViewController()
+                targetViewController.hidesBottomBarWhenPushed = true
+                targetViewController.view.makeToast("새싹 찾기 기능을 이용하기 위해서는 성별이 필요해요!")
+                nav.pushViewController(targetViewController, animated: false)
+            }
+            .disposed(by: disposeBag)
+        
         // Keyboard
         RxKeyboard.instance.willShowVisibleHeight
             .drive(onNext: { [weak self] height in
@@ -77,7 +106,7 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
                 self.mainView.updateButtonY(with: height)
             })
             .disposed(by: disposeBag)
-        
+
         RxKeyboard.instance.isHidden
             .filter { $0 }
             .drive(onNext: { [weak self] _ in

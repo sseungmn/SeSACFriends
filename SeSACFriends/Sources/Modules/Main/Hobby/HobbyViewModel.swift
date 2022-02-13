@@ -34,10 +34,14 @@ class HobbyViewModel: ViewModel, ViewModelType {
         var viewWillAppear: Observable<Bool>
         var textDidEndEditing: Observable<Void>
         var itemSelected: Observable<IndexPath>
+        var searchButtonTrigger: Observable<Void>
     }
     
     struct Output {
         let collectionViewItems: Observable<[HobbySection]>
+        let pushSearchSesacScene: Driver<Void>
+        let prohibited: Driver<QueueError>
+        let needGenderSelection: Driver<Void>
         let error: Driver<Error>
     }
     
@@ -142,8 +146,58 @@ class HobbyViewModel: ViewModel, ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        // MARK: Queue
+        let postQueue = input.searchButtonTrigger.asObservable()
+            .withLatestFrom(
+                Observable.combineLatest(
+                    curCoordinates,
+                    myHobby.asObservable()
+                )
+            )
+            .flatMap { (coor, hobby) -> Observable<Event<Void>> in
+                let hobby: [String] = hobby.isEmpty ? ["Anything"] : hobby
+                return QueueAPI.shared.postQueue(
+                    lat: coor.lat,
+                    long: coor.lng,
+                    hf: hobby
+                )
+                    .asObservable()
+                    .retryWithTokenIfNeeded()
+                    .materialize()
+            }
+            .share()
+        
+        let pushSearchSesacScene = postQueue.elements()
+        
+        postQueue.errors()
+            .bind(to: errorCollector)
+            .disposed(by: disposeBag)
+        
+        let prohibited = postQueue.errors()
+            .compactMap { $0 as? QueueError }
+            .filter { error in
+                if case QueueError.penalty = error {
+                    return true
+                } else if case QueueError.banned = error {
+                    
+                    return true
+                }
+                return false
+            }
+        
+        let needGenderSelection = postQueue.errors()
+            .compactMap { $0 as? QueueError }
+            .filter { error in
+                if case QueueError.needGenderSelection = error { return true}
+                return false
+            }
+            .mapToVoid()
+
         return Output(
             collectionViewItems: collectionViewItems,
+            pushSearchSesacScene: pushSearchSesacScene.asDriverOnErrorJustComplete(),
+            prohibited: prohibited.asDriverOnErrorJustComplete(),
+            needGenderSelection: needGenderSelection.asDriverOnErrorJustComplete(),
             error: self.errorCollector.asDriverOnErrorJustComplete()
         )
     }
@@ -212,7 +266,6 @@ enum HobbySection {
     case RecommendedHobbySection(items: [String])
     case QueuedUsersHobbySection(items: [String])
     case myHobbySection(items: [String])
-
 }
 
 extension HobbySection: SectionModelType {

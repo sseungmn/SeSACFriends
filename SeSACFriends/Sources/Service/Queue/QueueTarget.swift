@@ -14,6 +14,13 @@ enum QueueTarget {
         lat: Double,
         long: Double
     )
+    case postQueue(
+        type: Int,
+        region: Int,
+        lat: Double,
+        long: Double,
+        hf: [String]
+    )
 }
 
 extension QueueTarget: TargetType {
@@ -25,12 +32,14 @@ extension QueueTarget: TargetType {
         switch self {
         case .onqueue:
             return "/onqueue"
+        case .postQueue:
+            return ""
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .onqueue:
+        case .onqueue, .postQueue:
             return .post
         }
     }
@@ -48,15 +57,32 @@ extension QueueTarget: TargetType {
                 "long": long
             ]
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .postQueue(
+            let type,
+            let region,
+            let lat,
+            let long,
+            let hf
+        ):
+            let params: [String: Any] = [
+                "type": type,
+                "region": region,
+                "lat": lat,
+                "long": long,
+                "hf": hf
+            ]
+            debug(title: "params", params)
+            return .requestParameters(parameters: params, encoding: URLEncoding(arrayEncoding: .noBrackets))
         }
     }
     
     var headers: [String: String]? {
         var headers = MoyaSupports.Headers.idtoken.toDict()
         switch self {
-        case .onqueue:
+        case .onqueue, .postQueue:
             headers.append(MoyaSupports.Headers.contentType(.form).toDict())
         }
+        debug(title: "headers", headers)
         return headers
     }
     
