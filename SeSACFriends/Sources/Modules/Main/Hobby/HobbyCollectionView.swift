@@ -36,8 +36,18 @@ class HobbyCell: UICollectionViewCell {
         }
     }
     
+    private let contentStackView = UIStackView().then { stackView in
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+    }
+    
     private let titleLabel = UILabel().then { label in
         label.font = .Title4_R14
+    }
+    
+    private let xmarkImageView = UIImageView().then { imageView in
+        imageView.image = Asset.Assets.closeSmall.image
+            .withTintColor(Asset.Colors.brandGreen.color)
     }
     
     override init(frame: CGRect) {
@@ -56,10 +66,15 @@ class HobbyCell: UICollectionViewCell {
     }
     
     private func setContraints() {
-        contentView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
+        contentView.addSubview(contentStackView)
+        contentStackView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(5)
             make.leading.trailing.equalToSuperview().inset(16)
+        }
+        contentStackView.addArrangedSubview(titleLabel)
+        contentStackView.addArrangedSubview(xmarkImageView)
+        xmarkImageView.snp.makeConstraints { make in
+            make.size.equalTo(16)
         }
     }
     
@@ -71,16 +86,22 @@ class HobbyCell: UICollectionViewCell {
     func recommendedHobbyStyle() {
         themeColor = Asset.Colors.error.color
         titleColor = Asset.Colors.error.color
+        contentStackView.spacing = 0
+        xmarkImageView.isHidden = true
     }
     
     func othersHobbyStyle() {
         themeColor = Asset.Colors.gray4.color
         titleColor = Asset.Colors.black.color
+        contentStackView.spacing = 0
+        xmarkImageView.isHidden = true
     }
     
     func myHobbyStyle() {
         themeColor = Asset.Colors.brandGreen.color
         titleColor = Asset.Colors.brandGreen.color
+        contentStackView.spacing = 6
+        xmarkImageView.isHidden = false
     }
 }
 
