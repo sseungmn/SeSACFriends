@@ -19,6 +19,7 @@ class HobbyView: View {
     override func configure() {
         hobbyCollectionView.register(HobbyCell.self, forCellWithReuseIdentifier: HobbyCell.reuseID)
         hobbyCollectionView.register(HobbyHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HobbyHeader.reuseID)
+        hobbyCollectionView.keyboardDismissMode = .onDrag
     }
     
     override func setConstraint() {
@@ -37,7 +38,6 @@ class HobbyView: View {
     }
     
     func updateButtonY(with keyboardHeight: CGFloat) {
-        debug(title: "keyboard", keyboardHeight)
         if keyboardHeight == 0 {
             sesacSearchButton.layer.cornerRadius = 8
             sesacSearchButton.snp.remakeConstraints { make in
