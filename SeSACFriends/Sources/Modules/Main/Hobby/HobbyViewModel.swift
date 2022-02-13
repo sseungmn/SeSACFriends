@@ -11,13 +11,15 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum HobbyCollectionError: Error {
-    case already, overflowed
+enum HobbyError: Error {
+    case already, overflowed, invalidKeyword
 }
 
 class HobbyViewModel: ViewModel, ViewModelType {
     
     var curCoordinates: Observable<NMGLatLng>!
+    
+    let searchText = BehaviorRelay<String>(value: "")
     
     let recommendedHobby = BehaviorRelay<[String]>(value: [])
     let queuedUsersHobby = BehaviorRelay<[String]>(value: [])
@@ -30,12 +32,13 @@ class HobbyViewModel: ViewModel, ViewModelType {
     
     struct Input {
         var viewWillAppear: Observable<Bool>
+        var textDidEndEditing: Observable<Void>
         var itemSelected: Observable<IndexPath>
     }
     
     struct Output {
         let collectionViewItems: Observable<[HobbySection]>
-        let error: Signal<Error>
+        let error: Driver<Error>
     }
     
     func transform(input: Input) -> Output {
@@ -67,6 +70,38 @@ class HobbyViewModel: ViewModel, ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        // MARK: SesarchBar
+        let isValid = searchText.asObservable()
+            .distinctUntilChanged()
+            .map(validate)
+            .share()
+        
+        isValid
+            .subscribe()
+            .disposed(by: disposeBag)
+        
+        input.textDidEndEditing
+            .withLatestFrom(isValid)
+            .filter { !$0.isEmpty }
+            .withUnretained(self)
+            .bind(onNext: { (owner, hobbies) in
+                var target = owner.myHobby.value
+                guard target.count < 8 else {
+                    owner.errorCollector.accept(HobbyError.overflowed)
+                    return
+                }
+                for hobby in hobbies {
+                    guard !target.contains(hobby) else {
+                        owner.errorCollector.accept(HobbyError.already)
+                        return
+                    }
+                    target.append(hobby)
+                }
+                owner.myHobby.accept(target)
+                owner.searchText.accept("")
+            })
+            .disposed(by: disposeBag)
+        
         // MARK: CollectionView
         let collectionViewItems = Observable.combineLatest(
             recommendedHobby.asObservable(),
@@ -89,7 +124,7 @@ class HobbyViewModel: ViewModel, ViewModelType {
                 } else {
                     var item: String
                     guard target.count < 8 else {
-                        self.errorCollector.accept(HobbyCollectionError.overflowed)
+                        self.errorCollector.accept(HobbyError.overflowed)
                         return
                     }
                     if indexPath.section == 0 {
@@ -98,7 +133,7 @@ class HobbyViewModel: ViewModel, ViewModelType {
                         item = self.queuedUsersHobby.value[indexPath.row]
                     }
                     guard !target.contains(item) else {
-                        self.errorCollector.accept(HobbyCollectionError.already)
+                        self.errorCollector.accept(HobbyError.already)
                         return
                     }
                     target.append(item)
@@ -109,11 +144,26 @@ class HobbyViewModel: ViewModel, ViewModelType {
         
         return Output(
             collectionViewItems: collectionViewItems,
-            error: self.errorCollector.asSignal()
+            error: self.errorCollector.asDriverOnErrorJustComplete()
         )
     }
 }
 
+// MARK: SearchBar
+extension HobbyViewModel {
+    func validate(text: String) -> [String] {
+        let keywords = text.components(separatedBy: " ")
+        for keyword in keywords {
+            guard 1 <= keyword.count && keyword.count <= 8 else {
+                errorCollector.accept(HobbyError.invalidKeyword)
+                return Array()
+            }
+        }
+        return keywords
+    }
+}
+
+// MARK: CollectionView DataSource
 struct HobbyDataSource {
     typealias DataSource = RxCollectionViewSectionedReloadDataSource
     
