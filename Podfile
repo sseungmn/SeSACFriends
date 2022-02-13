@@ -24,6 +24,7 @@ target 'SeSACFriends' do
   pod 'RxSwift'
   pod 'RxGesture'
   pod 'Moya/RxSwift'
+  pod 'RxKeyboard'
 
   target 'SeSACFriendsTests' do
     inherit! :search_paths

@@ -122,9 +122,6 @@ class HobbyHeader: UICollectionReusableView {
     }
     
     private func setContraints() {
-        snp.makeConstraints { make in
-            make.height.equalTo(18)
-        }
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview()

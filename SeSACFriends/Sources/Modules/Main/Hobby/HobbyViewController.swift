@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxKeyboard
 
 class HobbyViewController: ViewController, UICollectionViewDelegate {
     
@@ -41,7 +42,8 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
         let input = HobbyViewModel.Input(
             viewWillAppear: rx.viewWillAppear.asObservable(),
             textDidEndEditing: searchBar.rx.searchButtonClicked.asObservable(),
-            itemSelected: mainView.hobbyCollectionView.rx.itemSelected.asObservable()
+            itemSelected: mainView.hobbyCollectionView.rx.itemSelected.asObservable(),
+            searchButtonTrigger: mainView.sesacSearchButton.rx.tap.asObservable()
         )
         let output = viewModel.transform(input: input)
         
@@ -65,6 +67,22 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
                 case .invalidKeyword:
                     self?.mainView.makeToast("최소 한 자이상, 최대 8글자까지 작성 가능합니다.")
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        // Keyboard
+        RxKeyboard.instance.willShowVisibleHeight
+            .drive(onNext: { [weak self] height in
+                guard let self = self else { return }
+                self.mainView.updateButtonY(with: height)
+            })
+            .disposed(by: disposeBag)
+        
+        RxKeyboard.instance.isHidden
+            .filter { $0 }
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.mainView.updateButtonY(with: 0)
             })
             .disposed(by: disposeBag)
     }
