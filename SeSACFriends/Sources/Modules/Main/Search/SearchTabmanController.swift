@@ -1,5 +1,5 @@
 //
-//  SearchSesacViewController.swift
+//  SearchTabmanController.swift
 //  SeSACFriends
 //
 //  Created by SEUNGMIN OH on 2022/02/11.
@@ -10,7 +10,7 @@ import Tabman
 import Pageboy
 
 class SearchTabmanController: TabmanViewController {
-    private var vc = [UIViewController(), UIViewController()]
+    private var vc = [NearSesacViewController(), RequestedSesacViewController()]
     
     let backButton = UIBarButtonItem(
         image: Asset.Assets.arrow.image,
