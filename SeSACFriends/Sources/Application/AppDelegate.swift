@@ -58,7 +58,6 @@ extension AppDelegate {
             NSAttributedString.Key.foregroundColor: Asset.Colors.black.color,
             NSAttributedString.Key.font: UIFont.Title3_M14
         ]
-        
     }
     func setDefaultConfiguration() {
         UILabel.appearance().textColor = Asset.Colors.black.color

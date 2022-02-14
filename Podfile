@@ -19,6 +19,7 @@ target 'SeSACFriends' do
   pod 'SnapKit'
   pod 'Then'
   pod 'Toast-Swift'
+  pod 'Tabman'
   
   pod 'RxDataSources'
   pod 'RxSwift'

@@ -88,7 +88,7 @@
 		B57878F827AACF0D00BE2BF6 /* SettingGenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */; };
 		B57C8BA027B8E6AB00CBB69A /* HobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C8B9F27B8E6AB00CBB69A /* HobbyViewModel.swift */; };
 		B58872FB27B57E9F000863AA /* HobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58872FA27B57E9F000863AA /* HobbyViewController.swift */; };
-		B58872FF27B57F6A000863AA /* SearchSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58872FE27B57F6A000863AA /* SearchSesacViewController.swift */; };
+		B58872FF27B57F6A000863AA /* SearchTabmanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58872FE27B57F6A000863AA /* SearchTabmanController.swift */; };
 		B588730227B57F9C000863AA /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588730127B57F9C000863AA /* ChattingViewController.swift */; };
 		B5C0FA462795DB5A00BE997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA452795DB5A00BE997E /* AppDelegate.swift */; };
 		B5C0FA482795DB5A00BE997E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA472795DB5A00BE997E /* SceneDelegate.swift */; };
@@ -98,12 +98,13 @@
 		B5C0FA672795DB5B00BE997E /* SeSACFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */; };
 		B5C0FA692795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */; };
 		B5C0FA802795EBD400BE997E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */; };
-		B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainViewController.swift */; };
+		B5C0FA872795F89400BE997E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA862795F89400BE997E /* MainTabBarController.swift */; };
 		B5C0FA89279698AE00BE997E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */; };
 		B5C0FA9A2796A8A500BE997E /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */; };
 		B5C0FA9B2796A8A500BE997E /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */; };
 		B5C0FAA02796D2A700BE997E /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FA9F2796D2A700BE997E /* StateButton.swift */; };
 		B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C1440527AC2B1A007C9BD5 /* User.swift */; };
+		B5C7A34F27BA8BFE009E01D8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C7A34E27BA8BFE009E01D8 /* SearchView.swift */; };
 		B5D0C99F27B698B6005B49FC /* HobbyCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D0C99E27B698B6005B49FC /* HobbyCollectionView.swift */; };
 		B5F0186B27B29DF50020346C /* QueueTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F0186A27B29DF50020346C /* QueueTarget.swift */; };
 		B5F0186D27B2A0520020346C /* QueueAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F0186C27B2A0520020346C /* QueueAPI.swift */; };
@@ -220,7 +221,7 @@
 		B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGenderComponent.swift; sourceTree = "<group>"; };
 		B57C8B9F27B8E6AB00CBB69A /* HobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewModel.swift; sourceTree = "<group>"; };
 		B58872FA27B57E9F000863AA /* HobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyViewController.swift; sourceTree = "<group>"; };
-		B58872FE27B57F6A000863AA /* SearchSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSesacViewController.swift; sourceTree = "<group>"; };
+		B58872FE27B57F6A000863AA /* SearchTabmanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabmanController.swift; sourceTree = "<group>"; };
 		B588730127B57F9C000863AA /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
 		B5C0FA422795DB5A00BE997E /* SeSACFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FA452795DB5A00BE997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,12 +235,13 @@
 		B5C0FA662795DB5B00BE997E /* SeSACFriendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITests.swift; sourceTree = "<group>"; };
 		B5C0FA682795DB5B00BE997E /* SeSACFriendsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSACFriendsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B5C0FA7F2795EBD400BE997E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		B5C0FA862795F89400BE997E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5C0FA862795F89400BE997E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B5C0FA88279698AD00BE997E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5C0FA982796A8A500BE997E /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		B5C0FA992796A8A500BE997E /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		B5C0FA9F2796D2A700BE997E /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
 		B5C1440527AC2B1A007C9BD5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B5C7A34E27BA8BFE009E01D8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		B5D0C99E27B698B6005B49FC /* HobbyCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbyCollectionView.swift; sourceTree = "<group>"; };
 		B5F0186A27B29DF50020346C /* QueueTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTarget.swift; sourceTree = "<group>"; };
 		B5F0186C27B2A0520020346C /* QueueAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueAPI.swift; sourceTree = "<group>"; };
@@ -489,10 +491,10 @@
 		B54FDAD927B17BA2005F4249 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B5C0FA862795F89400BE997E /* MainViewController.swift */,
+				B5C0FA862795F89400BE997E /* MainTabBarController.swift */,
 				B502375527B4F7500090C66D /* Home */,
 				B502375627B4F7780090C66D /* Hobby */,
-				B58872FD27B57F40000863AA /* SearchSesac */,
+				B58872FD27B57F40000863AA /* Search */,
 				B588730027B57F8C000863AA /* Chatting */,
 			);
 			path = Main;
@@ -544,12 +546,13 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		B58872FD27B57F40000863AA /* SearchSesac */ = {
+		B58872FD27B57F40000863AA /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				B58872FE27B57F6A000863AA /* SearchSesacViewController.swift */,
+				B58872FE27B57F6A000863AA /* SearchTabmanController.swift */,
+				B5C7A34E27BA8BFE009E01D8 /* SearchView.swift */,
 			);
-			path = SearchSesac;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		B588730027B57F8C000863AA /* Chatting */ = {
@@ -1034,6 +1037,7 @@
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
 				B50463A5279DC6C900885DAD /* NicknameViewModel.swift in Sources */,
 				B54FDADF27B17C3D005F4249 /* HomeView.swift in Sources */,
+				B5C7A34F27BA8BFE009E01D8 /* SearchView.swift in Sources */,
 				B504636827999CFE00885DAD /* ParagraphLabel.swift in Sources */,
 				B5046390279C05B700885DAD /* String.swift in Sources */,
 				B50463AD279E7A7D00885DAD /* Date.swift in Sources */,
@@ -1095,13 +1099,13 @@
 				B567A8662797EB6A005433F8 /* IconButton.swift in Sources */,
 				B50463AF279E901D00885DAD /* EmailViewModel.swift in Sources */,
 				B504638A279BDB7D00885DAD /* GenderView.swift in Sources */,
-				B58872FF27B57F6A000863AA /* SearchSesacViewController.swift in Sources */,
+				B58872FF27B57F6A000863AA /* SearchTabmanController.swift in Sources */,
 				B50463B1279EEACE00885DAD /* GenderViewModel.swift in Sources */,
 				B5010C7E27A05FEF00AD689A /* MoyaSupports.swift in Sources */,
 				B54FDAD827B17A03005F4249 /* UIView.swift in Sources */,
 				B504637B2799C99300885DAD /* UIViewController.swift in Sources */,
 				B53B9A6327A94D9600384FF5 /* Reusable.swift in Sources */,
-				B5C0FA872795F89400BE997E /* MainViewController.swift in Sources */,
+				B5C0FA872795F89400BE997E /* MainTabBarController.swift in Sources */,
 				B50463732799BA8B00885DAD /* AuthCodeViewController.swift in Sources */,
 				B51756E427B2B84800E0B539 /* HomeViewModel.swift in Sources */,
 				B54FDADB27B17BCB005F4249 /* GenderFilterView.swift in Sources */,

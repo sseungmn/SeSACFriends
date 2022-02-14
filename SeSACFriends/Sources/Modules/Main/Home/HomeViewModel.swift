@@ -34,7 +34,7 @@ class HomeViewModel: ViewModel, ViewModelType {
         var isUserInteractionEnabledMap: Signal<Bool>
         var needGenderSelection: Driver<Void>
         var pushHobbyScene: Driver<NMGLatLng>
-        var pushSearchSesacScene: Driver<Void>
+        var pushSearchScene: Driver<Void>
         var pushChattingScene: Driver<Void>
     }
     
@@ -139,7 +139,7 @@ class HomeViewModel: ViewModel, ViewModelType {
             .filter { SesacUserDefaults.gender == -1 }
             .mapToVoid()
         
-        let pushSerachSesacScene = matchingStatus
+        let pushSerachScene = matchingStatus
             .filter { SesacUserDefaults.matchingStatus == .waiting }
             .mapToVoid()
         
@@ -155,7 +155,7 @@ class HomeViewModel: ViewModel, ViewModelType {
             isUserInteractionEnabledMap: isUserInteractionEnabledMap.asSignal(),
             needGenderSelection: needGenderSelection,
             pushHobbyScene: pushHobbyScene,
-            pushSearchSesacScene: pushSerachSesacScene,
+            pushSearchScene: pushSerachScene,
             pushChattingScene: pushChattingScene
         )
     }
