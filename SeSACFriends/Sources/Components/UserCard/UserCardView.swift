@@ -12,8 +12,19 @@ import RxGesture
 
 final class UserCardView: View {
     
-    var disposeBag = DisposeBag()
-    var isCardClose = BehaviorRelay<Bool>(value: true)
+    var isCardClosed: Bool! {
+        didSet {
+            var image: UIImage
+            if isCardClosed == true {
+                image = UIImage(systemName: "chevron.down")!
+            } else {
+                image = UIImage(systemName: "chevron.up")!
+            }
+            nickContrainer.openCloseImageView.image = image
+            reputationContainer.isHidden = isCardClosed
+            commentContainer.isHidden = isCardClosed
+        }
+    }
     
     let cardImageView = UserCardImageView()
     let contentView = UIStackView().then { stackView in
@@ -33,18 +44,17 @@ final class UserCardView: View {
         title: "새싹 타이틀",
         content: ReputationComponent(isUserInteractionEnabled: false)
     )
+    private let hobbyContainer = UserCardSubContainer(
+        title: "하고 싶은 취미",
+        content: UserCardHobbyComponent()
+    )
     private let commentContainer = UserCardSubContainer(
         title: "새싹 리뷰",
         content: UserCardCommentComponent()
     )
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        bind()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    override func configure() {
+        isCardClosed = true
     }
     
     override func setConstraint() {
@@ -66,35 +76,6 @@ final class UserCardView: View {
             make.bottom.equalTo(contentView)
         }
     }
-    
-    func bind() {
-        let isCardOpenDriver = isCardClose.asDriver()
-        
-        nickContrainer.rx.tapGesture()
-            .when(.recognized)
-            .scan(true) { last, _ in !last }
-            .bind(to: isCardClose)
-            .disposed(by: disposeBag)
-        
-        isCardOpenDriver
-            .map { isCardOpen -> UIImage in
-                switch isCardOpen {
-                case true:
-                    return UIImage(systemName: "chevron.down")!
-                case false:
-                    return UIImage(systemName: "chevron.up")!
-                }
-            }
-            .drive(nickContrainer.openCloseImageView.rx.image)
-            .disposed(by: disposeBag)
-        
-        isCardOpenDriver
-            .drive(
-                reputationContainer.rx.isHidden,
-                commentContainer.rx.isHidden
-            )
-            .disposed(by: disposeBag)
-    }
 }
 
 final private class UserCardSubContainer: View {
@@ -105,7 +86,7 @@ final private class UserCardSubContainer: View {
     
     private let contentView = UIStackView()
     
-    init(title: String, content: View) {
+    init(title: String, content: UIView) {
         super.init(frame: .zero)
         self.titleLabel.text = title
         self.contentView.addArrangedSubview(content)
