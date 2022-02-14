@@ -70,9 +70,9 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
             })
             .disposed(by: disposeBag)
         
-        output.pushSearchSesacScene
+        output.pushSearchScene
             .drive(onNext: { [weak self] _ in
-                self?.push(viewController: SearchSesacViewController())
+                self?.push(viewController: SearchTabmanController())
             })
             .disposed(by: disposeBag)
         

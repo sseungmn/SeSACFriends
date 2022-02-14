@@ -16,15 +16,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        var entryViewController: UIViewController
-        if SesacUserDefaults.isUser {
-            entryViewController = MainViewController()
-        } else if SesacUserDefaults.idtoken.isEmpty {
-            entryViewController = OnboardingViewController()
-        } else {
-            entryViewController = UINavigationController(rootViewController: NicknameViewController())
-            entryViewController.view.makeToast("번호인증을 완료한 기록이 있습니다. 세부 정보를 입력해주세요.")
-        }
+        let entryViewController = UINavigationController(rootViewController: SearchTabmanController())
+//        var entryViewController: UIViewController
+//        if SesacUserDefaults.isUser {
+//            entryViewController = MainViewController()
+//        } else if SesacUserDefaults.idtoken.isEmpty {
+//            entryViewController = OnboardingViewController()
+//        } else {
+//            entryViewController = UINavigationController(rootViewController: NicknameViewController())
+//            entryViewController.view.makeToast("번호인증을 완료한 기록이 있습니다. 세부 정보를 입력해주세요.")
+//        }
         
         window?.rootViewController = entryViewController
         window?.makeKeyAndVisible()

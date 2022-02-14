@@ -39,7 +39,7 @@ class HobbyViewModel: ViewModel, ViewModelType {
     
     struct Output {
         let collectionViewItems: Observable<[HobbySection]>
-        let pushSearchSesacScene: Driver<Void>
+        let pushSearchScene: Driver<Void>
         let prohibited: Driver<QueueError>
         let needGenderSelection: Driver<Void>
         let error: Driver<Error>
@@ -167,7 +167,7 @@ class HobbyViewModel: ViewModel, ViewModelType {
             }
             .share()
         
-        let pushSearchSesacScene = postQueue.elements()
+        let pushSearchScene = postQueue.elements()
         
         postQueue.errors()
             .bind(to: errorCollector)
@@ -195,7 +195,7 @@ class HobbyViewModel: ViewModel, ViewModelType {
 
         return Output(
             collectionViewItems: collectionViewItems,
-            pushSearchSesacScene: pushSearchSesacScene.asDriverOnErrorJustComplete(),
+            pushSearchScene: pushSearchScene.asDriverOnErrorJustComplete(),
             prohibited: prohibited.asDriverOnErrorJustComplete(),
             needGenderSelection: needGenderSelection.asDriverOnErrorJustComplete(),
             error: self.errorCollector.asDriverOnErrorJustComplete()

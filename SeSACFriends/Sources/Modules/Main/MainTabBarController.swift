@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -20,7 +20,7 @@ class MainViewController: UITabBarController {
     }
 }
 
-extension MainViewController {
+extension MainTabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
