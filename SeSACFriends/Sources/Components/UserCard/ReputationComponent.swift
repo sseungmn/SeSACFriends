@@ -34,7 +34,13 @@ final class ReputationComponent: View {
         stackView.spacing = spacing
     }
     let proficientButton = ReputationButton(titleType: .proficient)
-    let userTimeButton = ReputationButton(titleType: .usefulTime)
+    let usefulTimeButton = ReputationButton(titleType: .usefulTime)
+    
+    lazy var allButtons = [
+        goodMannerButton, punctualButton,
+        responsiveButton, kindnessButton,
+        proficientButton, usefulTimeButton
+    ]
     
     init(isUserInteractionEnabled: Bool) {
         super.init(frame: .zero)
@@ -60,7 +66,15 @@ final class ReputationComponent: View {
         
         stackViewCol.addArrangedSubview(stackViewRow3)
         stackViewRow3.addArrangedSubview(proficientButton)
-        stackViewRow3.addArrangedSubview(userTimeButton)
+        stackViewRow3.addArrangedSubview(usefulTimeButton)
+    }
+    
+    func fetchInfo(reputation: [Int]) {
+        for index in 0..<6 {
+            if reputation[index] == 1 {
+                allButtons[index].setStyleState(styleState: .fill)
+            }
+        }
     }
 }
 

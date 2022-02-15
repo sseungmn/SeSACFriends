@@ -17,7 +17,7 @@ struct Settings {
 }
 
 // MARK: SesacCharacter
-enum SesacCharacter: Int {
+enum SesacCharacter: Int, CaseIterable {
     case basic, strong, mint, purple, gold
 }
 
@@ -39,8 +39,8 @@ extension SesacCharacter {
 }
 
 // MARK: SesacBackground
-enum SesacBackground: Int {
-    case skyPark, latinLivingRoom
+enum SesacBackground: Int, CaseIterable {
+    case skyPark, cityView, nightTrail, dayTrail, stage, latinLivingroom, homeTrainingRoom, musicianRoom
 }
 
 extension SesacBackground {
@@ -48,8 +48,20 @@ extension SesacBackground {
         switch self {
         case .skyPark:
             return Asset.Assets.sesacBackground1.image
-        case .latinLivingRoom:
+        case .cityView:
             return Asset.Assets.sesacBackground2.image
+        case .nightTrail:
+            return Asset.Assets.sesacBackground3.image
+        case .dayTrail:
+            return Asset.Assets.sesacBackground4.image
+        case .stage:
+            return Asset.Assets.sesacBackground5.image
+        case .latinLivingroom:
+            return Asset.Assets.sesacBackground6.image
+        case .homeTrainingRoom:
+            return Asset.Assets.sesacBackground7.image
+        case .musicianRoom:
+            return Asset.Assets.sesacBackground8.image
         }
     }
 }

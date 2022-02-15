@@ -40,4 +40,8 @@ final class UserCardNickComponent: View {
             make.centerY.trailing.equalToSuperview()
         }
     }
+    
+    func fetchInfo(nick: String) {
+        nickLabel.text = nick
+    }
 }

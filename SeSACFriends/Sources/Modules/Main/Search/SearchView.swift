@@ -29,7 +29,7 @@ final class SearchView: View {
 }
 
 final class UserCardCell: UITableViewCell {
-    let userCard = UserCardView()
+    let userCard = UserCardView(withHobby: true)
     
     let button = UIButton().then { button in
         button.layer.cornerRadius = 8
@@ -76,5 +76,11 @@ extension UserCardCell {
         button.setTitle("수락하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = Asset.Colors.success.color
+    }
+}
+
+extension UserCardCell {
+    func fetchInfo(with user: QueuedUser) {
+        userCard.fetchInfo(with: user)
     }
 }

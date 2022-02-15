@@ -91,6 +91,8 @@
 		B58872FF27B57F6A000863AA /* SearchTabmanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58872FE27B57F6A000863AA /* SearchTabmanController.swift */; };
 		B588730227B57F9C000863AA /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588730127B57F9C000863AA /* ChattingViewController.swift */; };
 		B5B13D9E27BADB580029D168 /* RequestedSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B13D9D27BADB580029D168 /* RequestedSesacViewController.swift */; };
+		B5B13DA027BAE0A60029D168 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B13D9F27BAE0A60029D168 /* Coordinates.swift */; };
+		B5B13DA227BAE82D0029D168 /* NearSesacViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B13DA127BAE82D0029D168 /* NearSesacViewModel.swift */; };
 		B5BDB41427BAA5480021D47F /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDB41327BAA5470021D47F /* SearchEmptyView.swift */; };
 		B5BDB41627BABBB30021D47F /* NearSesacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDB41527BABBB30021D47F /* NearSesacViewController.swift */; };
 		B5BDB41A27BAD23B0021D47F /* UserCardHobbyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDB41927BAD23B0021D47F /* UserCardHobbyComponent.swift */; };
@@ -228,6 +230,8 @@
 		B58872FE27B57F6A000863AA /* SearchTabmanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabmanController.swift; sourceTree = "<group>"; };
 		B588730127B57F9C000863AA /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
 		B5B13D9D27BADB580029D168 /* RequestedSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedSesacViewController.swift; sourceTree = "<group>"; };
+		B5B13D9F27BAE0A60029D168 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		B5B13DA127BAE82D0029D168 /* NearSesacViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSesacViewModel.swift; sourceTree = "<group>"; };
 		B5BDB41327BAA5470021D47F /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		B5BDB41527BABBB30021D47F /* NearSesacViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearSesacViewController.swift; sourceTree = "<group>"; };
 		B5BDB41927BAD23B0021D47F /* UserCardHobbyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardHobbyComponent.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 				B50463AC279E7A7D00885DAD /* Date.swift */,
 				B5010C7F27A064C600AD689A /* Dictionary.swift */,
 				B54FDAD727B17A03005F4249 /* UIView.swift */,
+				B5B13D9F27BAE0A60029D168 /* Coordinates.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -473,11 +478,11 @@
 		B53B9A6D27A9928E00384FF5 /* SettingMyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				B53B9A7027A996E600384FF5 /* SettingMyInfoView.swift */,
 				B57878F727AACF0D00BE2BF6 /* SettingGenderComponent.swift */,
 				B5F8543027AB9C780013FD3E /* SettingHobbyComponent.swift */,
 				B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */,
 				B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */,
+				B53B9A7027A996E600384FF5 /* SettingMyInfoView.swift */,
 				B53B9A6E27A992AB00384FF5 /* SettingMyInfoViewController.swift */,
 				B5F8542E27AB98DB0013FD3E /* SettingMyInfoViewModel.swift */,
 			);
@@ -563,6 +568,7 @@
 				B5B13D9D27BADB580029D168 /* RequestedSesacViewController.swift */,
 				B5BDB41527BABBB30021D47F /* NearSesacViewController.swift */,
 				B58872FE27B57F6A000863AA /* SearchTabmanController.swift */,
+				B5B13DA127BAE82D0029D168 /* NearSesacViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1097,6 +1103,7 @@
 				B5C1440627AC2B1A007C9BD5 /* User.swift in Sources */,
 				B567A87C27985F28005433F8 /* Fonts+Sementic.swift in Sources */,
 				B567A87A27985E22005433F8 /* Fonts+Generated.swift in Sources */,
+				B5B13DA027BAE0A60029D168 /* Coordinates.swift in Sources */,
 				B54FDAE227B1A645005F4249 /* APIKeys.swift in Sources */,
 				B5F0186B27B29DF50020346C /* QueueTarget.swift in Sources */,
 				B53B9A6927A968E300384FF5 /* MyInfoViewModel.swift in Sources */,
@@ -1104,6 +1111,7 @@
 				B53B9A5627A6F53600384FF5 /* RxServiceExtension.swift in Sources */,
 				B5046395279C8DB500885DAD /* MVVM+Base.swift in Sources */,
 				B53B9A6F27A992AB00384FF5 /* SettingMyInfoViewController.swift in Sources */,
+				B5B13DA227BAE82D0029D168 /* NearSesacViewModel.swift in Sources */,
 				B5010C8027A064C600AD689A /* Dictionary.swift in Sources */,
 				B567A88527990536005433F8 /* StateTextField.swift in Sources */,
 				B5BDB41427BAA5480021D47F /* SearchEmptyView.swift in Sources */,

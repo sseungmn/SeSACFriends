@@ -6,17 +6,41 @@
 //
 
 import UIKit
+import RxSwift
 
-final class UserCardHobbyComponent: UICollectionView {
+final class UserCardHobbyComponent: UICollectionView, UICollectionViewDelegate {
+    var disposeBag = DisposeBag()
+    
     private let fixedSpaceLayout = UICollectionViewLayout.hobbyComponentLayout()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: fixedSpaceLayout)
+        
         register(HobbyCell.self, forCellWithReuseIdentifier: HobbyCell.reuseID)
+        self.snp.makeConstraints { make in
+            make.height.greaterThanOrEqualTo(32)
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func fetchInfo(hobby: [String]) {
+        delegate = nil
+        dataSource = nil
+        
+        Observable.just(hobby).debug("hobby")
+            .bind(to: self.rx.items) { (collectionView, row, element) in
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HobbyCell.reuseID, for: IndexPath(row: row, section: 0)) as? HobbyCell else { return HobbyCell() }
+                var title = element
+                if element == "anything" { title = "아무거나" }
+                debug(title: "title", title)
+                cell.setTitle(title)
+                cell.othersHobbyStyle()
+                return cell
+            }
+            .disposed(by: disposeBag)
     }
 }
 
@@ -28,14 +52,14 @@ extension UICollectionViewLayout {
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.edgeSpacing = NSCollectionLayoutEdgeSpacing(
-            leading: .fixed(16),
-            top: .fixed(5),
-            trailing: .fixed(16),
-            bottom: .fixed(5)
+            leading: .fixed(0),
+            top: .fixed(0),
+            trailing: .fixed(8),
+            bottom: .fixed(8)
         )
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(100)
+            heightDimension: .estimated(32)
         )
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
@@ -103,7 +127,6 @@ final class HobbyCell: UICollectionViewCell {
     }
     
     func setTitle(_ title: String) {
-        print(title)
         titleLabel.text = title
     }
     

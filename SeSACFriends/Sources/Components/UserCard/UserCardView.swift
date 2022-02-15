@@ -11,7 +11,7 @@ import RxRelay
 import RxGesture
 
 final class UserCardView: View {
-    
+    var withHobby: Bool
     var isCardClosed: Bool! {
         didSet {
             var image: UIImage
@@ -22,6 +22,7 @@ final class UserCardView: View {
             }
             nickContrainer.openCloseImageView.image = image
             reputationContainer.isHidden = isCardClosed
+            hobbyContainer.isHidden = isCardClosed
             commentContainer.isHidden = isCardClosed
         }
     }
@@ -39,20 +40,29 @@ final class UserCardView: View {
         stackView.spacing = 24
         stackView.distribution = .fill
     }
-    private let nickContrainer = UserCardNickComponent()
-    private let reputationContainer = UserCardSubContainer(
+    let nickContrainer = UserCardNickComponent()
+    let reputationContainer = UserCardSubContainer(
         title: "새싹 타이틀",
         content: ReputationComponent(isUserInteractionEnabled: false)
     )
-    private let hobbyContainer = UserCardSubContainer(
+    let hobbyContainer = UserCardSubContainer(
         title: "하고 싶은 취미",
         content: UserCardHobbyComponent()
     )
-    private let commentContainer = UserCardSubContainer(
+    let commentContainer = UserCardSubContainer(
         title: "새싹 리뷰",
         content: UserCardCommentComponent()
     )
 
+    init(withHobby: Bool = false) {
+        self.withHobby = withHobby
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func configure() {
         isCardClosed = true
     }
@@ -66,30 +76,41 @@ final class UserCardView: View {
         addSubview(contentView)
         contentView.snp.makeConstraints { make in
             make.top.equalTo(cardImageView.snp.bottom)
-            make.trailing.leading.equalToSuperview()
+            make.trailing.leading.bottom.equalToSuperview()
         }
         contentView.addArrangedSubview(nickContrainer)
         contentView.addArrangedSubview(reputationContainer)
-        contentView.addArrangedSubview(commentContainer)
-        
-        self.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView)
+        if withHobby {
+            contentView.addArrangedSubview(hobbyContainer)
         }
+        contentView.addArrangedSubview(commentContainer)
+    }
+    
+    func fetchInfo(with user: QueuedUser) {
+        cardImageView.fetchInfo(background: SesacBackground.allCases[user.background], character: SesacCharacter.allCases[user.sesac])
+        nickContrainer.fetchInfo(nick: user.nick)
+        guard let reputationView = reputationContainer.content as? ReputationComponent,
+              let hobbyView = hobbyContainer.content as? UserCardHobbyComponent,
+              let commentView = commentContainer.content as? UserCardCommentComponent else { return }
+        reputationView.fetchInfo(reputation: user.reputation)
+        hobbyView.fetchInfo(hobby: user.hf)
     }
 }
 
-final private class UserCardSubContainer: View {
+final class UserCardSubContainer: View {
     private let titleLabel = UILabel().then { label in
         label.font = .Title6_R12
         label.textColor = Asset.Colors.black.color
     }
     
-    private let contentView = UIStackView()
+    let contentView = UIStackView()
+    var content: UIView!
     
     init(title: String, content: UIView) {
         super.init(frame: .zero)
         self.titleLabel.text = title
         self.contentView.addArrangedSubview(content)
+        self.content = content
     }
     
     required init?(coder: NSCoder) {

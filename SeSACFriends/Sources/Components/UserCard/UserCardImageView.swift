@@ -36,4 +36,9 @@ final class UserCardImageView: View {
             make.bottom.centerX.equalToSuperview()
         }
     }
+    
+    func fetchInfo(background: SesacBackground, character: SesacCharacter) {
+        backgroundImageView.image = background.image
+        characterImageView.image = characterImageView.image
+    }
 }
