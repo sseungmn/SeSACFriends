@@ -8,10 +8,12 @@
 import UIKit
 
 final class SearchView: View {
+    let emptyView = SearchEmptyView()
     let tableView = UITableView()
     
     override func configure() {
         super.configure()
+        
         tableView.register(UserCardCell.self, forCellReuseIdentifier: UserCardCell.reuseID)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 500
@@ -24,6 +26,10 @@ final class SearchView: View {
             make.top.equalTo(safeAreaLayoutGuide).inset(20)
             make.bottom.equalTo(safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(16)
+        }
+        addSubview(emptyView)
+        emptyView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }

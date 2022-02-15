@@ -18,10 +18,6 @@ class NearSesacViewController: ViewController, UITableViewDelegate {
         view = mainView
     }
     
-    override func configure() {
-        super.configure()
-    }
-    
     override func bind() {
         let input = NearSesacViewModel.Input(
             viewWillAppearTrigger: rx.viewWillAppear.asDriver()
@@ -38,6 +34,10 @@ class NearSesacViewController: ViewController, UITableViewDelegate {
                 cell.fetchInfo(with: element)
                 return cell
             }
+            .disposed(by: disposeBag)
+        
+        output.showEmptyView
+            .drive(mainView.emptyView.rx.isHidden)
             .disposed(by: disposeBag)
         
         mainView.tableView.rx.itemSelected

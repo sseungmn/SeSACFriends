@@ -1,21 +1,21 @@
 //
-//  NearSearchViewModel.swift
+//  RequestedSesacViewModel.swift
 //  SeSACFriends
 //
-//  Created by SEUNGMIN OH on 2022/02/15.
+//  Created by SEUNGMIN OH on 2022/02/16.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-class NearSesacViewModel: ViewModel, ViewModelType {
+class RequestedSesacViewModel: ViewModel, ViewModelType {
     struct Input {
         var viewWillAppearTrigger: Driver<Bool>
     }
     
     struct Output {
-        var nearSesacArray: Driver<[QueuedUser]>
+        var requestedSesacArray: Driver<[QueuedUser]>
         var showEmptyView: Driver<Bool>
     }
     
@@ -34,15 +34,15 @@ class NearSesacViewModel: ViewModel, ViewModelType {
             }
             .share()
         
-        let nearSesacArray = onqueue.elements()
-            .map { $0.fromQueueDB }
+        let requestedSesacArray = onqueue.elements()
+            .map { $0.fromQueueDBRequested }
             .share()
         
-        let showEmptyView = nearSesacArray
+        let showEmptyView = requestedSesacArray
             .map { !$0.isEmpty }
         
         return Output(
-            nearSesacArray: nearSesacArray.asDriverOnErrorJustComplete(),
+            requestedSesacArray: requestedSesacArray.asDriverOnErrorJustComplete(),
             showEmptyView: showEmptyView.asDriverOnErrorJustComplete()
         )
     }

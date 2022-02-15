@@ -118,6 +118,7 @@
 		B5F8543327ABA2120013FD3E /* SettingSearchableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */; };
 		B5F8543527ABA46A0013FD3E /* SetttingAgeGroupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */; };
 		B5F8543827AC0A0A0013FD3E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8543727AC0A0A0013FD3E /* OnboardingViewController.swift */; };
+		B5FE707327BC3095000737D9 /* RequestedSesacViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FE707227BC3095000737D9 /* RequestedSesacViewModel.swift */; };
 		D3AC3E4DAC33243FACD3AB08 /* Pods_SeSACFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAD8C3227F3EB1C00EFEFB4 /* Pods_SeSACFriends.framework */; };
 /* End PBXBuildFile section */
 
@@ -260,6 +261,7 @@
 		B5F8543227ABA2120013FD3E /* SettingSearchableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSearchableComponent.swift; sourceTree = "<group>"; };
 		B5F8543427ABA46A0013FD3E /* SetttingAgeGroupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetttingAgeGroupComponent.swift; sourceTree = "<group>"; };
 		B5F8543727AC0A0A0013FD3E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B5FE707227BC3095000737D9 /* RequestedSesacViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedSesacViewModel.swift; sourceTree = "<group>"; };
 		D4C095AF49744C6D5D6656BB /* Pods-SeSACFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriends.release.xcconfig"; path = "Target Support Files/Pods-SeSACFriends/Pods-SeSACFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -565,6 +567,7 @@
 				B5B13D9D27BADB580029D168 /* RequestedSesacViewController.swift */,
 				B5BDB41527BABBB30021D47F /* NearSesacViewController.swift */,
 				B58872FE27B57F6A000863AA /* SearchTabmanController.swift */,
+				B5FE707227BC3095000737D9 /* RequestedSesacViewModel.swift */,
 				B5B13DA127BAE82D0029D168 /* NearSesacViewModel.swift */,
 			);
 			path = Search;
@@ -1043,6 +1046,7 @@
 				B50463A9279DC88600885DAD /* SesacUserDefaults.swift in Sources */,
 				B504636627999A1F00885DAD /* PhoneNumberView.swift in Sources */,
 				B558970027AEAA0B00777B11 /* SesacShopViewController.swift in Sources */,
+				B5FE707327BC3095000737D9 /* RequestedSesacViewModel.swift in Sources */,
 				B504638C279BDB8600885DAD /* GenderViewController.swift in Sources */,
 				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
 				B54FDAE627B1B54D005F4249 /* SesacMapView.swift in Sources */,

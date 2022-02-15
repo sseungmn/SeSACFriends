@@ -7,42 +7,47 @@
 
 import UIKit
 
-class RequestedSesacViewController: ViewController {
+class RequestedSesacViewController: ViewController, UITableViewDelegate {
     
-    let emptyView = SearchEmptyView()
     let mainView = SearchView()
+    let viewModel = RequestedSesacViewModel()
     
     override func loadView() {
         view = mainView
     }
     
-    override func configure() {
-        super.configure()
-        mainView.tableView.delegate = self
-        mainView.tableView.dataSource = self
-    }
-    
     override func bind() {
-    }
-}
-
-extension RequestedSesacViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCardCell.reuseID) as? UserCardCell else { return UserCardCell() }
-        cell.requestedSesacStyle()
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? UserCardCell else { return }
-        UIView.performWithoutAnimation {
-            tableView.beginUpdates()
-            cell.userCard.isCardClosed.toggle()
-            tableView.endUpdates()
-        }
+        let input = RequestedSesacViewModel.Input(
+            viewWillAppearTrigger: rx.viewWillAppear.asDriver()
+        )
+        let output = viewModel.transform(input: input)
+        
+        mainView.tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        output.requestedSesacArray
+            .drive(mainView.tableView.rx.items) { (tableView, _, element) in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCardCell.reuseID) as? UserCardCell else { return UserCardCell() }
+                cell.requestedSesacStyle()
+                cell.fetchInfo(with: element)
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        output.showEmptyView
+            .drive(self.mainView.emptyView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        mainView.tableView.rx.itemSelected
+            .withUnretained(self)
+            .bind { (owner, indexPath) in
+                guard let cell = owner.mainView.tableView.cellForRow(at: indexPath) as? UserCardCell else { return }
+                UIView.performWithoutAnimation {
+                    owner.mainView.tableView.beginUpdates()
+                    cell.userCard.isCardClosed.toggle()
+                    owner.mainView.tableView.endUpdates()
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
