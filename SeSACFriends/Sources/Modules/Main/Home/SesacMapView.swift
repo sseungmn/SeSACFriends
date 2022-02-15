@@ -6,14 +6,7 @@
 //
 
 import Foundation
-import CoreLocation
 import NMapsMap
-
-extension CLLocationCoordinate2D {
-    var NMGLatLng: NMGLatLng {
-        return NMapsMap.NMGLatLng(lat: self.latitude, lng: self.longitude)
-    }
-}
 
 class SesacMapView: NMFMapView {
     

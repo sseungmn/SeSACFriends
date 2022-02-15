@@ -105,7 +105,9 @@ class HomeViewController: ViewController {
         
         output.pushHobbyScene
             .drive { [weak self] curCoordinates in
-                self?.push(viewController: HobbyViewController(viewModel: HobbyViewModel(curCoordinates: curCoordinates)))
+                SesacUserDefaults.targetLatitude = curCoordinates.lat
+                SesacUserDefaults.targetLongitude = curCoordinates.lng
+                self?.push(viewController: HobbyViewController())
             }
             .disposed(by: disposeBag)
         

@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxKeyboard
 
-class HobbyViewController: ViewController, UICollectionViewDelegate {
+class HobbyViewController: ViewController, UIScrollViewDelegate {
     
     let dataSource = HobbyDataSource.dataSource()
     let searchBar = UISearchBar().then { searchBar in
@@ -19,16 +19,7 @@ class HobbyViewController: ViewController, UICollectionViewDelegate {
         searchBar.searchTextField.textColor = Asset.Colors.black.color
     }
     let mainView = HobbyView()
-    var viewModel: HobbyViewModel!
-    
-    init(viewModel: HobbyViewModel) {
-        super.init(nibName: nil, bundle: nil)
-        self.viewModel = viewModel
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var viewModel = HobbyViewModel()
     
     override func loadView() {
         view = mainView

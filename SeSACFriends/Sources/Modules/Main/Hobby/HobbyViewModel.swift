@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import NMapsMap
+import CoreLocation
 import RxSwift
 import RxCocoa
 import RxDataSources
@@ -17,18 +17,16 @@ enum HobbyError: Error {
 
 class HobbyViewModel: ViewModel, ViewModelType {
     
-    var curCoordinates: Observable<NMGLatLng>!
+    var curCoordinates = Observable<Coordinates>.just(
+        (lat: SesacUserDefaults.targetLatitude,
+         lng: SesacUserDefaults.targetLongitude)
+        )
     
     let searchText = BehaviorRelay<String>(value: "")
     
     let recommendedHobby = BehaviorRelay<[String]>(value: [])
     let queuedUsersHobby = BehaviorRelay<[String]>(value: [])
     let myHobby = BehaviorRelay<[String]>(value: [])
-    
-    init(curCoordinates: NMGLatLng) {
-        super.init()
-        self.curCoordinates = Observable.just(curCoordinates)
-    }
     
     struct Input {
         var viewWillAppear: Observable<Bool>
