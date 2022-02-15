@@ -34,7 +34,7 @@ class NearSesacViewController: ViewController, UITableViewDelegate {
         output.nearSesacArray
             .drive(mainView.tableView.rx.items) { (tableView, _, element) in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCardCell.reuseID) as? UserCardCell else { return UserCardCell() }
-//                cell.nearSesacStyle()
+                cell.nearSesacStyle()
                 cell.fetchInfo(with: element)
                 return cell
             }

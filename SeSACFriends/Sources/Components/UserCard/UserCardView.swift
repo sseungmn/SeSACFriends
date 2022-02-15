@@ -94,6 +94,7 @@ final class UserCardView: View {
               let commentView = commentContainer.content as? UserCardCommentComponent else { return }
         reputationView.fetchInfo(reputation: user.reputation)
         hobbyView.fetchInfo(hobby: user.hf)
+        commentView.fetchInfo(comment: user.reviews.first)
     }
 }
 
