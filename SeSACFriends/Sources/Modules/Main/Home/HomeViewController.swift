@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import NMapsMap
+import RxNMapsMap
 import RxSwift
 import RxCocoa
 
@@ -34,10 +35,10 @@ class HomeViewController: ViewController {
     
     override func bind() {
         let input = HomeViewModel.Input(
-            curCoordinates: mainView.mapView.rx.curCoordinates.asDriverOnErrorJustComplete(),
+            curCoordinates: mainView.mapView.rx.currentCoordinates.asDriverOnErrorJustComplete(),
             viewWillAppear: rx.viewWillAppear.asDriver(),
             gpsButtonTrigger: mainView.gpsButton.rx.tap.asObservable(),
-            mapViewIdleTrigger: mainView.mapView.rx.mapViewIdleState.asDriverOnErrorJustComplete(),
+            mapViewIdleTrigger: mainView.mapView.rx.mapViewIdle.asDriver().mapToVoid(),
             filteredGender: mainView.genderFilterView.filteredGender.asDriver(),
             curAuthorizationState: locationManager.rx.curAuthrizationState.asDriverOnErrorJustComplete(),
             matchingStatusButtonTrigger: mainView.matchingStatusButton.rx.tap.asDriver()

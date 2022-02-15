@@ -92,6 +92,10 @@ PODS:
   - RxKeyboard (2.0.0):
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
+  - RxNMapsMap (0.3.0):
+    - NMapsMap (~> 3.14.1)
+    - RxCocoa (~> 6.5.0)
+    - RxSwift (~> 6.5.0)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
@@ -118,6 +122,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxGesture
   - RxKeyboard
+  - RxNMapsMap
   - RxSwift
   - RxTest
   - SnapKit
@@ -152,6 +157,7 @@ SPEC REPOS:
     - RxDataSources
     - RxGesture
     - RxKeyboard
+    - RxNMapsMap
     - RxRelay
     - RxSwift
     - RxTest
@@ -188,6 +194,7 @@ SPEC CHECKSUMS:
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxKeyboard: 4f5863f43b4ff0cbb2a20b94688d6b80c8a43c14
+  RxNMapsMap: 27e1b4e98c8fc73284f5a2228044448f9daea255
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
@@ -199,6 +206,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 30577dae68718a7cfbe5cd0be12f6a1904109cf3
+PODFILE CHECKSUM: 96c2b834d93060a2186ea93fddd5ff2da99a4164
 
 COCOAPODS: 1.11.2

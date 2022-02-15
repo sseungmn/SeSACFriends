@@ -48,7 +48,6 @@
 		B5100B7C279F0E27009BBF8D /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5100B7B279F0E27009BBF8D /* AuthTarget.swift */; };
 		B51756E227B2B70900E0B539 /* Onqueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E127B2B70900E0B539 /* Onqueue.swift */; };
 		B51756E427B2B84800E0B539 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E327B2B84800E0B539 /* HomeViewModel.swift */; };
-		B51756E627B2DB9C00E0B539 /* NMFMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E527B2DB9C00E0B539 /* NMFMapView+Rx.swift */; };
 		B51756E827B2F41100E0B539 /* MarkerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51756E727B2F41100E0B539 /* MarkerManager.swift */; };
 		B5344E4027A280C000A73EB2 /* RxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5344E3F27A280C000A73EB2 /* RxExtension.swift */; };
 		B53B9A5627A6F53600384FF5 /* RxServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B9A5527A6F53600384FF5 /* RxServiceExtension.swift */; };
@@ -186,7 +185,6 @@
 		B5100B7B279F0E27009BBF8D /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
 		B51756E127B2B70900E0B539 /* Onqueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onqueue.swift; sourceTree = "<group>"; };
 		B51756E327B2B84800E0B539 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		B51756E527B2DB9C00E0B539 /* NMFMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NMFMapView+Rx.swift"; sourceTree = "<group>"; };
 		B51756E727B2F41100E0B539 /* MarkerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerManager.swift; sourceTree = "<group>"; };
 		B5344E3F27A280C000A73EB2 /* RxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtension.swift; sourceTree = "<group>"; };
 		B53B43AE880673F048EA4D42 /* Pods-SeSACFriendsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeSACFriendsTests.debug.xcconfig"; path = "Target Support Files/Pods-SeSACFriendsTests/Pods-SeSACFriendsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -518,7 +516,6 @@
 			isa = PBXGroup;
 			children = (
 				B5046396279D829E00885DAD /* UIViewController+Rx.swift */,
-				B51756E527B2DB9C00E0B539 /* NMFMapView+Rx.swift */,
 				B5046398279D82D800885DAD /* UITextField+Rx.swift */,
 				B504639A279D82DE00885DAD /* UIButton+Rx.swift */,
 				B5344E3F27A280C000A73EB2 /* RxExtension.swift */,
@@ -1050,7 +1047,6 @@
 				B567A88127987A36005433F8 /* AuthView.swift in Sources */,
 				B54FDAE627B1B54D005F4249 /* SesacMapView.swift in Sources */,
 				B53B9A7527A99D8500384FF5 /* UserCardImageView.swift in Sources */,
-				B51756E627B2DB9C00E0B539 /* NMFMapView+Rx.swift in Sources */,
 				B53B9A7927A9B1EA00384FF5 /* UserCardView.swift in Sources */,
 				B5B13D9E27BADB580029D168 /* RequestedSesacViewController.swift in Sources */,
 				B504637F2799CB2D00885DAD /* BirthView.swift in Sources */,
