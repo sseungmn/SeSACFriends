@@ -67,8 +67,11 @@ extension SearchTabmanController: PageboyViewControllerDataSource, TMBarDataSour
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         var title: String!
-        if index == 0 { title = "주변 새싹" }
-        else if index == 1 { title = "받은 요청"}
+        if index == 0 {
+            title = "주변 새싹"
+        } else if index == 1 {
+            title = "받은 요청"
+        }
         return TMBarItem(title: title)
     }
 }
