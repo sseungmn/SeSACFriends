@@ -54,7 +54,7 @@ class GenderViewController: ViewController {
             
         output.invalidNickname
             .drive { [weak self] _ in
-                self?.pop(to: NicknameViewController()) { nicknameViewController in
+                self?.pop(to: NicknameViewController.self) { nicknameViewController in
                     nicknameViewController.view.makeToast("올바른 닉네임을 입력하세요")
                 }
             }
