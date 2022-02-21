@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum MatchingStatus {
+enum MatchingStatus: Int {
     case `default`, waiting, matched
     
     var icon: UIImage {

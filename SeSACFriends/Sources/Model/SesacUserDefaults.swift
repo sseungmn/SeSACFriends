@@ -27,7 +27,7 @@ class SesacUserDefaults {
     @UserDefault("isUser", defaultValue: false) static var isUser: Bool
     
     // MARK: Home
-    @UserDefault("matchingStatus", defaultValue: .default) static var matchingStatus: MatchingStatus
+    @EnumUserDefault("matchingStatus", defaultValue: MatchingStatus.default) static var matchingStatus: MatchingStatus
     @UserDefault("targetLatitude", defaultValue: 0) static var targetLatitude: Double
     @UserDefault("targetLongitude", defaultValue: 0) static var targetLongitude: Double
     

@@ -29,3 +29,26 @@ class UserDefault<Type> {
         self.defaultValue = defaultValue
     }
 }
+
+@propertyWrapper
+class EnumUserDefault<T: RawRepresentable> {
+    let key: String
+    let defaultValue: T
+    
+    var wrappedValue: T {
+        get {
+            guard let value = UserDefaults.standard.object(forKey: self.key) as? T.RawValue else {
+                return self.defaultValue
+            }
+            return T(rawValue: value) ?? self.defaultValue
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: self.key)
+        }
+    }
+    
+    init(_ key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+}
